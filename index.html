@@ -52,8 +52,8 @@
 		
 		<script>
 			function init(){
-				$('[name="core"]').bind('keyup click', function(){update()});
-				$('[name="ram"]').bind('keyup click', function(){update()});
+				$('[name="core"]').bind('keyup mouseup', function(){update()});
+				$('[name="ram"]').bind('keyup mouseup', function(){update()});
 				$("#disk").bind('keyup mouseup', function(){update()});
 				$("#band").bind('keyup mouseup', function(){update()});
 				$("#len").bind('keyup mouseup', function(){update()});
