@@ -52,12 +52,7 @@
 		
 		<script>
 			function init(){
-				$('[name="core"]').on('tap', function(){update()});
-				$('[name="ram"]').on('tap', function(){update()});
-				$("#disk").bind('keyup mouseup', function(){update()});
-				$("#band").bind('keyup mouseup', function(){update()});
-				$("#len").bind('keyup mouseup', function(){update()});
-				$("#moy").bind('keyup mouseup', function(){update()});
+				$("#update").click(function(){update()});
 			}
 			
 			function update ()
@@ -65,7 +60,7 @@
 				var $price = parseInt($('[name="core"]').filter('.am-active').children().val()) + 
 				parseInt($('[name="ram"]').filter('.am-active').children().val()) + 
 				parseInt($("#disk").val()) + parseInt($("#band").val()) + parseInt($("#len").val()) * parseInt($("#moy").val());
-				$("#price").text("金额：" + $price + "元");
+				$("#price").text($price + "元");
 			}
 			
 			
@@ -169,10 +164,11 @@
 			</div>
 		</div>
 		
-		<div class="am-g am-g-fixed am-margin-top">
-			<div class="am-u-sm-12 am-cf">
-				<div class="am-alert" id="price">
-					金额：0元
+		<div class="am-g am-g-fixed am-margin-top">	
+			<div class="am-u-sm-12">
+				<div class="am-alert am-cf">
+					<span class='am-text-middle am-text-xl' id="price">0元</span>
+					<button type="button" class="am-btn am-btn-default am-fr" id='update'>计算</button>
 				</div>
 			</div>
 		</div>
