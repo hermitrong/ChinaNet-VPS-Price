@@ -7,7 +7,7 @@
 		<meta name="keywords" content="">
 		<meta name="viewport"
         content="width=device-width, initial-scale=1">
-		<title>天翼云主机价格计算器</title>
+		<title>IDC价格计算器</title>
 		
 		<!-- Set render engine for 360 browser -->
 		<meta name="renderer" content="webkit">
@@ -77,100 +77,110 @@
 		
 		<div class="am-g am-g-fixed am-margin-top">
 			<div class="am-u-sm-12">
-				<h1>价格计算器</h1>
+				<h1>IDC价格计算器</h1>
 			</div>
 		</div>
 		
 		<div class="am-g am-g-fixed">
 			<div class="am-u-sm-12 am-cf">
 				<div class="am-panel am-panel-default">
-					<div class="am-panel-hd">vCPU</div>
+					<div class="am-panel-hd">主机托管</div>
 					<div class="am-panel-bd">
 						<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
-							<label class="am-btn am-btn-primary am-active" name="core">
-								<input type="radio" value="1"> 1核
+							<label class="am-btn am-btn-primary am-active" name="station">
+								<input type="radio" value="1">二长/高新
 							</label>
-							<label class="am-btn am-btn-primary" name="core">
-								<input type="radio" value="2"\> 2核
+							<label class="am-btn am-btn-primary" name="station">
+								<input type="radio" value="2"\> 西咸
 							</label>
-							<label class="am-btn am-btn-primary" name="core">
-								<input type="radio" value="3"\> 4核
-							</label>
-							<label class="am-btn am-btn-primary" name="core">
-								<input type="radio" value="4"\> 8核
-							</label>
-							<label class="am-btn am-btn-primary" name="core">
-								<input type="radio" value="5"\> 16核
-							</label>
+						</div>
+						<div class="am-input-group">
+							<span class="am-input-group-label">机架</span>
+							<span class="am-input-group-label" style="width:50px">
+								<select data-am-selected>
+									<option value="1" selected>14A</option>
+									<option value="2">20A</option>
+									<option value="3">32A</option>
+								</select>
+							</span>
+							
+						</div>
+						<div class="am-input-group">
+							<span class="am-input-group-label">机位</span>
+							<input type="number" class="am-form-field am-text-right" id="jiwei" min="1"  step="1">
+							<span class="am-input-group-label">U</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		
 		
 		<div class="am-g am-g-fixed">
 			<div class="am-u-sm-12 am-cf">
 				<div class="am-panel am-panel-default">
-					<div class="am-panel-hd">内存</div>
+					<div class="am-panel-hd">互联网接入</div>
 					<div class="am-panel-bd">
-						<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
-							<label class="am-btn am-btn-primary am-active" name="ram">
-								<input type="radio" value="1"> 1GB
-							</label>
-							<label class="am-btn am-btn-primary" name="ram">
-								<input type="radio" value="2"> 2GB
-							</label>
-							<label class="am-btn am-btn-primary" name="ram">
-								<input type="radio" value="3"> 4GB
-							</label>
+						
+						<div class="am-input-group">
+							<span class="am-input-group-label">带宽</span>
+							<span class="am-input-group-label" style="width:50px">
+								<select data-am-selected>
+									<option value="1" selected>100M共享</option>
+									<option value="2">10M独享</option>
+									<option value="3">100M独享</option>
+									<option value="4">1000M独享</option>
+									<option value="5">10G独享</option>
+									<option value="6">100G独享</option>
+								</select>
+							</span>
+							
 						</div>
+						<div class="am-input-group">
+							<div class="am-u-sm-8">
+								<div class="am-input-group">
+									<span class="am-input-group-label">IP地址</span>
+									<input type="number" class="am-form-field am-text-right" id="len" min="1" value="1" step="1">
+								</div>
+							</div>
+							<div class="am-u-sm-4">
+								<select id="moy" data-am-selected="{btnWidth: '100%'}">
+									<option value="1">个</option>
+									<option value="12">C</option>
+								</select>
+							</div>
+						</div>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		<div class="am-g am-g-fixed">
-			<div class="am-u-sm-12 am-cf">
-				<div class="am-input-group">
-					<span class="am-input-group-label">数据盘容量</span>
-					<input type="number" class="am-form-field am-text-right" id="disk" min="1" max="2048" placeholder="1-2048" step="1">
-					<span class="am-input-group-label">GB</span>
-				</div>
-			</div>
-		</div>
+		
+		
+		
 		
 		<div class="am-g am-g-fixed am-margin-top">
 			<div class="am-u-sm-12 am-cf">
-				<div class="am-input-group">
-					<span class="am-input-group-label">带宽</span>
-					<input type="number" class="am-form-field am-text-right" id="band" min="2" max="1000" placeholder="2-1000" step="1">
-					<span class="am-input-group-label">Mbps</span>
-				</div>
-			</div>
-		</div>
-		
-		<div class="am-g am-g-fixed am-margin-top">
-			<div class="am-u-sm-8">
 				<div class="am-input-group">
 					<span class="am-input-group-label">订购时长</span>
-					<input type="number" class="am-form-field am-text-right" id="len" min="1" value="1" step="1">
+					<input type="number" class="am-form-field am-text-right" id="band" min="1"  step="1">
+					<span class="am-input-group-label">年</span>
 				</div>
-			</div>
-			<div class="am-u-sm-4">
-				<select id="moy" data-am-selected="{btnWidth: '100%'}">
-					<option value="1">月</option>
-					<option value="12">年</option>
-				</select>
 			</div>
 		</div>
 		
-		<div class="am-g am-g-fixed am-margin-top">	
-			<div class="am-u-sm-12">
-				<div class="am-alert am-cf">
-					<span class='am-text-middle am-text-xl' id="price">0元</span>
-					<button type="button" class="am-btn am-btn-default am-fr" id='update'>计算</button>
-				</div>
+		
+	</div>
+	
+	<div class="am-g am-g-fixed am-margin-top">	
+		<div class="am-u-sm-12">
+			<div class="am-alert am-cf">
+				<span class='am-text-middle am-text-xl' id="price">0元</span>
+				<button type="button" class="am-btn am-btn-default am-fr" id='update'>计算</button>
 			</div>
 		</div>
-	</body>
+	</div>
+</body>
 </html>
