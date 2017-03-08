@@ -51,20 +51,40 @@
 		<script src="assets/js/amazeui.min.js"></script>
 		
 		<script>
-			function init(){
-				$("#update").click(function(){update()});
+			function init() {
+				$("#update").click(function () {
+					update();
+				});
 			}
 			
+<<<<<<< HEAD
 			function update ()
 			{
 				var $price = 58*(parseInt($('[name="core"]').filter('.am-active').children().val())) + 
 				30*(parseInt($('[name="ram"]').filter('.am-active').children().val()) )+ 
 				0.3*(parseInt($("#disk").val())) + parseInt($("#band").val()) + parseInt($("#len").val()) * parseInt($("#moy").val());
 				$("#price").text($price + "元");
+=======
+			function update() {
+				var core = parseInt($('[name="core"]').filter('.am-active').children().val());
+				var ram = parseInt($('[name="ram"]').filter('.am-active').children().val());
+				var disk = parseInt($('[name="disk"]').filter('.am-active').children().val());
+				var data = parseInt($("#data").val());
+				var band = parseInt($('[name="band"]').filter('.am-active').children().val());
+				var time = parseInt($("#len").val()) * parseInt($("#moy").val());
+				
+				if (core == 1 && ram == 1) {
+					var price = (53 + disk * data + band) * time;
+					} else {
+					var price = (58 * core + 30 * ram + disk * data + band) * time;
+				}
+				$("#price").text(price + "元");
+>>>>>>> refs/remotes/wyapples/master
 			}
 			
-			
-			$(document).ready(function(){init();});
+			$(document).ready(function () {
+				init();
+			});
 		</script>
 		
 	</head>
@@ -75,6 +95,7 @@
 			以获得更好的体验！</p>
 		<![endif]-->
 		
+<<<<<<< HEAD
 		<div class="am-dropdown" data-am-dropdown>
 			<button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle>产品列表 <span class="am-icon-caret-down"></span></button>
 			<ul class="am-dropdown-content">
@@ -84,13 +105,28 @@
 			</ul>
 		</div>
 		
+=======
+		<div class=' am-container'>
+			<div class="am-dropdown" data-am-dropdown>
+				<button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle>产品列表 <span class="am-icon-caret-down"></span></button>
+				<ul class="am-dropdown-content">
+					<li><a href="#">云主机</a></li>
+					<li><a href="storage.html">云存储</a></li>
+					<li><a href="idc.html">IDC</a></li>
+				</ul>
+			</div>
+		</div>		
+>>>>>>> refs/remotes/wyapples/master
 		
 		<div class="am-g am-g-fixed am-margin-top">
 			<div class="am-u-sm-12">
 				<h1>云主机价格计算器（标准）</h1>
+<<<<<<< HEAD
 				<ul class="am-list">
 					<li><a href="Server.html" style="float:right;">太贵？看看套餐 --></a></li>
 				</ul>
+=======
+>>>>>>> refs/remotes/wyapples/master
 			</div>
 		</div>
 		
@@ -107,13 +143,13 @@
 								<input type="radio" value="2"\> 2核
 							</label>
 							<label class="am-btn am-btn-primary" name="core">
-								<input type="radio" value="3"\> 4核
+								<input type="radio" value="4"\> 4核
 							</label>
 							<label class="am-btn am-btn-primary" name="core">
-								<input type="radio" value="4"\> 8核
+								<input type="radio" value="8"\> 8核
 							</label>
 							<label class="am-btn am-btn-primary" name="core">
-								<input type="radio" value="5"\> 16核
+								<input type="radio" value="16"\> 16核
 							</label>
 						</div>
 					</div>
@@ -134,7 +170,7 @@
 								<input type="radio" value="2"> 2GB
 							</label>
 							<label class="am-btn am-btn-primary" name="ram">
-								<input type="radio" value="3"> 4GB
+								<input type="radio" value="4"> 4GB
 							</label>
 						</div>
 					</div>
@@ -148,6 +184,7 @@
 					<div class="am-panel-hd">块存储</div>
 					<div class="am-panel-bd">
 						<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
+<<<<<<< HEAD
 							<label class="am-btn am-btn-primary am-active" name="ram">
 								<input type="radio" value="1"> SATA 
 							</label>
@@ -162,6 +199,21 @@
 							<span class="am-input-group-label" style="width:118px">数据盘容量</span>
 							
 							<input type="number" class="am-form-field am-text-right" id="disk" min="1" max="2048" placeholder="1-2048" step="1">
+=======
+							<label class="am-btn am-btn-primary am-active" name="disk">
+								<input type="radio" value="0.3"> SATA 
+							</label>
+							<label class="am-btn am-btn-primary" name="disk">
+								<input type="radio" value="0.6"> SAS
+							</label>
+							<label class="am-btn am-btn-primary" name="disk">
+								<input type="radio" value="1.2"> SSD
+							</label>
+						</div>
+						<div class="am-input-group  am-margin-top">
+							<span class="am-input-group-label" style="width:118px">数据盘容量</span>							
+							<input type="number" class="am-form-field am-text-right" id="data" min="1" max="2048" placeholder="1-2048" step="1">
+>>>>>>> refs/remotes/wyapples/master
 							<span class="am-input-group-label">GB</span>
 						</div>
 					</div>
@@ -170,16 +222,34 @@
 		</div>
 		
 		
+<<<<<<< HEAD
 		<div class="am-g am-g-fixed am-margin-top">
 			<div class="am-u-sm-12 am-cf">
 				<div class="am-input-group">
 					<span class="am-input-group-label" style="width:118px">带宽</span>
 					<input type="number" class="am-form-field am-text-right" id="band" min="2" max="1000" placeholder="2-1000" step="1">
 					<span class="am-input-group-label">Mbps</span>
+=======
+		<div class="am-g am-g-fixed">
+			<div class="am-u-sm-12 am-cf">
+				<div class="am-panel am-panel-default">
+					<div class="am-panel-hd">带宽</div>
+					<div class="am-panel-bd">
+						<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
+							<label class="am-btn am-btn-primary am-active" name="band">
+								<input type="radio" value="20"> 0-5Mbps
+							</label>
+							<label class="am-btn am-btn-primary" name="band">
+								<input type="radio" value="60"> 5Mbps以上
+							</label>
+						</div>
+					</div>
+>>>>>>> refs/remotes/wyapples/master
 				</div>
 			</div>
 		</div>
 		
+<<<<<<< HEAD
 		<div class="am-g am-g-fixed am-margin-top">
 			<div class="am-u-sm-8">
 				<div class="am-input-group">
@@ -192,16 +262,26 @@
 					<option value="1">月</option>
 					<option value="12">年</option>
 				</select>
+=======
+		<div class='am-container am-margin-bottom'>
+			<div class="am-input-group">
+				<span class="am-input-group-label">订购时长 </span>
+				<input type="number" class="am-form-field am-text-right" id="len" min="1" value="1" step="1">
+				<span class="am-input-group-btn">
+					<select id="moy" data-am-selected="{btnWidth: '100px'}">
+						<option value="1">月</option>
+						<option value="12">年</option>
+					</select>
+				</span>
+>>>>>>> refs/remotes/wyapples/master
 			</div>
 		</div>
 		
-		<div class="am-g am-g-fixed am-margin-top">	
-			<div class="am-u-sm-12">
-				<div class="am-alert am-cf">
-					<span class='am-text-middle am-text-xl' id="price">0元</span>
-					<button type="button" class="am-btn am-btn-default am-fr" id='update'>计算</button>
-				</div>
+		<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
+			<div class="am-alert am-cf am-margin-0">
+				<span class='am-text-middle am-text-xl' id="price">0元</span>
+				<button type="button" class="am-btn am-btn-default am-fr" id='update'>计算</button>
 			</div>
-		</div>
+		</header>
 	</body>
 </html>
