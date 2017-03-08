@@ -62,14 +62,21 @@
 				var ram = parseInt($('[name="ram"]').filter('.am-active').children().val());
 				var disk = parseInt($('[name="disk"]').filter('.am-active').children().val());
 				var data = parseInt($("#data").val());
-				var band = parseInt($('[name="band"]').filter('.am-active').children().val());
+				var band = parseInt($("#band").val());
 				var time = parseInt($("#len").val()) * parseInt($("#moy").val());
 				
 				if (core == 1 && ram == 1) {
-					var price = (53 + disk * data + band) * time;
+					var base = 53;
 					} else {
-					var price = (58 * core + 30 * ram + disk * data + band) * time;
+					var base = 58 * core + 30 * ram;
 				}
+				if (band <= 5) {
+					var bp = 20;
+				} else {
+					var bp = 60;
+				}
+				var price = (base + disk * data + band * bp) * time;
+				
 				$("#price").text(price + "元");
 			}
 			
@@ -178,29 +185,18 @@
 				</div>
 			</div>
 		</div>
-		
-		
-		<div class="am-g am-g-fixed">
-			<div class="am-u-sm-12 am-cf">
-				<div class="am-panel am-panel-default">
-					<div class="am-panel-hd">带宽</div>
-					<div class="am-panel-bd">
-						<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
-							<label class="am-btn am-btn-primary am-active" name="band">
-								<input type="radio" value="20"> 0-5Mbps
-							</label>
-							<label class="am-btn am-btn-primary" name="band">
-								<input type="radio" value="60"> 5Mbps以上
-							</label>
-						</div>
-					</div>
-				</div>
+				
+		<div class='am-container am-margin-bottom'>
+			<div class="am-input-group">
+				<span class="am-input-group-label">带宽</span>
+				<input type="number" class="am-form-field am-text-right" id="band" min="1" value="1" step="1">
+				<span class="am-input-group-label">Mbps</span>
 			</div>
 		</div>
 		
 		<div class='am-container am-margin-bottom'>
 			<div class="am-input-group">
-				<span class="am-input-group-label">订购时长 </span>
+				<span class="am-input-group-label">订购时长</span>
 				<input type="number" class="am-form-field am-text-right" id="len" min="1" value="1" step="1">
 				<span class="am-input-group-btn">
 					<select id="moy" data-am-selected="{btnWidth: '100px'}">
