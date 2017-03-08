@@ -50,23 +50,6 @@
 		<!--<![endif]-->
 		<script src="assets/js/amazeui.min.js"></script>
 		
-		<script>
-			function init(){
-				$("#update").click(function(){update()});
-			}
-			
-			function update ()
-			{
-				var $price = 58*(parseInt($('[name="core"]').filter('.am-active').children().val())) + 
-				30*(parseInt($('[name="ram"]').filter('.am-active').children().val()) )+ 
-				0.3*(parseInt($("#disk").val())) + parseInt($("#band").val()) + parseInt($("#len").val()) * parseInt($("#moy").val());
-				$("#price").text($price + "元");
-			}
-			
-			
-			$(document).ready(function(){init();});
-		</script>
-		
 	</head>
 	<body>
 		<!--[if lte IE 9]>
@@ -75,156 +58,121 @@
 			以获得更好的体验！</p>
 		<![endif]-->
 		
-		<div class="am-dropdown" data-am-dropdown>
-			<button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle>产品列表 <span class="am-icon-caret-down"></span></button>
-			<ul class="am-dropdown-content">
-				<li><a href="#">云主机</a></li>
-				<li><a href="Storage.html">云存储</a></li>
-				<li><a href="IDC.html">IDC</a></li>
-			</ul>
-		</div>
-		
-		
-		<div class="am-g am-g-fixed am-margin-top">
-			<div class="am-u-sm-12">
-				<h1>云主机套餐</h1>
-				<ul class="am-list">
-					<li><a href="index.html" style="float:right;">回到标准资费 --></a></li>
+		<div class='am-container'>
+			<div class="am-dropdown" data-am-dropdown>
+				<button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle>产品列表 <span class="am-icon-caret-down"></span></button>
+				<ul class="am-dropdown-content">
+					<li><a href="#">云主机</a></li>
+					<li><a href="storage.html">云存储</a></li>
+					<li><a href="idc.html">IDC</a></li>
 				</ul>
 			</div>
 		</div>
-		<div class="am-u-sm-12">
+		
+		<div class='am-container am-margin-top'>
+			<h1>云主机价格（套餐）</h1>
+			<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+			<a class="am-fr" href="index.html">回到标准资费 --></a>
+		</div>
+		
+		<div class='am-container am-margin-top'>
 			<h2>基础型</h2>
-		</div>
-		<div class="am-g am-g-fixed">
-			<div class="am-u-sm-12 am-cf">
-				<div class="am-panel am-panel-default">
-					
-					<table class="am-table am-table-bordered am-table-striped am-table-compact">
-						<thead>
-							<tr>
-								<th></th>
-								<th>天翼云</th>
-								<th>AL云</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>配置</td>
-								<td>1VCPU、 2G内存、100G硬盘、2M带宽</td>
-								<td>1VCPU、 2G内存、100G硬盘、2M带宽</td>
-							</tr>
-							<tr>
-								<td>价格</td>
-								<td>150元/月</td>
-								<td>156.4元/月</td>
-							</tr>
-						</tbody>
-					</table>
-					
-				</div>
-			</div>
+			<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+				<thead>
+					<tr>
+						<th></th>
+						<th>天翼云</th>
+						<th>AL云</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>配置</td>
+						<td>1VCPU、 2G内存、100G硬盘、2M带宽</td>
+						<td>1VCPU、 2G内存、100G硬盘、2M带宽</td>
+					</tr>
+					<tr>
+						<td>价格</td>
+						<td>150元/月</td>
+						<td>156.4元/月</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		
-		<div class="am-u-sm-12">
+		<div class='am-container am-margin-top'>
 			<h2>标准型</h2>
-		</div>
-		<div class="am-g am-g-fixed">
-			<div class="am-u-sm-12 am-cf">
-				<div class="am-panel am-panel-default">
-					
-					<table class="am-table am-table-bordered am-table-striped am-table-compact">
-						<thead>
-							<tr>
-								<th></th>
-								<th>天翼云</th>
-								<th>AL云</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>配置</td>
-								<td>2VCPU、4G内存、200G硬盘、2M带宽</td>
-								<td>2VCPU、4G内存、200G硬盘、2M带宽</td>
-							</tr>
-							<tr>
-								<td>价格</td>
-								<td>270元/月</td>
-								<td>299.4元/月</td>
-							</tr>
-						</tbody>
-					</table>
-					
-				</div>
-			</div>
+			<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+				<thead>
+					<tr>
+						<th></th>
+						<th>天翼云</th>
+						<th>AL云</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>配置</td>
+						<td>2VCPU、4G内存、200G硬盘、2M带宽</td>
+						<td>2VCPU、4G内存、200G硬盘、2M带宽</td>
+					</tr>
+					<tr>
+						<td>价格</td>
+						<td>270元/月</td>
+						<td>299.4元/月</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		
-		<div class="am-u-sm-12">
+		<div class='am-container am-margin-top'>
 			<h2>增强型</h2>
-			</div>
-		<div class="am-g am-g-fixed">
-			<div class="am-u-sm-12 am-cf">
-				<div class="am-panel am-panel-default">
-					
-					<table class="am-table am-table-bordered am-table-striped am-table-compact">
-						<thead>
-							<tr>
-								<th></th>
-								<th>天翼云</th>
-								<th>AL云</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>配置</td>
-								<td>4VCPU、4G内存、300G硬盘、4M带宽</td>
-								<td>4VCPU、4G内存、300G硬盘、4M带宽</td>
-							</tr>
-							<tr>
-								<td>价格</td>
-								<td>420元/月</td>
-								<td>479.4元/月</td>
-							</tr>
-						</tbody>
-					</table>
-					
-				</div>
-			</div>
+			<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+				<thead>
+					<tr>
+						<th></th>
+						<th>天翼云</th>
+						<th>AL云</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>配置</td>
+						<td>4VCPU、4G内存、300G硬盘、4M带宽</td>
+						<td>4VCPU、4G内存、300G硬盘、4M带宽</td>
+					</tr>
+					<tr>
+						<td>价格</td>
+						<td>420元/月</td>
+						<td>479.4元/月</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		
-		<div class="am-u-sm-12">
+		<div class='am-container am-margin-top'>
 			<h2>尊享型</h2>
-			</div>
-		<div class="am-g am-g-fixed">
-			<div class="am-u-sm-12 am-cf">
-				<div class="am-panel am-panel-default">
-					
-					<table class="am-table am-table-bordered am-table-striped am-table-compact">
-						<thead>
-							<tr>
-								<th></th>
-								<th>天翼云</th>
-								<th>AL云</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>配置</td>
-								<td>4VCPU、8G内存、500G硬盘、6M带宽</td>
-								<td>4VCPU、8G内存、500G硬盘、6M带宽</td>
-							</tr>
-							<tr>
-								<td>价格</td>
-								<td>790元/月</td>
-								<td>747.5元/月</td>
-							</tr>
-						</tbody>
-					</table>
-					
-				</div>
-			</div>
+			<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+				<thead>
+					<tr>
+						<th></th>
+						<th>天翼云</th>
+						<th>AL云</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>配置</td>
+						<td>4VCPU、8G内存、500G硬盘、6M带宽</td>
+						<td>4VCPU、8G内存、500G硬盘、6M带宽</td>
+					</tr>
+					<tr>
+						<td>价格</td>
+						<td>790元/月</td>
+						<td>747.5元/月</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-		
-		
 	</body>
 </html>
