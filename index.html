@@ -7,7 +7,7 @@
 		<meta name="keywords" content="">
 		<meta name="viewport"
         content="width=device-width, initial-scale=1">
-		<title>天翼云主机价格计算器</title>
+		<title>云主机价格计算器</title>
 		
 		<!-- Set render engine for 360 browser -->
 		<meta name="renderer" content="webkit">
@@ -60,7 +60,7 @@
 			function update() {
 				var core = parseInt($('[name="core"]').filter('.am-active').children().val());
 				var ram = parseInt($('[name="ram"]').filter('.am-active').children().val());
-				var disk = parseInt($('[name="disk"]').filter('.am-active').children().val());
+				var disk = parseFloat($('[name="disk"]').filter('.am-active').children().val());
 				var data = parseInt($("#data").val());
 				var band = parseInt($("#band").val());
 				var time = parseInt($("#len").val()) * parseInt($("#moy").val());
@@ -97,7 +97,7 @@
 			<div class="am-dropdown" data-am-dropdown>
 				<button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle>产品列表 <span class="am-icon-caret-down"></span></button>
 				<ul class="am-dropdown-content">
-					<li><a href="#">云主机</a></li>
+					<li><a href="server1.html">云主机</a></li>
 					<li><a href="storage.html">云存储</a></li>
 					<li><a href="idc.html">IDC</a></li>
 				</ul>
@@ -108,7 +108,7 @@
 			<div class="am-u-sm-12">
 				<h1>云主机价格计算器（标准）</h1>
 				<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
-				<a class="am-fr" href="server.html">太贵？看看套餐 --></a>
+				<a class="am-fr" href="server1.html">查看套餐 --></a>
 			</div>
 		</div>
 		
