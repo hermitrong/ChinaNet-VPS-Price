@@ -60,7 +60,7 @@
 			function update() {
 				var core = parseInt($('[name="core"]').filter('.am-active').children().val());
 				var ram = parseInt($('[name="ram"]').filter('.am-active').children().val());
-				var disk = parseInt($('[name="disk"]').filter('.am-active').children().val());
+				var disk = parseFloat($('[name="disk"]').filter('.am-active').children().val());
 				var data = parseInt($("#data").val());
 				var band = parseInt($("#band").val());
 				var time = parseInt($("#len").val()) * parseInt($("#moy").val());
@@ -108,7 +108,7 @@
 			<div class="am-u-sm-12">
 				<h1>云主机价格计算器（标准）</h1>
 				<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
-				<a class="am-fr" href="server1.html">太贵？看看套餐 --></a>
+				<a class="am-fr" href="server1.html">查看套餐 --></a>
 			</div>
 		</div>
 		
