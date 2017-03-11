@@ -1,85 +1,158 @@
 <!doctype html>
 <html class="no-js">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<meta name="viewport"
-        content="width=device-width, initial-scale=1">
-		<title>Contact Us</title>
-		
-		<!-- Set render engine for 360 browser -->
-		<meta name="renderer" content="webkit">
-		
-		<!-- No Baidu Siteapp-->
-		<meta http-equiv="Cache-Control" content="no-siteapp"/>
-		
-		<link rel="icon" type="image/png" href="assets/i/favicon.png">
-		
-		<!-- Add to homescreen for Chrome on Android -->
-		<meta name="mobile-web-app-capable" content="yes">
-		<link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
-		
-		<!-- Add to homescreen for Safari on iOS -->
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<meta name="apple-mobile-web-app-title" content="Amaze UI"/>
-		<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
-		
-		<!-- Tile icon for Win8 (144x144 + tile color) -->
-		<meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
-		<meta name="msapplication-TileColor" content="#0e90d2">
-		
-		<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-		<!--
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Contact Us</title>
+
+	<!-- Set render engine for 360 browser -->
+	<meta name="renderer" content="webkit">
+
+	<!-- No Baidu Siteapp-->
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+	<link rel="icon" type="image/png" href="assets/i/favicon.png">
+
+	<!-- Add to homescreen for Chrome on Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
+
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+	<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+
+	<!-- Tile icon for Win8 (144x144 + tile color) -->
+	<meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+	<meta name="msapplication-TileColor" content="#0e90d2">
+
+	<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+	<!--
 			<link rel="canonical" href="http://www.example.com/">
 		-->
-		
-		<link rel="stylesheet" href="assets/css/amazeui.min.css">
-		<link rel="stylesheet" href="assets/css/app.css">
-		
-		<!--[if lt IE 9]>
+
+	<link rel="stylesheet" href="assets/css/amazeui.min.css">
+	<link rel="stylesheet" href="assets/css/app.css">
+
+	<!--[if lt IE 9]>
 			<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 			<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
 			<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
 		<![endif]-->
-		
-		<!--[if (gte IE 9)|!(IE)]><!-->
-		<script src="assets/js/jquery.min.js"></script>
-		<!--<![endif]-->
-		<script src="assets/js/amazeui.min.js"></script>
-		
-		<script>
-			function init(){
-				$("#update").click(function(){update()});
-			}
-			
-			function update ()
-			{
-				var price =(0.25*(parseInt($("#disk").val())) + 0.55 * ((parseInt($("#band").val())))) * 
+
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="assets/js/amazeui.min.js"></script>
+
+	<script>
+		function init() {
+			$("#update").click(function () { update() });
+		}
+
+		function update() {
+			var price = (0.25 * (parseInt($("#disk").val())) + 0.55 * ((parseInt($("#band").val())))) *
 				parseInt($("#len").val()) * parseInt($("#moy").val());
-				$("#price").text(price.toFixed(1) + "元");
-			}
-			
-			$(document).ready(function(){init()});
-		</script>
-	</head>
-	<body>
-		<!--[if lte IE 9]>
+			$("#price").text(price.toFixed(1) + "元");
+		}
+
+		$(document).ready(function () { init() });
+	</script>
+</head>
+
+<body>
+	<!--[if lte IE 9]>
 			<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a
 			href="http://browsehappy.com/" target="_blank">升级浏览器</a>
 			以获得更好的体验！</p>
 		<![endif]-->
-		
-		
-		<div class="am-g am-g-fixed am-margin-top">
-			<div class="am-u-sm-12">
-				<h1>联系我们</h1>
+
+
+	<div class="am-g am-g-fixed am-margin-top">
+		<div class="am-u-sm-12">
+			<h1>联系我们</h1>
+		</div>
+	</div>
+
+	<div class='am-container'>
+		<div class="am-tabs" data-am-tabs>
+			<ul class="am-tabs-nav am-nav am-nav-tabs">
+				<li class="am-active"><a href="#tab1">产品经理</a></li>
+				<li><a href="#tab2">解决方案经理</a></li>
+				<li><a href="#tab3">综合支撑</a></li>
+			</ul>
+
+			<div class="am-tabs-bd">
+				<div class="am-tab-panel am-fade am-in am-active" id="tab1">
+					<div class='am-container am-margin-top'>
+						<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+							<thead>
+								<tr>
+									<th class="am-text-middle">产品列表</th>
+									<th class="am-text-middle">产品经理</th>
+									<th class="am-text-middle">联系方式</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>云主机</td>
+									<td rowspan="5" class="am-text-middle">张丽质</td>
+									<td rowspan="5" class="am-text-middle">18092398653<br><a href="tel:18092398653">拨打电话</a></td>
+								</tr>
+								<tr>
+									<td>云存储</td>
+								</tr>
+								<tr>
+									<td>IDC</td>
+								</tr>
+								<tr>
+									<td>CDN</td>
+								</tr>
+								<tr>
+									<td>企业云盘</td>
+								</tr>
+								<tr>
+									<td>爱Wifi</td>
+									<td rowspan="4" class="am-text-middle">李原龙</td>
+									<td rowspan="4" class="am-text-middle">15399096339<br><a href="tel:15399096339">拨打电话</a></td>
+								</tr>
+								<tr>
+									<td>云视频监控</td>
+								</tr>
+								<tr>
+									<td>云视频会议</td>
+								</tr>
+								<tr>
+									<td>医疗云</td>
+								</tr>
+								<tr>
+									<td class="am-text-middle">物联网</td>
+									<td class="am-text-middle">欧阳晨吉</td>
+									<td>15339200677<br><a href="tel:15339200677">拨打电话</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+				<div class="am-tab-panel am-fade" id="tab2">
+
+
+				</div>
+				<div class="am-tab-panel am-fade" id="tab3">
+
+
+				</div>
 			</div>
 		</div>
-		<a href="tel:18066600053">-->拨王晓蓉的电话</a> 
-		<h1></h1>
-		
+	</div>
+
+
 </body>
+
 </html>
