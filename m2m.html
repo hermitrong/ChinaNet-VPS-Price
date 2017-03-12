@@ -38,7 +38,7 @@
 
 	<link rel="stylesheet" href="assets/css/amazeui.min.css">
 	<link rel="stylesheet" href="assets/css/app.css">
-	<link rel="stylesheet" href="assets/css/jquery-ui.css">
+	<link rel="stylesheet" href="assets/css/nouislider.min.css">
 
 	<!--[if lt IE 9]>
 			<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
@@ -48,7 +48,7 @@
 
 	<!--[if (gte IE 9)|!(IE)]><!-->
 	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery-ui.js"></script>
+	<script src="assets/js/nouislider.min.js"></script>
 	<!--<![endif]-->
 	<script src="assets/js/amazeui.min.js"></script>
 
@@ -58,14 +58,21 @@
 		var llFdx = [0, 2, 3, 4, 5, 6, 8, 12, 16, 24, 32, 40, 60, 80, 100, 135, 175, 200, 270, 350, 500, 780, 1400, 3800, 5500];
 
 		function init() {
-			var slider_ll = $("#slider-ll").slider({
-				min: 0,
-				max: ll.length - 1,
-				value: 0,
-				slide: function (event, ui) {
-					$("#ll-ll").text(ll[ui.value]);
+			var slider_ll = document.getElementById('slider-ll');
+
+			noUiSlider.create(slider_ll, {
+				start: 0,
+				connect: true,
+				step: 1,
+				range: {
+					'min': 0,
+					'max': 24
 				}
-			})
+			});
+
+			slider_ll.noUiSlider.on('update', function (values, handle) {
+				$('#ll-ll').text(ll[parseInt(values[handle])]);
+			});
 		}
 
 		function addLL() {
@@ -121,7 +128,10 @@
 			<div class="am-panel-bd">
 				<div class="am-g">
 					<span class="am-u-sm-2" style="height: 100%">流量</span>
-					<div class="am-u-sm-6" id='slider-ll'></div>
+					<div class="am-u-sm-6"> 
+						<div  id='slider-ll'>
+						</div>
+					</div>
 					<span class="am-u-sm-4" id="ll-ll">0M</span>
 				</div>
 				<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
