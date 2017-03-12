@@ -57,6 +57,8 @@
 		var llDx = [0, 1, 2, 3, 4, 5, 6, 9, 12, 18, 25, 30, 45, 60, 75, 105, 135, 150, 210, 270, 390, 600, 1100, 3000, 4500];
 		var llFdx = [0, 2, 3, 4, 5, 6, 8, 12, 16, 24, 32, 40, 60, 80, 100, 135, 175, 200, 270, 350, 500, 780, 1400, 3800, 5500];
 
+		var llPrice = 0;
+
 		function init() {
 			var slider_ll = document.getElementById('slider-ll');
 
@@ -70,24 +72,33 @@
 				}
 			});
 
+			for (var i = 0; i < ll.length; i++) {
+				$('#ll-ll').append("<option value='" + i + "'>" + ll[i] + "</option>");
+			}
+
 			slider_ll.noUiSlider.on('update', function (values, handle) {
-				$('#ll-ll').text(ll[parseInt(values[handle])]);
+				var value = parseInt(values[handle]);
+				$('#ll-ll').val(value);
 			});
+
+			$('#ll-ll').on('change', function () {
+				slider_ll.noUiSlider.set([this.value, null]);
+			})
 		}
 
 		function addLL() {
-			var ll_ll = $('#ll-ll').text();
+			var ll_ll = parseInt($('#ll-ll').val());
 			var ll_sl = parseInt($('#ll-sl').val());
 			if (parseInt($('[name="dxfdx"]').filter('.am-active').children().val()) == 1) {
 				var ll_dx = "定向";
-				var ll_rp = llDx[ll.indexOf(ll_ll)] * ll_sl;
+				var ll_rp = llDx[ll_ll] * ll_sl;
 			} else {
 				var ll_dx = "非定向";
-				var ll_rp = llFdx[ll.indexOf(ll_ll)] * ll_sl;
+				var ll_rp = llFdx[ll_ll] * ll_sl;
 			}
 
-			$('#ll-table tbody').append("<tr><th>" + ll_ll + "</th><th>" + ll_dx + "</th><th>" + ll_sl + "</th><th class='row-price'>" + ll_rp + "</th><th><button type='button' class='am-close am-close-alt'>&times;</button></th></tr>");
-			
+			$('#ll-table tbody').append("<tr><th>" + ll[ll_ll] + "</th><th>" + ll_dx + "</th><th>" + ll_sl + "</th><th class='row-price'>" + ll_rp + "</th><th><button type='button' class='am-close am-close-alt'>&times;</button></th></tr>");
+
 			$('.am-close').click(function () {
 				$(this).parents('tr').first().remove();
 				updateLLP();
@@ -99,13 +110,13 @@
 		function updateLLP() {
 			var sum = 0;
 
-			$('.row-price').each(function() {
+			$('.row-price').each(function () {
 				var value = $(this).text();
-				if(!isNaN(value) && value.length != 0) {
+				if (!isNaN(value) && value.length != 0) {
 					sum += parseInt(value);
 				}
 			})
-
+			llPrice = sum;
 			$('#ll-ps').text(sum + '元');
 		}
 
@@ -123,9 +134,7 @@
 	<div class='am-container'>
 		<ul class="am-nav am-nav-pills am-nav-pills am-nav-justify">
 			<li class="am-dropdown" data-am-dropdown>
-				<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-            标准云产品 <span class="am-icon-caret-down"></span>
-        </a>
+				<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;"> 标准云产品 <span class="am-icon-caret-down"></span></a>
 				<ul class="am-dropdown-content">
 					<li><a href="server1.html">云主机</a></li>
 					<li><a href="storage.html">云存储</a></li>
@@ -146,12 +155,19 @@
 			</header>
 			<div class="am-panel-bd">
 				<div class="am-g">
-					<span class="am-u-sm-2" style="height: 100%">流量</span>
-					<div class="am-u-sm-6">
-						<div id='slider-ll'>
+					<div class="am-u-sm-2 am-padding-horizontal-0 am-vertical-align" style="height: 50px;">
+						<span class="am-vertical-align-middle am-text-center am-text-lg">流量:</span>
+					</div>
+					<div class="am-u-sm-7 am-vertical-align" style="height: 50px;">
+						<div class="am-vertical-align-middle" style="width: 100%;">
+						<div id='slider-ll'></div>
 						</div>
 					</div>
-					<span class="am-u-sm-4" id="ll-ll">0M</span>
+					<div class="am-u-sm-3 am-padding-right-0 am-vertical-align" style="height: 50px;">
+						<div class="am-vertical-align-middle">
+						<select id='ll-ll' style="padding: 7px; width: 100%;"></select>
+						</div>
+					</div>
 				</div>
 				<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
 					<label class="am-btn am-btn-primary am-active" name="dxfdx">
@@ -164,9 +180,10 @@
 				<div class="am-input-group">
 					<span class="am-input-group-label">卡张数</span>
 					<input type="number" class="am-form-field" value="0" id="ll-sl">
+					<span class="am-input-group-btn">
+						<button type="button" class="am-btn am-btn-default" id="add-ll" onclick="addLL()">添加</button>
+					</span>
 				</div>
-				<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
-				<button type="button" class="am-btn am-btn-default am-radius" id="add-ll" onclick="addLL()">添加</button>
 				<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
 				<table class="am-table" id="ll-table">
 					<thead>
