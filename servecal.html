@@ -77,7 +77,9 @@
 			}
 			var price = (base + disk * data + band * bp) * time;
 
-			$("#price").text(price + "元");
+
+			$('#prise').popover({ content: '您选择了' + core + '核，' + prise + '元' });
+
 		}
 
 		$(document).ready(function () {
@@ -96,7 +98,7 @@
 
 	<div class='am-container'>
 		<ul class="am-nav am-nav-pills am-nav-pills am-nav-justify">
-			
+
 			<li class="am-dropdown" data-am-dropdown>
 				<a class="am-dropdown-toggle am-btn-primary" data-am-dropdown-toggle href="javascript:;">
             标准云产品 <span class="am-icon-caret-down"></span>
@@ -171,6 +173,7 @@
 						<label class="am-btn am-btn-primary" name="ram">
 								<input type="radio" value="16"> 16GB
 							</label>
+
 					</div>
 				</div>
 			</div>
@@ -189,7 +192,7 @@
 						<label class="am-btn am-btn-primary" name="disk">
 								<input type="radio" value="0.6"> SAS
 							</label>
-						<label class="am-btn am-btn-primary" disabled="disabled" name="disk">
+						<label class="am-btn am-btn-primary" name="disk">
 								<input type="radio" value="1.2"> SSD
 							</label>
 					</div>
@@ -227,8 +230,25 @@
 	<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
 		<div class="am-alert am-cf am-margin-0">
 			<span class='am-text-middle am-text-xl' id="price">0元</span>
-			<button type="button" class="am-btn am-btn-default am-fr" id='update' >计算				
+			<button type="button" class="am-btn am-btn-default am-fr" class="am-btn am-btn-danger" id='update'>计算				
 			</button>
+
+			<button type="button" class="am-btn am-btn-default am-fr" data-am-modal="{target: '#my-alert'}"> 查看配置
+			</button>
+
+			<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+				<div class="am-modal-dialog">
+					<div class="am-modal-hd">Amaze UI</div>
+					<div class="am-modal-bd">
+						Hello world！
+					</div>
+					<div class="am-modal-footer">
+						<span class="am-modal-btn">确定</span>
+					</div>
+				</div>
+			</div>
+
+
 		</div>
 	</header>
 </body>
