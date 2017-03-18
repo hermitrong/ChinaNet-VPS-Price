@@ -1,0 +1,83 @@
+<div class="am-btn-group am-btn-group-justify" data-am-button>
+    <div class="am-btn am-btn-primary am-active"><input type="radio" name='llb-time' value="0"> 包月 </div>
+    <div class="am-btn am-btn-primary"><input type="radio" name='llb-time' value="1"> 季度 </div>
+    <div class="am-btn am-btn-primary"><input type="radio" name='llb-time' value="2"> 半年 </div>
+    <div class="am-btn am-btn-primary"><input type="radio" name='llb-time' value="3"> 包年 </div>
+</div>
+
+<div class="am-btn-group am-btn-group-justify am-margin-top" data-am-button>
+    <div class="am-btn am-btn-primary am-active"><input type="radio" name='llb-type' value="0"> 定向 </div>
+    <div class="am-btn am-btn-primary"><input type="radio" name='llb-type' value="1"> 非定向 </div>
+</div>
+
+<div class="am-g am-margin-top-xs">
+    <div class="am-u-sm-9 am-vertical-align" style="height: 50px;">
+        <div class="am-vertical-align-middle" style="width: 100%;">
+            <div id='llb-slider'></div>
+        </div>
+    </div>
+    <div class="am-u-sm-3 am-padding-right-0 am-vertical-align" style="height: 50px;">
+        <div class="am-vertical-align-middle">
+            <select id='llb-selecter' style="padding: 7px; width: 100%;"></select>
+        </div>
+    </div>
+</div>
+
+<script>
+    var llb_slider = document.getElementById('llb-slider');
+    var llb_time = 0;
+    var llb_type = 0;
+
+    initLLB();
+
+    function initLLB() {
+        noUiSlider.create(llb_slider, {
+            start: 0,
+            connect: true,
+            step: 1,
+            range: {
+                'min': 0,
+                'max': LLB_PRICE[llb_time].length - 1
+            }
+        });
+
+        for (var i = 0; i < LLB_PRICE[llb_time].length; i++) {
+            $('#llb-selecter').append("<option value='" + i + "'>" + LLB_PRICE[llb_time][i][0] + "</option>");
+        }
+
+        llb_slider.noUiSlider.on('update', function (values, handle) {
+            var value = parseInt(values[handle]);
+            $('#llb-selecter').val(value);
+        });
+
+        $('#llb-selecter').on('change', function () {
+            llb_slider.noUiSlider.set([this.value, null]);
+        })
+
+        $('[name="llb-time"]').on('change', function () {
+            llb_time = parseInt($('[name="llb-time"]').filter(':checked').val());
+            console.log('单选框当前选中的是：', $('[name="llb-time"]').filter(':checked').val());
+            genWidget();
+        })
+
+        $('[name="llb-type"]').on('change', function () {
+            llb_time = parseInt($('[name="llb-type"]').filter(':checked').val());
+        })
+    }
+
+    function genWidget() {
+        llb_slider.noUiSlider.set(0);
+        llb_slider.noUiSlider.updateOptions({
+            range: {
+                'min': 0,
+                'max': LLB_PRICE[llb_time].length - 1
+            }
+        });
+
+        $('#llb-selecter').empty();
+
+        for (var i = 0; i < LLB_PRICE[llb_time].length; i++) {
+            $('#llb-selecter').append("<option value='" + i + "'>" + LLB_PRICE[llb_time][i][0] + "</option>");
+        }
+    }
+</script>

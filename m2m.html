@@ -54,7 +54,21 @@
 	<script src="assets/js/static.js"></script>
 
 	<script>
-		
+		$(function () {
+			$('#ll-form').load('assets/mod/mod-llb.html');
+
+			$("#llb").on('click', function () {
+				//$("#llb").addClass('am-active');
+				$("#llc").removeClass('am-active');
+				$('#ll-form').load('assets/mod/mod-llb.html');
+			})
+
+			$("#llc").on('click', function () {
+				//$("#llc").addClass('am-active');
+				$("#llb").removeClass('am-active');
+				$('#ll-form').load('assets/mod/mod-llc.html');
+			})
+		});
 	</script>
 
 </head>
@@ -80,63 +94,34 @@
 	</div>
 
 	<div class='am-container am-margin-top'>
-		<h1>M2M价格计算器</h1>
-	</div>
-	<div class="am-container">
-		<div class="am-panel am-panel-primary">
-			<header class="am-panel-hd">
-				<h3 class="am-panel-title">流量包</h3>
-			</header>
-			<div class="am-panel-bd">
-				<div class="am-g">
-					<div class="am-u-sm-2 am-padding-horizontal-0 am-vertical-align" style="height: 50px;">
-						<span class="am-vertical-align-middle am-text-center am-text-lg">流量:</span>
-					</div>
-					<div class="am-u-sm-7 am-vertical-align" style="height: 50px;">
-						<div class="am-vertical-align-middle" style="width: 100%;">
-							<div id='slider-ll'></div>
-						</div>
-					</div>
-					<div class="am-u-sm-3 am-padding-right-0 am-vertical-align" style="height: 50px;">
-						<div class="am-vertical-align-middle">
-							<select id='ll-ll' style="padding: 7px; width: 100%;"></select>
-						</div>
-					</div>
-				</div>
-				<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
-					<label class="am-btn am-btn-primary am-active" name="dxfdx">
-								<input type="radio" value="1"> 定向
-							</label>
-					<label class="am-btn am-btn-primary" name="dxfdx">
-								<input type="radio" value="2"> 非定向
-							</label>
-				</div>
-				<div class="am-input-group">
-					<span class="am-input-group-label">卡张数</span>
-					<input type="number" class="am-form-field" value="0" id="ll-sl">
-					<span class="am-input-group-btn">
-						<button type="button" class="am-btn am-btn-default" id="add-ll" onclick="addLL()">添加</button>
-					</span>
-				</div>
-				<hr data-am-widget="divider" class="am-divider am-divider-default" />
-				<table class="am-table" id="ll-table">
-					<thead>
-						<tr>
-							<th>流量</th>
-							<th>类型</th>
-							<th>张数</th>
-							<th>费用</th>
-							<th>删除</th>
-						</tr>
-					</thead>
-					<tbody>
+		<div class="am-tabs" data-am-tabs>
+			<ul class="am-tabs-nav am-nav am-nav-tabs">
+				<li class="am-active"><a href="#tab1">流量</a></li>
+				<li><a href="#tab2">语音</a></li>
+				<li><a href="#tab3">短信</a></li>
+			</ul>
 
-					</tbody>
-				</table>
+			<div class="am-tabs-bd">
+				<div class="am-tab-panel am-fade am-in am-active" id="tab1">
+					<div class="am-btn-group am-btn-group-justify" data-am-button>
+						<a class="am-btn am-btn-primary am-active" id='llb' role="button"> 流量包模式 </a>
+						<a class="am-btn am-btn-primary" id='llc' role="button"> 流量池模式 </a>
+					</div>
+
+					<div class='am-margin-top' id='ll-form'></div>
+				</div>
+				<div class="am-tab-panel am-fade" id="tab2">
+					走在忠孝东路<br>徘徊在茫然中<br>在我的人生旅途<br>选择了多少错误<br>我在睡梦中惊醒<br>感叹悔言无尽<br>恨我不能说服自己<br>接受一切教训<br>让生命去等候<br>等候下一个漂流<br>让生命去等候<br>等候下一个伤口
+				</div>
+				<div class="am-tab-panel am-fade" id="tab3">
+					我就这样告别山下的家，我实在不愿轻易让眼泪留下。我以为我并不差不会害怕，我就这样自己照顾自己长大。我不想因为现实把头低下，我以为我并不差能学会虚假。怎样才能够看穿面具里的谎话？别让我的真心散的像沙。如果有一天我变得更复杂，还能不能唱出歌声里的那幅画？
+				</div>
 			</div>
-			<footer class="am-panel-footer" id='ll-ps'>0元</footer>
 		</div>
 	</div>
+
+
+
 	<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
 		<div class="am-alert am-cf am-margin-0">
 			<span class='am-text-middle am-text-xl' id="price">0元</span>
