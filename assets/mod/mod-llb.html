@@ -56,7 +56,6 @@
 
         $('[name="llb-time"]').on('change', function () {
             llb_time = parseInt($('[name="llb-time"]').filter(':checked').val());
-            console.log('单选框当前选中的是：', $('[name="llb-time"]').filter(':checked').val());
             genWidget();
         })
 
