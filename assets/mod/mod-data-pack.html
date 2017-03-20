@@ -45,6 +45,8 @@
             $('#llb-selecter').append("<option value='" + i + "'>" + LLB_PRICE[llb_time][i][0] + "</option>");
         }
 
+        $('#time-unit').text(TIME_UNIT[llb_time]);
+
         llb_slider.noUiSlider.on('update', function (values, handle) {
             var value = parseInt(values[handle]);
             $('#llb-selecter').val(value);
@@ -78,5 +80,7 @@
         for (var i = 0; i < LLB_PRICE[llb_time].length; i++) {
             $('#llb-selecter').append("<option value='" + i + "'>" + LLB_PRICE[llb_time][i][0] + "</option>");
         }
+
+        $('#time-unit').text(TIME_UNIT[llb_time]);
     }
 </script>

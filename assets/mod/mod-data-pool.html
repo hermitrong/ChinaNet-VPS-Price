@@ -37,6 +37,8 @@
             $('#llc-selecter').append("<option value='" + i + "'>" + LLC_PRICE[i][0] + "</option>");
         }
 
+        $('#time-unit').text(TIME_UNIT[0]);
+
         llc_slider.noUiSlider.on('update', function (values, handle) {
             var value = parseInt(values[handle]);
             $('#llc-selecter').val(value);

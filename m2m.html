@@ -13,7 +13,7 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 	<link rel="icon" type="image/png" href="assets/i/favicon.png">
-	
+
 	<link rel="stylesheet" href="assets/css/amazeui.min.css">
 	<link rel="stylesheet" href="assets/css/nouislider.min.css">
 
@@ -25,8 +25,50 @@
 
 	<script>
 		$(function () {
-			$('#ll-form').load('assets/mod/mod-data-pack.html');
+			init();
 		});
+
+		function init() {
+			$('#customize').tabs('open', 0);
+			$('#tab1').load('assets/mod/mod-data.html');
+			$('#tab2').load('assets/mod/mod-voice.html');
+			$('#tab3').load('assets/mod/mod-sms.html');
+			var newCard = new Card();
+		}
+
+		function Card() {
+			this.ll_mode = LLB;
+			this.ll_type = LL_DX;
+			this.llb_time = LLB_MONTH;
+			this.llb_size = 0;
+			this.llc_size = 0;
+			this.yyb_size = 0;
+			this.dxb_size = 0;
+			this.count = 1;
+
+			this.genInfo = function() {
+				var info = '';
+				if(this.ll_mode == LLB && llb_size > 0){
+					info += LL_TYPE[this.ll_type] + LLB_TIME[this.llb_time] + LLB_PRICE[this.llb_time][this.llb_size][0];
+				}else if(this.ll_mode == LLC && llc_size > 0 ){
+					var t_size = LLC_PRICE[this.llc_size][3] * this.count;
+					if(t_size >= 1000){
+						t_size = t_size / 1000;
+						t_size += 'G';
+					}else{
+						t_size += 'M';
+					};
+					info += '共享池' + t_size;
+				}else{
+					info = '无流量';
+				}
+
+			}
+		}
+
+		function genCard() {
+			//if()
+		}
 	</script>
 
 </head>
@@ -52,7 +94,7 @@
 	</div>
 
 	<div class='am-container am-margin-top'>
-		<div class="am-tabs" data-am-tabs>
+		<div class="am-tabs" id='customize' data-am-tabs>
 			<ul class="am-tabs-nav am-nav am-nav-tabs">
 				<li class="am-active"><a href="#tab1">流量</a></li>
 				<li><a href="#tab2">语音</a></li>
@@ -60,38 +102,35 @@
 			</ul>
 
 			<div class="am-tabs-bd">
-				<div class="am-tab-panel am-fade am-in am-active" id="tab1">
-					<div class="am-btn-group am-btn-group-justify" data-am-button>
-						<div class="am-btn am-btn-primary am-active"><input type="radio" name='ll-mode' value="assets/mod/mod-data-pack.html" checked> 流量包模式 </div>
-						<div class="am-btn am-btn-primary"><input type="radio" name='ll-mode' value="assets/mod/mod-data-pool.html"> 流量池模式 </div>
-					</div>
-					<script>
-						$('[name="ll-mode"]').on('change', function () {
-							$('#ll-form').load($('[name="ll-mode"]').filter(':checked').val());
-						})
-					</script>
-
-					<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
-
-					<div class='am-margin-top' id='ll-form'></div>
-				</div>
-				<div class="am-tab-panel am-fade" id="tab2">
-					<script>
-						$('#tab2').load('assets/mod/mod-voice.html');
-					</script>
-				</div>
-				<div class="am-tab-panel am-fade" id="tab3">
-					<script>
-						$('#tab3').load('assets/mod/mod-sms.html');
-					</script>
-				</div>
+				<div class="am-tab-panel am-fade am-in am-active" id="tab1"></div>
+				<div class="am-tab-panel am-fade" id="tab2"></div>
+				<div class="am-tab-panel am-fade" id="tab3"></div>
 			</div>
 		</div>
 
-		<div class="am-input-group am-input-group-lg">
-			<span class="am-input-group-label">卡张数</span>
+		<div class="am-input-group am-input-group-lg am-margin-top">
+			<input type="number" class="am-form-field am-text-right" id="time" min="1" value="1" step="1">
+			<span class="am-input-group-label" id='time-unit'></span>
 			<input type="number" class="am-form-field am-text-right" id="count" min="1" value="1" step="1">
+			<span class="am-input-group-label">张</span>
+			<span class="am-input-group-btn">
+				<button class="am-btn am-btn-primary" type="button"><i class="am-icon-plus"></i></button>
+				<button class="am-btn am-btn-primary" type="button" onclick="init()"><i class="am-icon-undo"></i></button>
+			</span>
 		</div>
+
+		<table class="am-table am-table-centered" id="ll-table">
+			<thead>
+				<tr>
+					<th>类型</th>
+					<th>张数</th>
+					<th>费用</th>
+					<th>月费</th>
+					<th>删除</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
 	</div>
 
 
