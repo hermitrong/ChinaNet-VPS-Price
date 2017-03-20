@@ -28,7 +28,7 @@
         });
 
         for (var i = 0; i < YYB_PRICE.length; i++) {
-            $('#yyb-selecter').append("<option value='" + i + "'>" + YYB_PRICE[i] + "</option>");
+            $('#yyb-selecter').append("<option value='" + i + "'>" + YYB_PRICE[i][0] + "</option>");
         }
 
         yyb_slider.noUiSlider.on('update', function (values, handle) {
