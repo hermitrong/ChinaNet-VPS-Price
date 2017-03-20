@@ -1,0 +1,43 @@
+<div class="am-g am-margin-top-xs">
+    <div class="am-u-sm-9 am-vertical-align" style="height: 50px;">
+        <div class="am-vertical-align-middle" style="width: 100%;">
+            <div id='yyb-slider'></div>
+        </div>
+    </div>
+    <div class="am-u-sm-3 am-padding-right-0 am-vertical-align" style="height: 50px;">
+        <div class="am-vertical-align-middle" style="width: 100%;">
+            <select id='yyb-selecter' style="padding: 7px; width: 100%;"></select>
+        </div>
+    </div>
+</div>
+
+<script>
+    var yyb_slider = document.getElementById('yyb-slider');
+    
+    initYYB();
+
+    function initYYB() {
+        noUiSlider.create(yyb_slider, {
+            start: 0,
+            connect: true,
+            step: 1,
+            range: {
+                'min': 0,
+                'max': YYB_PRICE.length - 1
+            }
+        });
+
+        for (var i = 0; i < YYB_PRICE.length; i++) {
+            $('#yyb-selecter').append("<option value='" + i + "'>" + YYB_PRICE[i] + "</option>");
+        }
+
+        yyb_slider.noUiSlider.on('update', function (values, handle) {
+            var value = parseInt(values[handle]);
+            $('#yyb-selecter').val(value);
+        });
+
+        $('#yyb-selecter').on('change', function () {
+            yyb_slider.noUiSlider.set([this.value, null]);
+        })
+    }
+</script>
