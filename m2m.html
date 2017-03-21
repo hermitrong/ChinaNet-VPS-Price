@@ -9,118 +9,176 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>物联网价格计算器</title>
 
-	<!-- Set render engine for 360 browser -->
-	<meta name="renderer" content="webkit">
-
 	<!-- No Baidu Siteapp-->
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 	<link rel="icon" type="image/png" href="assets/i/favicon.png">
 
-	<!-- Add to homescreen for Chrome on Android -->
-	<meta name="mobile-web-app-capable" content="yes">
-	<link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
-
-	<!-- Add to homescreen for Safari on iOS -->
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
-	<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
-
-	<!-- Tile icon for Win8 (144x144 + tile color) -->
-	<meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
-	<meta name="msapplication-TileColor" content="#0e90d2">
-
-	<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-	<!--
-			<link rel="canonical" href="http://www.example.com/">
-		-->
-
 	<link rel="stylesheet" href="assets/css/amazeui.min.css">
-	<link rel="stylesheet" href="assets/css/app.css">
 	<link rel="stylesheet" href="assets/css/nouislider.min.css">
 
-	<!--[if lt IE 9]>
-			<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-			<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-			<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
-		<![endif]-->
 
-	<!--[if (gte IE 9)|!(IE)]><!-->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/nouislider.min.js"></script>
-	<!--<![endif]-->
-	<script src="assets/js/amazeui.min.js"></script>
+	<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/nouislider.min.js"></script>
+	<script type="text/javascript" src="assets/js/amazeui.min.js"></script>
+	<script type="text/javascript" src="assets/js/static.js"></script>
 
 	<script>
-		var ll = ['0M', '5M', '10M', '30M', '50M', '70M', '100M', '200M', '300M', '500M', '700M', '1G', '2G', '3G', '4G', '6G', '8G', '10G', '15G', '20G', '30G', '50G', '100G', '300G', '500G'];
-		var llDx = [0, 1, 2, 3, 4, 5, 6, 9, 12, 18, 25, 30, 45, 60, 75, 105, 135, 150, 210, 270, 390, 600, 1100, 3000, 4500];
-		var llFdx = [0, 2, 3, 4, 5, 6, 8, 12, 16, 24, 32, 40, 60, 80, 100, 135, 175, 200, 270, 350, 500, 780, 1400, 3800, 5500];
+		var newCard;
+		var Cards = new Array();
 
-		var llPrice = 0;
+		$(function () {
+			init();
+		});
 
 		function init() {
-			var slider_ll = document.getElementById('slider-ll');
+			$('#customize').tabs('open', 0);
+			$('#tab1').load('assets/mod/mod-data.html');
+			$('#tab2').load('assets/mod/mod-voice.html');
+			$('#tab3').load('assets/mod/mod-sms.html');
+			$('#time').val(1);
+			$('#count').val(1);
+			$('#count').on('change', function () {
+				newCard.count = parseInt($(this).val());
+				newCard.updateInfo();
+			})
+			
+			newCard = new Card();
+		}
 
-			noUiSlider.create(slider_ll, {
-				start: 0,
-				connect: true,
-				step: 1,
-				range: {
-					'min': 0,
-					'max': 24
+		function addCard() {
+			if (newCard.ll_price || newCard.yyb_price || newCard.dxb_price) {
+				newCard.time = parseInt($('#time').val());
+				Cards.push(newCard);
+				updateCards();
+				init();
+			}
+		}
+
+		function updateCards() {
+			$('#cards').empty();
+			var total_price = 0;
+			for (var i = 0; i < Cards.length; i++) {
+				var info = '';
+				if (Cards[i].ll_price > 0) {
+					info += '<span class="am-badge am-badge-primary am-radius">' + Cards[i].genLLInfo()[0] + '</span>';
 				}
-			});
+				if (Cards[i].yyb_price > 0) {
+					info += '<span class="am-badge am-badge-secondary am-radius">' + Cards[i].genYYInfo()[0] + '</span>';
+				}
+				if (Cards[i].dxb_price > 0) {
+					info += '<span class="am-badge am-badge-success am-radius">' + Cards[i].genDXInfo()[0] + '</span>';
+				}
+				var time = Cards[i].time + TIME_UNIT[Cards[i].llb_time];
+				var count = Cards[i].count;
+				var price = Cards[i].time * Cards[i].card_price + '¥';
+				var html = '<tr value=' + i + '><td class="am-text-middle">' + info + 
+				'</td><td class="am-text-middle">' + time + 
+				'</td><td class="am-text-middle">' + count + 
+				'</td><td class="am-text-middle">' + price + 
+				"</td><td class='am-text-middle'><button type='button' class='am-close am-close-alt'>&times;</button></td></tr>";
+				$('#cards').append(html);
 
-			for (var i = 0; i < ll.length; i++) {
-				$('#ll-ll').append("<option value='" + i + "'>" + ll[i] + "</option>");
+				total_price += Cards[i].time * Cards[i].card_price;
+			}
+			$('#total-price').text(total_price + '元');
+			$('.am-close').on('click', function () {
+				var index = parseInt($(this).parents('tr').attr('value'));
+				Cards.splice(index, 1);
+				updateCards();
+			});
+		}
+
+		function Card() {
+			this.ll_mode = LLB;
+			this.ll_type = LL_DX;
+			this.ll_price = this.yyb_price = this.dxb_price = this.card_price = 0;
+			this.llb_time = LLB_MONTH;
+			this.llb_size = this.llc_size = this.yyb_size = this.dxb_size = 0;
+			this.count = 1;
+			this.time = 1;
+
+			this.genLLInfo = function () {
+				var info = ['', ''];
+				if (this.ll_mode == LLB && this.llb_size > 0) {
+					info[0] = LL_TYPE[this.ll_type] + LLB_TIME[this.llb_time] + ':' + LLB_PRICE[this.llb_time][this.llb_size][0];
+					this.ll_price = LLB_PRICE[this.llb_time][this.llb_size][this.ll_type + 1] * this.count;
+					info[1] = this.ll_price + '¥/' + TIME_UNIT[this.llb_time];
+				} else if (this.ll_mode == LLC && this.llc_size > 0) {
+					var t_size = LLC_PRICE[this.llc_size][3] * this.count;
+					if (t_size >= 1000) {
+						t_size = t_size / 1000;
+						t_size += 'G';
+					} else {
+						t_size += 'M';
+					};
+					info[0] = LL_TYPE[this.ll_type] + '共享池:' + t_size;
+					this.ll_price = (LLC_PRICE[this.llc_size][this.ll_type + 1] + 3) * this.count;
+					info[1] = this.ll_price + '¥/月';
+				} else {
+					info[0] = '无流量';
+					this.ll_price = 0;
+					info[1] = '0¥/' + TIME_UNIT[this.llb_time];
+				}
+				return info;
 			}
 
-			slider_ll.noUiSlider.on('update', function (values, handle) {
-				var value = parseInt(values[handle]);
-				$('#ll-ll').val(value);
-			});
-
-			$('#ll-ll').on('change', function () {
-				slider_ll.noUiSlider.set([this.value, null]);
-			})
-		}
-
-		function addLL() {
-			var ll_ll = parseInt($('#ll-ll').val());
-			var ll_sl = parseInt($('#ll-sl').val());
-			if (parseInt($('[name="dxfdx"]').filter('.am-active').children().val()) == 1) {
-				var ll_dx = "定向";
-				var ll_rp = llDx[ll_ll] * ll_sl;
-			} else {
-				var ll_dx = "非定向";
-				var ll_rp = llFdx[ll_ll] * ll_sl;
+			this.genYYInfo = function () {
+				var info = ['', ''];
+				if (this.yyb_size > 0) {
+					info[0] = '语音:' + YYB_PRICE[this.yyb_size][0];
+					this.yyb_price = YYB_PRICE[this.yyb_size][1] * this.count;
+					info[1] = this.yyb_price + '¥/月';
+				} else {
+					info[0] = '无语音';
+					this.yyb_price = 0;
+					info[1] = '0¥/月';
+				}
+				return info;
 			}
 
-			$('#ll-table tbody').append("<tr><th>" + ll[ll_ll] + "</th><th>" + ll_dx + "</th><th>" + ll_sl + "</th><th class='row-price'>" + ll_rp + "</th><th><button type='button' class='am-close am-close-alt'>&times;</button></th></tr>");
-
-			$('.am-close').click(function () {
-				$(this).parents('tr').first().remove();
-				updateLLP();
-			});
-
-			updateLLP();
-		}
-
-		function updateLLP() {
-			var sum = 0;
-
-			$('.row-price').each(function () {
-				var value = $(this).text();
-				if (!isNaN(value) && value.length != 0) {
-					sum += parseInt(value);
+			this.genDXInfo = function () {
+				var info = ['', ''];
+				if (this.dxb_size > 0) {
+					info[0] = '短信:' + DXB_PRICE[this.dxb_size][0];
+					this.dxb_price = DXB_PRICE[this.dxb_size][1] * this.count;
+					info[1] = this.dxb_price + '¥/月';
+				} else {
+					info[0] = '无短信';
+					this.dxb_price = 0;
+					info[1] = '0¥/月';
 				}
-			})
-			llPrice = sum;
-			$('#ll-ps').text(sum + '元');
-		}
+				return info;
+			}
 
-		$(document).ready(function () { init(); });
+			this.genPrice = function () {
+				var price = 0;
+				if (this.ll_price || this.yyb_price || this.dxb_price) {
+					this.card_price = this.ll_price + (this.yyb_price + this.dxb_price) * TIME_LEN[this.llb_time];
+					price = this.card_price + '¥/' + TIME_UNIT[this.llb_time];
+				} else {
+					price = '0¥/' + TIME_UNIT[this.llb_time];
+				}
+
+				return price;
+			}
+
+			this.updateInfo = function () {
+				if (this.ll_mode == LLC) {
+					$('#ll-info').html('<span class="am-badge am-badge-primary am-radius">' + this.genLLInfo()[0] + '</span>');
+				} else {
+					$('#ll-info').html('<span class="am-badge am-badge-primary am-radius">' + this.genLLInfo()[0] + '</span>' + ' x ' + this.count);
+				}
+				$('#ll-price').text(this.genLLInfo()[1]);
+				$('#yy-info').html('<span class="am-badge am-badge-secondary am-radius">' + this.genYYInfo()[0] + '</span>' + ' x ' + this.count);
+				$('#yy-price').text(this.genYYInfo()[1]);
+				$('#dx-info').html('<span class="am-badge am-badge-success am-radius">' + this.genDXInfo()[0] + '</span>' + ' x ' + this.count);
+				$('#dx-price').text(this.genDXInfo()[1]);
+				$('#card-price').text(this.genPrice());
+			}
+
+
+		}
 	</script>
 
 </head>
@@ -146,68 +204,69 @@
 	</div>
 
 	<div class='am-container am-margin-top'>
-		<h1>M2M价格计算器</h1>
-	</div>
-	<div class="am-container">
-		<div class="am-panel am-panel-primary">
-			<header class="am-panel-hd">
-				<h3 class="am-panel-title">流量包</h3>
-			</header>
-			<div class="am-panel-bd">
-				<div class="am-g">
-					<div class="am-u-sm-2 am-padding-horizontal-0 am-vertical-align" style="height: 50px;">
-						<span class="am-vertical-align-middle am-text-center am-text-lg">流量:</span>
-					</div>
-					<div class="am-u-sm-7 am-vertical-align" style="height: 50px;">
-						<div class="am-vertical-align-middle" style="width: 100%;">
-						<div id='slider-ll'></div>
-						</div>
-					</div>
-					<div class="am-u-sm-3 am-padding-right-0 am-vertical-align" style="height: 50px;">
-						<div class="am-vertical-align-middle">
-						<select id='ll-ll' style="padding: 7px; width: 100%;"></select>
-						</div>
-					</div>
-				</div>
-				<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
-					<label class="am-btn am-btn-primary am-active" name="dxfdx">
-								<input type="radio" value="1"> 定向
-							</label>
-					<label class="am-btn am-btn-primary" name="dxfdx">
-								<input type="radio" value="2"> 非定向
-							</label>
-				</div>
-				<div class="am-input-group">
-					<span class="am-input-group-label">卡张数</span>
-					<input type="number" class="am-form-field" value="0" id="ll-sl">
-					<span class="am-input-group-btn">
-						<button type="button" class="am-btn am-btn-default" id="add-ll" onclick="addLL()">添加</button>
-					</span>
-				</div>
-				<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
-				<table class="am-table" id="ll-table">
-					<thead>
-						<tr>
-							<th>流量</th>
-							<th>类型</th>
-							<th>张数</th>
-							<th>费用</th>
-							<th>删除</th>
-						</tr>
-					</thead>
-					<tbody>
+		<div class="am-tabs" id='customize' data-am-tabs>
+			<ul class="am-tabs-nav am-nav am-nav-tabs">
+				<li class="am-active"><a href="#tab1">流量</a></li>
+				<li><a href="#tab2">语音</a></li>
+				<li><a href="#tab3">短信</a></li>
+			</ul>
 
-					</tbody>
-				</table>
+			<div class="am-tabs-bd">
+				<div class="am-tab-panel am-fade am-in am-active" id="tab1"></div>
+				<div class="am-tab-panel am-fade" id="tab2"></div>
+				<div class="am-tab-panel am-fade" id="tab3"></div>
 			</div>
-			<footer class="am-panel-footer" id='ll-ps'>0元</footer>
 		</div>
+
+		<table class="am-table am-table-centered .am-table-compact am-margin-0">
+			<thead></thead>
+			<tbody class='am-text-sm'>
+				<tr>
+					<td class='am-text-left am-text-middle' width="60%" id='ll-info'></td>
+					<td class='am-text-right am-text-middle' id='ll-price' width="40%"></td>
+				</tr>
+				<tr>
+					<td class='am-text-left am-text-middle' id='yy-info'></td>
+					<td class='am-text-right am-text-middle' id='yy-price'></td>
+				</tr>
+				<tr>
+					<td class='am-text-left am-text-middle' id='dx-info'></td>
+					<td class='am-text-right am-text-middle' id='dx-price'></td>
+				</tr>
+				<tr>
+					<td class='am-text-left am-text-middle'>合计</td>
+					<td class='am-text-right am-text-middle' id='card-price'></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="am-input-group am-input-group-lg">
+			<input type="number" class="am-form-field am-text-right" id="time" min="1" value="1" step="1">
+			<span class="am-input-group-label" id='time-unit'></span>
+			<input type="number" class="am-form-field am-text-right" id="count" min="1" value="1" step="1">
+			<span class="am-input-group-label">张</span>
+			<span class="am-input-group-btn">
+				<button class="am-btn am-btn-primary" type="button" onclick="addCard()"><i class="am-icon-plus"></i></button>
+				<button class="am-btn am-btn-primary" type="button" onclick="init()"><i class="am-icon-undo"></i></button>
+			</span>
+		</div>
+
+		<table class="am-table am-table-centered" id="card-table">
+			<thead>
+				<tr>
+					<th width="30%">类型</th>
+					<th>时长</th>
+					<th>张数</th>
+					<th>费用</th>
+					<th>删除</th>
+				</tr>
+			</thead>
+			<tbody id='cards'></tbody>
+		</table>
 	</div>
+
 	<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
-		<div class="am-alert am-cf am-margin-0">
-			<span class='am-text-middle am-text-xl' id="price">0元</span>
-			<button type="button" class="am-btn am-btn-default am-fr" id='update'>计算</button>
-		</div>
+		<div class="am-alert am-margin-0 am-text-middle am-text-right am-text-xl" id="total-price">0元</div>
 	</header>
 </body>
 

@@ -1,0 +1,17 @@
+<div class="am-btn-group am-btn-group-justify" data-am-button>
+    <div class="am-btn am-btn-primary"><input type="radio" id='llb' name='ll-mode' value=0> 流量包模式 </div>
+    <div class="am-btn am-btn-primary"><input type="radio" id='llc' name='ll-mode' value=1> 流量池模式 </div>
+</div>
+<script>
+    $('#llb').parent().addClass('am-active');
+    $('#llb').attr('checked');
+    $('#ll-form').load(LL_MODE[LLB][1]);
+    
+    $('[name="ll-mode"]').on('change', function () {
+        $('#ll-form').load(LL_MODE[parseInt($('[name="ll-mode"]').filter(':checked').val())][1]);
+        newCard.ll_mode = parseInt($('[name="ll-mode"]').filter(':checked').val());
+    })
+</script>
+<hr data-am-widget="divider" class="am-divider am-divider-default" />
+
+<div class='am-margin-top' id='ll-form'></div>

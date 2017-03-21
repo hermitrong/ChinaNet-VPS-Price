@@ -1,0 +1,47 @@
+<div class="am-g am-margin-top-xs">
+    <div class="am-u-sm-9 am-vertical-align" style="height: 50px;">
+        <div class="am-vertical-align-middle" style="width: 100%;">
+            <div id='dxb-slider'></div>
+        </div>
+    </div>
+    <div class="am-u-sm-3 am-padding-right-0 am-vertical-align" style="height: 50px;">
+        <div class="am-vertical-align-middle" style="width: 100%;">
+            <select id='dxb-selecter' style="padding: 7px; width: 100%;"></select>
+        </div>
+    </div>
+</div>
+
+<script>
+    var dxb_slider = document.getElementById('dxb-slider');
+    
+    initDXB();
+
+    function initDXB() {
+        noUiSlider.create(dxb_slider, {
+            start: 0,
+            connect: true,
+            step: 1,
+            range: {
+                'min': 0,
+                'max': DXB_PRICE.length - 1
+            }
+        });
+
+        for (var i = 0; i < DXB_PRICE.length; i++) {
+            $('#dxb-selecter').append("<option value='" + i + "'>" + DXB_PRICE[i][0] + "</option>");
+        }
+
+        dxb_slider.noUiSlider.on('update', function (values, handle) {
+            var value = parseInt(values[handle]);
+            newCard.dxb_size = value;
+            newCard.updateInfo();
+            $('#dxb-selecter').val(value);
+        });
+
+        $('#dxb-selecter').on('change', function () {
+            newCard.dxb_size = this.value;
+            newCard.updateInfo();
+            dxb_slider.noUiSlider.set([this.value, null]);
+        })
+    }
+</script>
