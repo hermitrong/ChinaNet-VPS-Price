@@ -36,11 +36,12 @@
 			$('#tab1').load('assets/mod/mod-data.html');
 			$('#tab2').load('assets/mod/mod-voice.html');
 			$('#tab3').load('assets/mod/mod-sms.html');
-			$('#time').val(1);
-			$('#count').val(1);
 			$('#count').on('change', function () {
 				newCard.count = parseInt($(this).val());
 				newCard.updateInfo();
+			})
+			$('#time').on('change', function () {
+				newCard.time = parseInt($('#time').val());
 			})
 			
 			newCard = new Card();
@@ -48,7 +49,6 @@
 
 		function addCard() {
 			if (newCard.ll_price || newCard.yyb_price || newCard.dxb_price) {
-				newCard.time = parseInt($('#time').val());
 				Cards.push(newCard);
 				updateCards();
 				init();
@@ -241,9 +241,9 @@
 		</table>
 
 		<div class="am-input-group am-input-group-lg">
-			<input type="number" class="am-form-field am-text-right" id="time" min="1" value="1" step="1">
+			<input type="number" class="am-form-field am-text-right" id="time" min="1" step="1" placeholder="1">
 			<span class="am-input-group-label" id='time-unit'></span>
-			<input type="number" class="am-form-field am-text-right" id="count" min="1" value="1" step="1">
+			<input type="number" class="am-form-field am-text-right" id="count" min="1" step="1" placeholder="1">
 			<span class="am-input-group-label">张</span>
 			<span class="am-input-group-btn">
 				<button class="am-btn am-btn-primary" type="button" onclick="addCard()"><i class="am-icon-plus"></i></button>
