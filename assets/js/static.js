@@ -7,6 +7,7 @@ var LL_DX = 0;
 var LL_FDX = 1;
 
 var TIME_UNIT = ['月', '季', '半年', '年'];
+var TIME_LEN = [1, 3, 6, 12]
 var LLB_TIME = ['包月', '包季', '半年', '包年'];
 var LLB_MONTH = 0;
 var LLB_SEASON = 1;
