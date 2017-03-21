@@ -9,6 +9,7 @@
     
     $('[name="ll-mode"]').on('change', function () {
         $('#ll-form').load(LL_MODE[parseInt($('[name="ll-mode"]').filter(':checked').val())][1]);
+        newCard.ll_mode = parseInt($('[name="ll-mode"]').filter(':checked').val());
     })
 </script>
 <hr data-am-widget="divider" class="am-divider am-divider-default" />

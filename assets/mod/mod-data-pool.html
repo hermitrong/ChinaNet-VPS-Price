@@ -41,15 +41,20 @@
 
         llc_slider.noUiSlider.on('update', function (values, handle) {
             var value = parseInt(values[handle]);
+            newCard.llc_size = value;
+            newCard.updateInfo();
             $('#llc-selecter').val(value);
         });
 
         $('#llc-selecter').on('change', function () {
+            newCard.llc_size = this.value;
+            newCard.updateInfo();
             llc_slider.noUiSlider.set([this.value, null]);
         })
 
         $('[name="llc-type"]').on('change', function () {
-            llc_time = parseInt($('[name="llc-type"]').filter(':checked').val());
+            newCard.ll_type = parseInt($('[name="llc-type"]').filter(':checked').val());
+            newCard.updateInfo();
         })
     }
 </script>

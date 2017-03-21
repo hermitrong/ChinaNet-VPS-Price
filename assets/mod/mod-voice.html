@@ -13,7 +13,7 @@
 
 <script>
     var yyb_slider = document.getElementById('yyb-slider');
-    
+
     initYYB();
 
     function initYYB() {
@@ -33,11 +33,16 @@
 
         yyb_slider.noUiSlider.on('update', function (values, handle) {
             var value = parseInt(values[handle]);
+            newCard.yyb_size = value;
+            newCard.updateInfo();
             $('#yyb-selecter').val(value);
         });
 
         $('#yyb-selecter').on('change', function () {
             yyb_slider.noUiSlider.set([this.value, null]);
+            newCard.yyb_size = value;
+            newCard.updateInfo();
         })
     }
+
 </script>

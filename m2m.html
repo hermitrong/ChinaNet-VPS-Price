@@ -24,6 +24,8 @@
 	<script type="text/javascript" src="assets/js/static.js"></script>
 
 	<script>
+		var newCard;
+
 		$(function () {
 			init();
 		});
@@ -33,7 +35,13 @@
 			$('#tab1').load('assets/mod/mod-data.html');
 			$('#tab2').load('assets/mod/mod-voice.html');
 			$('#tab3').load('assets/mod/mod-sms.html');
-			var newCard = new Card();
+			$('#time').val(1);
+			$('#count').val(1);
+			$('#count').on('change', function () {
+				newCard.count = parseInt($(this).val());
+				newCard.updateInfo();
+			})
+			newCard = new Card();
 		}
 
 		function Card() {
@@ -46,28 +54,50 @@
 			this.dxb_size = 0;
 			this.count = 1;
 
-			this.genInfo = function() {
+			this.genLLInfo = function () {
 				var info = '';
-				if(this.ll_mode == LLB && llb_size > 0){
+				if (this.ll_mode == LLB && this.llb_size > 0) {
 					info += LL_TYPE[this.ll_type] + LLB_TIME[this.llb_time] + LLB_PRICE[this.llb_time][this.llb_size][0];
-				}else if(this.ll_mode == LLC && llc_size > 0 ){
+				} else if (this.ll_mode == LLC && this.llc_size > 0) {
 					var t_size = LLC_PRICE[this.llc_size][3] * this.count;
-					if(t_size >= 1000){
+					if (t_size >= 1000) {
 						t_size = t_size / 1000;
 						t_size += 'G';
-					}else{
+					} else {
 						t_size += 'M';
 					};
 					info += '共享池' + t_size;
-				}else{
+				} else {
 					info = '无流量';
 				}
-
+				return info;
 			}
-		}
 
-		function genCard() {
-			//if()
+			this.genYYInfo = function () {
+				var info = '';
+				if (this.yyb_size > 0) {
+					info += '语音' + YYB_PRICE[this.yyb_size][0];
+				} else {
+					info = '无语音'
+				}
+				return info;
+			}
+
+			this.genDXInfo = function () {
+				var info = '';
+				if (this.dxb_size > 0) {
+					info += '短信' + DXB_PRICE[this.dxb_size][0];
+				} else {
+					info = '无短信'
+				}
+				return info;
+			}
+
+			this.updateInfo = function () {
+				$('#ll-info').text(this.genLLInfo());
+				$('#yy-info').text(this.genYYInfo());
+				$('#dx-info').text(this.genDXInfo());
+			}
 		}
 	</script>
 
@@ -108,7 +138,23 @@
 			</div>
 		</div>
 
-		<div class="am-input-group am-input-group-lg am-margin-top">
+		<table class="am-table am-table-bordered am-table-centered am-margin-0">
+			<thead></thead>
+			<tbody>
+				<tr>
+					<th id='ll-info'>类型</th>
+					<th id='yy-info'>费用</th>
+					<th id='dx-info'>费用</th>
+				</tr>
+				<tr>
+					<th id='ll-price'>张数</th>
+					<th id='yy-price'>费用</th>
+					<th id='dx-price'>费用</th>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="am-input-group am-input-group-lg">
 			<input type="number" class="am-form-field am-text-right" id="time" min="1" value="1" step="1">
 			<span class="am-input-group-label" id='time-unit'></span>
 			<input type="number" class="am-form-field am-text-right" id="count" min="1" value="1" step="1">
@@ -119,7 +165,7 @@
 			</span>
 		</div>
 
-		<table class="am-table am-table-centered" id="ll-table">
+		<table class="am-table am-table-centered" id="card-table">
 			<thead>
 				<tr>
 					<th>类型</th>
