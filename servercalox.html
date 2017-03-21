@@ -1,0 +1,265 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>云主机价格计算器</title>
+
+	<!-- Set render engine for 360 browser -->
+	<meta name="renderer" content="webkit">
+
+	<!-- No Baidu Siteapp-->
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+	<link rel="icon" type="image/png" href="assets/i/favicon.png">
+
+	<!-- Add to homescreen for Chrome on Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
+
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+	<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+
+	<!-- Tile icon for Win8 (144x144 + tile color) -->
+	<meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+	<meta name="msapplication-TileColor" content="#0e90d2">
+
+	<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+	<!--
+			<link rel="canonical" href="http://www.example.com/">
+		-->
+
+	<link rel="stylesheet" href="assets/css/amazeui.min.css">
+	<link rel="stylesheet" href="assets/css/app.css">
+
+	<!--[if lt IE 9]>
+			<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+			<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+			<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+		<![endif]-->
+
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="assets/js/amazeui.min.js"></script>
+
+	<script>
+		function init() {
+			$("#update").click(function () {
+				update();
+			});
+			$("#confirm").click(function () {
+				confirm();
+			});
+		}
+
+		function update() {
+			var core = parseInt($('[name="core"]').filter('.am-active').children().val());
+			var ram = parseInt($('[name="ram"]').filter('.am-active').children().val());
+			var disk = parseFloat($('[name="disk"]').filter('.am-active').children().val());
+			var data = parseInt($("#data").val());
+			var band = parseInt($("#band").val());
+			var time = parseInt($("#len").val()) * parseInt($("#moy").val());
+
+			if (core == 1 && ram == 1) {
+				var base = 53;
+			} else {
+				var base = 58 * core + 30 * ram;
+			}
+			if (band <= 5) {
+				var bp = 20;
+			} else {
+				var bp = 60;
+			}
+			var price = (base + disk * data + band * bp) * time;
+
+			$("#price").text(price + "元");
+		}
+
+		function confirm() {
+			var core = parseInt($('[name="core"]').filter('.am-active').children().val());
+			var ram = parseInt($('[name="ram"]').filter('.am-active').children().val());
+			var disk = parseFloat($('[name="disk"]').filter('.am-active').children().val());
+			var data = parseInt($("#data").val());
+			var band = parseInt($("#band").val());
+			var time = parseInt($("#len").val()) * parseInt($("#moy").val());
+
+
+			$("#con1").text("您选择了" + core + "核VCPU，" + ram +
+				"G内存，" + data + "G数据盘，" + band + "M带宽的云主机，是否确认？");
+		}
+
+
+		$(document).ready(function () {
+			init();
+		});
+	</script>
+
+</head>
+
+<body>
+	<!--[if lte IE 9]>
+			<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a
+			href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+			以获得更好的体验！</p>
+		<![endif]-->
+
+	<div class='am-container'>
+		<ul class="am-nav am-nav-pills am-nav-pills am-nav-justify">
+
+			<li class="am-dropdown" data-am-dropdown>
+				<a class="am-dropdown-toggle am-btn-primary" data-am-dropdown-toggle href="javascript:;">
+            标准云产品 <span class="am-icon-caret-down"></span>
+        </a>
+				<ul class="am-dropdown-content">
+					<li><a href="server1.html">云主机</a></li>
+					<li><a href="storage.html">云存储</a></li>
+				</ul>
+			</li>
+			<li><a href="m2m.html">物联网</a></li>
+			<li><a href="idc.html">IDC</a></li>
+		</ul>
+	</div>
+
+
+
+
+
+	<div class="am-g am-g-fixed am-margin-top">
+		<div class="am-u-sm-12">
+			<h1>云主机价格计算器（标准）</h1>
+			<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+			<a class="am-fr" href="server1.html">查看套餐 --></a>
+		</div>
+	</div>
+
+	<div class="am-g am-g-fixed am-margin-top">
+		<div class="am-u-sm-12 am-cf">
+			<div class="am-panel am-panel-default">
+				<div class="am-panel-hd">vCPU</div>
+				<div class="am-panel-bd">
+					<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
+						<label class="am-btn am-btn-primary am-active" name="core">
+								<input type="radio" value="1"> 1核
+							</label>
+						<label class="am-btn am-btn-primary" name="core">
+								<input type="radio" value="2"\> 2核
+							</label>
+						<label class="am-btn am-btn-primary" name="core">
+								<input type="radio" value="4"\> 4核
+							</label>
+						<label class="am-btn am-btn-primary" name="core">
+								<input type="radio" value="8"\> 8核
+							</label>
+						<label class="am-btn am-btn-primary" name="core">
+								<input type="radio" value="16"\> 16核
+							</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="am-g am-g-fixed">
+		<div class="am-u-sm-12 am-cf">
+			<div class="am-panel am-panel-default">
+				<div class="am-panel-hd">内存</div>
+				<div class="am-panel-bd">
+					<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
+						<label class="am-btn am-btn-primary am-active" name="ram">
+								<input type="radio" value="1"> 1GB
+							</label>
+						<label class="am-btn am-btn-primary" name="ram">
+								<input type="radio" value="2"> 2GB
+							</label>
+						<label class="am-btn am-btn-primary" name="ram">
+								<input type="radio" value="4"> 4GB
+							</label>
+						<label class="am-btn am-btn-primary" name="ram">
+								<input type="radio" value="8"> 8GB
+							</label>
+						<label class="am-btn am-btn-primary" name="ram">
+								<input type="radio" value="16"> 16GB
+							</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="am-g am-g-fixed">
+		<div class="am-u-sm-12 am-cf">
+			<div class="am-panel am-panel-default">
+				<div class="am-panel-hd">块存储</div>
+				<div class="am-panel-bd">
+					<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
+						<label class="am-btn am-btn-primary am-active" name="disk">
+								<input type="radio" value="0.3"> SATA 
+							</label>
+						<label class="am-btn am-btn-primary" name="disk">
+								<input type="radio" value="0.6"> SAS
+							</label>
+						<label class="am-btn am-btn-primary" disabled="disabled" name="disk">
+								<input type="radio" value="1.2"> SSD
+							</label>
+					</div>
+					<div class="am-input-group  am-margin-top">
+						<span class="am-input-group-label" style="width:118px">数据盘容量</span>
+						<input type="number" class="am-form-field am-text-right" id="data" min="1" max="2048" placeholder="1-2048" step="1">
+						<span class="am-input-group-label">GB</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class='am-container am-margin-bottom'>
+		<div class="am-input-group">
+			<span class="am-input-group-label">带宽</span>
+			<input type="number" class="am-form-field am-text-right" id="band" min="1" value="1" step="1">
+			<span class="am-input-group-label">Mbps</span>
+		</div>
+	</div>
+
+	<div class='am-container am-margin-bottom'>
+		<div class="am-input-group">
+			<span class="am-input-group-label">订购时长</span>
+			<input type="number" class="am-form-field am-text-right" id="len" min="1" value="1" step="1">
+			<span class="am-input-group-btn">
+					<select id="moy" data-am-selected="{btnWidth: '100px',dropUp: 1}">
+						<option value="1">月</option>
+						<option value="12">年</option>
+					</select>
+				</span>
+		</div>
+	</div>
+
+	<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
+		<div class="am-alert am-cf am-margin-0">
+			<span class='am-text-middle am-text-xl' id="price">0元</span>
+
+			<button type="button" class="am-btn am-btn-default am-fr" id='confirm' data-am-modal="{target: '#my-alert'}">计算				
+			</button>
+		</div>
+	</header>
+	<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+		<div class="am-modal-dialog">
+			<div class="am-modal-hd">提示</div>
+			<div class="am-modal-bd">
+				<span class='am-text-middle' id="con1">12</span>
+			</div>
+			<div class="am-modal-footer">
+				<span class="am-modal-btn" id='update'>确定</span>
+				<span class="am-modal-btn" >取消</span>
+			</div>
+		</div>
+</body>
+
+</html>
