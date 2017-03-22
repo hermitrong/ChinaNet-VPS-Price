@@ -44,8 +44,7 @@
 
 		function addCard() {
 			if (newCard.ll_price || newCard.yyb_price || newCard.dxb_price) {
-				newCard.count = parseInt($('#count').val());
-				newCard.time = parseInt($('#time').val());
+				newCard.gatherInfo();
 				Cards.push(newCard);
 				updateCards();
 				init();
@@ -160,9 +159,19 @@
 				return price;
 			}
 
-			this.updateInfo = function () {
+			this.gatherInfo = function () {
 				this.count = parseInt($('#count').val());
 				this.time = parseInt($('#time').val());
+				if (isNaN(this.count)) {
+					this.count = 1;
+				}
+				if (isNaN(this.time)); {time
+					this.time = 1;
+				}
+			}
+
+			this.updateInfo = function () {
+				this.gatherInfo();
 				if (this.ll_mode == LLC) {
 					$('#ll-info').html('<span class="am-badge am-badge-primary am-radius">' + this.genLLInfo()[0] + '</span>');
 				} else {
