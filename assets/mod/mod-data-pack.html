@@ -1,13 +1,15 @@
-<div class="am-btn-group am-btn-group-justify" data-am-button>
-    <div class="am-btn am-btn-primary am-active"><input type="radio" name='llb-time' value="0"> 包月 </div>
-    <div class="am-btn am-btn-primary"><input type="radio" name='llb-time' value="1"> 季度 </div>
-    <div class="am-btn am-btn-primary"><input type="radio" name='llb-time' value="2"> 半年 </div>
-    <div class="am-btn am-btn-primary"><input type="radio" name='llb-time' value="3"> 包年 </div>
-</div>
-
-<div class="am-btn-group am-btn-group-justify am-margin-top" data-am-button>
-    <div class="am-btn am-btn-primary am-active"><input type="radio" name='llb-type' value="0"> 定向 </div>
-    <div class="am-btn am-btn-primary"><input type="radio" name='llb-type' value="1"> 非定向 </div>
+<div class "am-g">
+    <div class='am-u-sm-9 am-padding-left-0'>
+        <div class="am-btn-group am-btn-group-justify" data-am-button>
+            <div class="am-btn am-btn-primary am-active"><input type="radio" name='llb-time' value="0"> 包月 </div>
+            <div class="am-btn am-btn-primary"><input type="radio" name='llb-time' value="1"> 季度 </div>
+            <div class="am-btn am-btn-primary"><input type="radio" name='llb-time' value="2"> 半年 </div>
+            <div class="am-btn am-btn-primary"><input type="radio" name='llb-time' value="3"> 包年 </div>
+        </div>
+    </div>
+    <div class='am-u-sm-3 am-padding-right-0'>
+        <button type="button" class="am-btn am-btn-primary am-radius" style="width: 100%" id='ll-type'>定向</button>
+    </div>
 </div>
 
 <div class="am-g am-margin-top-xs">
@@ -63,9 +65,19 @@
             genWidget();
         })
 
-        $('[name="llb-type"]').on('change', function () {
-            newCard.ll_type = parseInt($('[name="llb-type"]').filter(':checked').val());
-            newCard.updateInfo();
+        $('#ll-type').on('click', function () {
+            if (newCard.ll_type == LL_DX) {
+                $(this).text(LL_TYPE[LL_FDX]);
+                $(this).addClass('am-btn-success')
+                $(this).removeClass('am-btn-primary')
+                newCard.ll_type = LL_FDX;
+            } else {
+                $(this).addClass('am-btn-primary')
+                $(this).removeClass('am-btn-success')
+                $(this).text(LL_TYPE[LL_DX]);
+                newCard.ll_type = LL_DX;
+            }
+             newCard.updateInfo();
         })
     }
 
@@ -86,4 +98,5 @@
 
         $('#time-unit').text(TIME_UNIT[newCard.llb_time]);
     }
+
 </script>
