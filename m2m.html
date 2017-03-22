@@ -37,18 +37,15 @@
 			$('#tab2').load('assets/mod/mod-voice.html');
 			$('#tab3').load('assets/mod/mod-sms.html');
 			$('#count').on('change', function () {
-				newCard.count = parseInt($(this).val());
 				newCard.updateInfo();
 			})
-			$('#time').on('change', function () {
-				newCard.time = parseInt($('#time').val());
-			})
-			
 			newCard = new Card();
 		}
 
 		function addCard() {
 			if (newCard.ll_price || newCard.yyb_price || newCard.dxb_price) {
+				newCard.count = parseInt($('#count').val());
+				newCard.time = parseInt($('#time').val());
 				Cards.push(newCard);
 				updateCards();
 				init();
@@ -72,11 +69,11 @@
 				var time = Cards[i].time + TIME_UNIT[Cards[i].llb_time];
 				var count = Cards[i].count;
 				var price = Cards[i].time * Cards[i].card_price + '¥';
-				var html = '<tr value=' + i + '><td class="am-text-middle">' + info + 
-				'</td><td class="am-text-middle">' + time + 
-				'</td><td class="am-text-middle">' + count + 
-				'</td><td class="am-text-middle">' + price + 
-				"</td><td class='am-text-middle'><button type='button' class='am-close am-close-alt'>&times;</button></td></tr>";
+				var html = '<tr value=' + i + '><td class="am-text-middle">' + info +
+					'</td><td class="am-text-middle">' + time +
+					'</td><td class="am-text-middle">' + count +
+					'</td><td class="am-text-middle">' + price +
+					"</td><td class='am-text-middle'><button type='button' class='am-close am-close-alt'>&times;</button></td></tr>";
 				$('#cards').append(html);
 
 				total_price += Cards[i].time * Cards[i].card_price;
@@ -164,6 +161,8 @@
 			}
 
 			this.updateInfo = function () {
+				this.count = parseInt($('#count').val());
+				this.time = parseInt($('#time').val());
 				if (this.ll_mode == LLC) {
 					$('#ll-info').html('<span class="am-badge am-badge-primary am-radius">' + this.genLLInfo()[0] + '</span>');
 				} else {
