@@ -90,10 +90,21 @@
 			var data = parseInt($("#data").val());
 			var band = parseInt($("#band").val());
 			var time = parseInt($("#len").val()) * parseInt($("#moy").val());
-
+			if (core == 1 && ram == 1) {
+				var base = 53;
+			} else {
+				var base = 58 * core + 30 * ram;
+			}
+			if (band <= 5) {
+				var bp = 20;
+			} else {
+				var bp = 60;
+			}
+			var pricemonth = base + disk * data + band * bp
+			var pricemonth8 = (pricemonth * 0.8).toFixed(2)
 
 			$("#con1").text("您选择了" + core + "核VCPU，" + ram +
-				"G内存，" + data + "G数据盘，" + band + "M带宽的云主机，是否确认？");
+				"G内存，" + data + "G数据盘，" + band + "M带宽的云主机，月使用费" + pricemonth8 + "元，8折优惠后月使用费" + j + "元。");
 		}
 
 
@@ -244,20 +255,22 @@
 	<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
 		<div class="am-alert am-cf am-margin-0">
 			<span class='am-text-middle am-text-xl' id="price">0元</span>
-
-			<button type="button" class="am-btn am-btn-default am-fr" id='confirm' data-am-modal="{target: '#my-alert'}">计算				
+			<button type="button" class="am-btn am-btn-default am-fr" id='update'>计算				
 			</button>
+			<button type="button" class="am-btn am-btn-default am-fr" id='confirm' data-am-modal="{target: '#my-alert'}">配置预览				
+			</button>
+
 		</div>
 	</header>
 	<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
 		<div class="am-modal-dialog">
 			<div class="am-modal-hd">提示</div>
 			<div class="am-modal-bd">
-				<span class='am-text-middle' id="con1">12</span>
+				<span class='am-text-middle' id="con1"></span>
+				<span class='am-text-middle'><strong></br></br> 中国电信天翼云主机弹性扩容、负载均衡、便宜耐操、还有什么想不起来了。忘了带U盘回来明明在单位已经写好了呜呜呜呜。这一页给客户经理展示，可以直接截图发给客户。虽然我觉得功能有点多余。好了字凑够了吧。</strong></span>
 			</div>
 			<div class="am-modal-footer">
-				<span class="am-modal-btn" id='update'>确定</span>
-				<span class="am-modal-btn" >取消</span>
+				<span class="am-modal-btn">确定</span>
 			</div>
 		</div>
 </body>

@@ -77,7 +77,7 @@
 
 				total_price += Cards[i].time * Cards[i].card_price;
 			}
-			$('#total-price').text(total_price + '元');
+			$('#total-price').text('合计：' + total_price + '元');
 			$('.am-close').on('click', function () {
 				var index = parseInt($(this).parents('tr').attr('value'));
 				Cards.splice(index, 1);
@@ -165,7 +165,8 @@
 				if (isNaN(this.count)) {
 					this.count = 1;
 				}
-				if (isNaN(this.time)); {time
+				if (isNaN(this.time)); {
+					time
 					this.time = 1;
 				}
 			}
@@ -274,7 +275,8 @@
 	</div>
 
 	<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
-		<div class="am-alert am-margin-0 am-text-middle am-text-right am-text-lg" id="total-price">0元</div>
+		<div class="am-alert am-margin-0 am-text-middle am-text-left am-text-lg" id="total-price">合计：0元
+			<a class="am-fr" href="m2mdiscount.html">折扣计算 --></a></div>
 	</header>
 </body>
 
