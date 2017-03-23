@@ -56,89 +56,100 @@
 				update();
 			});
 		}
+
 		function update() {
+
 			var money = parseInt($("#money").val());
-			var card1 = parseInt($("#card1").val());
 			var card2 = parseInt($("#card2").val());
 			var time = parseInt($("#len").val()) * parseInt($("#moy").val());
-			if (money < 50) {
-				var discount1 = 0.8;
-			}
-			else if (money >= 50 && money < 100) {
-				var discount1 = 0.7;
-			}
-			else if (money >= 100 && money < 300) {
-				var discount1 = 0.6;
-			}
-			else if (money >= 300 && money < 500) {
-				var discount1 = 0.55;
-			}
-			else
-				var discount1 = 0.5;
-			if (card2 < 5000) {
-				var discount2 = 0;
-			}
-			else if (card2 >= 5000 && card2 < 10000) {
-				var discount2 = 0.03;
-			}
-			else if (card2 >= 10000 && card2 < 30000) {
-				var discount2 = 0.05;
-			}
-			else
-				var discount2 = 0.1;
-			if (time >= 24 && time < 36)
-				discount3 = 0.05;
-			else if (time > 36)
-				discount3 = 0.1;
-			else
-				discount3 = 0;
-			var discounts = discount1 - discount2 - discount3;
-			if (discounts > 0.6)
-				var discountj = discounts - 0.1;
-			else
-				var discountj = discounts - 0.05;
-			var moneyper = money * discounts;
-			if (moneyper < 50) {
-				var pdiscount1 = 0.8;
-			}
-			else if (moneyper >= 50 && moneyper < 100) {
-				var pdiscount1 = 0.7;
-			}
-			else if (moneyper >= 100 && moneyper < 300) {
-				var pdiscount1 = 0.6;
-			}
-			else if (moneyper >= 300 && moneyper < 500) {
-				var pdiscount1 = 0.55;
-			}
-			else if (moneyper >= 500) {
-				var pdiscount1 = 0.5;
-			}
-			if (discounts > 0.6)
-				var discountj = discounts - 0.1;
-			else
-				var discountj = discounts - 0.05;
-			if (pdiscount1 == discount1) {
-				discounts = Math.round(discounts * 100) / 100;
-				discountj = Math.round(discountj * 100) / 100;
-				$("#discount").text("省公司折扣" + discounts * 10 + "折,集团折扣" + discountj * 10 + "折");
-			}
+
+			if (money == 0 || card2 == 0 || time == 0)
+				$("#discount").text("错误");
 			else {
-				if (discount1 >= 0.6) {
-					discounts = discounts + 0.1;
-					discountj = discountj + 0.1;
-					discounts = Math.round(discounts * 100) / 100;
-					discountj = Math.round(discountj * 100) / 100;
-					$("#discount").text("省公司折扣" + discounts * 10 + "折,集团折扣" + discountj * 10 + "折");
+				if (money < 50) {
+					var discount1 = 0.7;
 				}
-				else {
-					discounts = discounts + 0.05;
-					discountj = discountj + 0.1;
-					discounts = Math.round(discounts * 100) / 100;
-					discountj = Math.round(discountj * 100) / 100;
-					$("#discount").text("省公司折扣" + discounts * 10 + "折,集团折扣" + discountj * 10 + "折");
+				else if (money >= 50 && money < 100) {
+					var discount1 = 0.6;
 				}
+				else if (money >= 100 && money < 300) {
+					var discount1 = 0.55;
+				}
+				else if (money >= 300 && money < 500) {
+					var discount1 = 0.5;
+				}
+				else
+					var discount1 = 0.45;
+
+
+				if (card2 < 5000) {
+					var discount2 = 0;
+				}
+				else if (card2 >= 5000 && card2 < 10000) {
+					var discount2 = 0.03;
+				}
+				else if (card2 >= 10000 && card2 < 30000) {
+					var discount2 = 0.05;
+				}
+				else
+					var discount2 = 0.1;
+
+
+				if (time >= 24 && time < 36)
+					discount3 = 0.05;
+				else if (time > 36)
+					discount3 = 0.1;
+				else
+					discount3 = 0;
+
+
+				var discounts, money1;
+				discounts = discount1 - discount2 - discount3;
+				money1 = money * discounts;
+				if (money1 < 50) {
+					var pdiscount1 = 0.7;
+				}
+				else if (money1 >= 50 && money1 < 100) {
+					var pdiscount1 = 0.6;
+				}
+				else if (money1 >= 100 && money1 < 300) {
+					var pdiscount1 = 0.55;
+				}
+				else if (money1 >= 300 && money1 < 500) {
+					var pdiscount1 = 0.5;
+				}
+				else
+					var pdiscount1 = 0.45;
+
+				do {
+					discount1 = pdiscount1;
+					discounts = discount1 - discount2 - discount3;
+					money1 = money * discounts;
+					if (money1 < 50) {
+						var pdiscount1 = 0.7;
+					}
+					else if (money1 >= 50 && money1 < 100) {
+						var pdiscount1 = 0.6;
+					}
+					else if (money1 >= 100 && money1 < 300) {
+						var pdiscount1 = 0.55;
+					}
+					else if (money1 >= 300 && money1 < 500) {
+						var pdiscount1 = 0.5;
+					}
+					else
+						var pdiscount1 = 0.45;
+
+				} while (pdiscount1 == discount1)
+
+				discounts = Math.round(discounts * 100) / 100;
+				$("#discount").text("集团审批折扣" + discounts * 10 + "折");
+
 			}
 		}
+
+
+
 		$(document).ready(function () {
 			init();
 		});
@@ -168,9 +179,6 @@
 	</div>
 
 
-
-
-
 	<div class="am-g am-g-fixed am-margin-top">
 		<div class="am-u-sm-12">
 			<h1>物联网折扣计算器</h1>
@@ -180,7 +188,9 @@
 
 
 
-<form action="" class="am-form" data-am-validator>
+
+
+	<form action="" class="am-form" data-am-validator>
 
 		<div class='am-container am-margin-bottom'>
 			<div class="am-input-group">
