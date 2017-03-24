@@ -1,0 +1,222 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>云视频监控报价计算器</title>
+
+	<!-- Set render engine for 360 browser -->
+	<meta name="renderer" content="webkit">
+
+	<!-- No Baidu Siteapp-->
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+	<link rel="icon" type="image/png" href="assets/i/favicon.png">
+
+	<!-- Add to homescreen for Chrome on Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
+
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+	<link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+
+	<!-- Tile icon for Win8 (144x144 + tile color) -->
+	<meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+	<meta name="msapplication-TileColor" content="#0e90d2">
+
+	<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+	<!--
+			<link rel="canonical" href="http://www.example.com/">
+		-->
+
+	<link rel="stylesheet" href="assets/css/amazeui.min.css">
+	<link rel="stylesheet" href="assets/css/app.css">
+
+	<!--[if lt IE 9]>
+			<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+			<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+			<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+		<![endif]-->
+
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="assets/js/jquery.min.js"></script>
+	<!--<![endif]-->
+	<script src="assets/js/amazeui.min.js"></script>
+
+	<script>
+		function init() {
+			$("#update").click(function () { update() });
+		}
+
+		function update() {
+			var camera = parseInt($("#camera").val());
+			var disk = parseInt($("#disk").val());
+			var num = parseInt($("#num").val());
+			var month = parseInt($("#len").val()) * parseInt($("#moy").val());
+
+			var price = (camera + disk) * num * month;
+			if (camera == "30")
+				$("#camera").text("高清半球机");
+			else
+				$("#camera").text("高清云台机");
+
+			if (disk == "10")
+				$("#disk").text("50G 云存储");
+			else if (disk == "20")
+				$("#disk").text("100G 云存储");
+			else if (disk == "60")
+				$("#disk").text("1T 盘式存储");
+			else if (disk == "100")
+				$("#disk").text("2T 盘式存储");
+			else
+				$("#disk").text("4T 盘式存储");
+
+			$("#price").text(price.toFixed(1) + "元");
+
+			$("#num1").text(num);
+			$("#num2").text(num);
+			$("#price11").text(camera.toFixed(1));
+			$("#price12").text(num * camera.toFixed(1));
+			$("#price21").text(disk.toFixed(1));
+			$("#price22").text(num * disk.toFixed(1));
+		}
+
+		$(document).ready(function () { init() });
+	</script>
+</head>
+
+<body>
+	<!--[if lte IE 9]>
+			<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a
+			href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+			以获得更好的体验！</p>
+		<![endif]-->
+
+	<div class='am-container'>
+		<ul class="am-nav am-nav-pills am-nav-pills am-nav-justify">
+
+			<li class="am-dropdown" data-am-dropdown>
+				<a class="am-dropdown-toggle am-btn-primary" data-am-dropdown-toggle href="javascript:;">
+            标准云产品 <span class="am-icon-caret-down"></span>
+        </a>
+				<ul class="am-dropdown-content">
+					<li><a href="server1.html">云主机</a></li>
+					<li><a href="storage.html">云存储</a></li>
+				</ul>
+			</li>
+			<li><a href="m2m.html">物联网</a></li>
+			<li><a href="idc.html">IDC</a></li>
+		</ul>
+	</div>
+
+
+	<div class="am-g am-g-fixed am-margin-top">
+		<div class="am-u-sm-12">
+			<h1>云视频监控报价计算器</h1>
+			<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+		</div>
+	</div>
+
+
+	<div class="am-g am-g-fixed">
+		<div class="am-u-sm-12 am-cf">
+			<div class="am-input-group">
+				<span class="am-input-group-label" style="width:120px">设备类型</span>
+				<select id="camera" class='am-text-right' data-am-selected="{btnWidth: '270px', btnSize: 'lg'}">
+							<option value="30" selected>高清半球机</option>
+							<option value="45">高清云台机</option>
+							<option value="50">高清枪机</option>
+							<option value="200">高清球机</option>
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<div class="am-g am-g-fixed am-margin-top am-margin-bottom">
+		<div class="am-u-sm-12 am-cf">
+			<div class="am-input-group">
+				<span class="am-input-group-label" style="width:120px">设备数</span>
+				<input type="number" class="am-form-field am-text-right" id="num" min="1" step="1">
+				<span class="am-input-group-label">个</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="am-g am-g-fixed">
+		<div class="am-u-sm-12 am-cf">
+			<div class="am-input-group">
+				<span class="am-input-group-label" style="width:120px">存储模式</span>
+				<select id="disk" class='am-text-right' data-am-selected="{btnWidth: '270px', btnSize: 'lg'}">
+ 				 <option value="10" selected>云存储 50G</option>
+ 				 <option value="20">云存储 100G</option>
+ 				 <option value="60">盘式存储 1T</option>
+ 				 <option value="100">盘式存储 2T</option>
+   				 <option value="150">盘式存储 4T</option>
+			</select>
+			</div>
+		</div>
+	</div>
+
+	<div class="am-g am-g-fixed am-margin-top">
+		<div class="am-u-sm-8">
+			<div class="am-input-group">
+				<span class="am-input-group-label" style="width:120px">订购时长</span>
+				<input type="number" class="am-form-field am-text-right" id="len" min="1" value="1" step="1">
+			</div>
+		</div>
+		<div class="am-u-sm-4">
+			<select id="moy" data-am-selected="{btnWidth: '100%'}">
+					<option value="1">月</option>
+					<option value="12">年</option>
+				</select>
+		</div>
+	</div>
+	<div class='am-container'>
+		<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+		<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+			<thead>
+				<tr>
+					<th class="am-text-middle">项目</th>
+					<th class="am-text-middle">单价</th>
+					<th class="am-text-middle">订购数</th>
+					<th class="am-text-middle">总计</th>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr>
+					<td class="am-text-middle" id="camera">监控设备</td>
+					<td class="am-text-middle" id="price11">0</td>
+					<td class="am-text-middle" id="num1">0</td>
+					<td class="am-text-middle" id="price12">0</td>
+				</tr>
+
+				<tr>
+					<td class="am-text-middle" id="disk">存储服务</td>
+					<td class="am-text-middle" id="price21">0</td>
+					<td class="am-text-middle" id="num2">0</td>
+					<td class="am-text-middle" id="price22">0</td>
+				</tr>
+				<tr>
+					<td colspan="2">合计</td>
+					<td colspan="2" id="price"></td>
+				</tr>
+			</tbody>
+		</table>
+
+
+		<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
+			<div class="am-alert am-cf am-margin-0">
+				<button type="button" class="am-btn am-btn-default am-fr" id='update'>计算</button>
+			</div>
+		</header>
+</body>
+
+</html>

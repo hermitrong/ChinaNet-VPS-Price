@@ -50,19 +50,6 @@
 	<!--<![endif]-->
 	<script src="assets/js/amazeui.min.js"></script>
 
-	<script>
-		function init() {
-			$("#update").click(function () { update() });
-		}
-
-		function update() {
-			var price = (0.25 * (parseInt($("#disk").val())) + 0.55 * ((parseInt($("#band").val())))) *
-				parseInt($("#len").val()) * parseInt($("#moy").val());
-			$("#price").text(price.toFixed(1) + "元");
-		}
-
-		$(document).ready(function () { init() });
-	</script>
 </head>
 
 <body>
