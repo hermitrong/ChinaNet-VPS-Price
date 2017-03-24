@@ -63,20 +63,20 @@
 
 			var price = (camera + disk) * num * month;
 			if (camera == "30")
-				$("#camera").text("高清半球机");
+				$("#camera1").text("高清半球机");
 			else
-				$("#camera").text("高清云台机");
+				$("#camera1").text("高清云台机");
 
 			if (disk == "10")
-				$("#disk").text("50G 云存储");
+				$("#disk1").text("50G 云存储");
 			else if (disk == "20")
-				$("#disk").text("100G 云存储");
+				$("#disk1").text("100G 云存储");
 			else if (disk == "60")
-				$("#disk").text("1T 盘式存储");
+				$("#disk1").text("1T 盘式存储");
 			else if (disk == "100")
-				$("#disk").text("2T 盘式存储");
+				$("#disk1").text("2T 盘式存储");
 			else
-				$("#disk").text("4T 盘式存储");
+				$("#disk1").text("4T 盘式存储");
 
 			$("#price").text(price.toFixed(1) + "元");
 
@@ -192,14 +192,14 @@
 			<tbody>
 
 				<tr>
-					<td class="am-text-middle" id="camera">监控设备</td>
+					<td class="am-text-middle" id="camera1">监控设备</td>
 					<td class="am-text-middle" id="price11">0</td>
 					<td class="am-text-middle" id="num1">0</td>
 					<td class="am-text-middle" id="price12">0</td>
 				</tr>
 
 				<tr>
-					<td class="am-text-middle" id="disk">存储服务</td>
+					<td class="am-text-middle" id="disk1">存储服务</td>
 					<td class="am-text-middle" id="price21">0</td>
 					<td class="am-text-middle" id="num2">0</td>
 					<td class="am-text-middle" id="price22">0</td>
