@@ -64,8 +64,12 @@
 			var price = (camera + disk) * num * month;
 			if (camera == "30")
 				$("#camera1").text("高清半球机");
-			else
+			else if (camera == "45")
 				$("#camera1").text("高清云台机");
+			else if (camera == "50")
+				$("#camera1").text("高清枪机");
+			else
+				$("#camera1").text("高清球机");
 
 			if (disk == "10")
 				$("#disk1").text("50G 云存储");
@@ -205,8 +209,8 @@
 					<td class="am-text-middle" id="price22">0</td>
 				</tr>
 				<tr>
-					<td colspan="2">合计</td>
-					<td colspan="2" id="price"></td>
+					<td>合计</td>
+					<td colspan="3" id="price"></td>
 				</tr>
 			</tbody>
 		</table>
