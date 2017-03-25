@@ -53,9 +53,11 @@
 	<script>
 		function init() {
 			$("#update").click(function () { update() });
+			$('#table').hide();
 		}
 
 		function update() {
+			$('#table').show();
 			var tv = parseInt($("#tv").val());
 			var mobile = parseInt($("#mobile").val());
 			var num = parseInt($("#num").val());
@@ -126,17 +128,17 @@
 	</div>
 
 
-	<div class="am-g am-g-fixed">
-		<div class="am-u-sm-12 am-cf">
-			<div class="am-input-group">
-				<span class="am-input-group-label" style="width:120px">设备类型</span>
-				<select id="tv" class='am-text-right' data-am-selected="{btnWidth: '270px', btnSize: 'lg'}">
-							<option value="24800" selected>一体式终端（适用于中小型会议）</option>
-							<option value="48000">单屏一体化设备（适用于中小型会议）</option>
-							<option value="39800">分体式终端（适用于大型会议）</option>
-							<option value="49800">双屏一体化设备（适用于大型会议）</option>
+	<div class="am-container">
+		<div class="am-input-group">
+			<span class="am-input-group-label" style="min-width:120px">设备类型</span>
+			<span class="am-input-group-btn" style="width: 100%;">
+				<select id="tv" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
+					<option value="24800" selected>一体式终端（适用于中小型会议）</option>
+					<option value="48000">单屏一体化设备（适用于中小型会议）</option>
+					<option value="39800">分体式终端（适用于大型会议）</option>
+					<option value="49800">双屏一体化设备（适用于大型会议）</option>
 				</select>
-			</div>
+			</span>
 		</div>
 	</div>
 
@@ -182,7 +184,7 @@
 
 		<div class='am-container'>
 			<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
-			<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+			<table id='table' class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
 				<thead>
 					<tr>
 						<th class="am-text-middle">费用明细</th>

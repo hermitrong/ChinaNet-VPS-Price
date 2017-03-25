@@ -52,10 +52,12 @@
 
 	<script>
 		function init() {
+			$('#table').hide();
 			$("#update").click(function () { update() });
 		}
 
 		function update() {
+			$('#table').show();
 			var camera = parseInt($("#camera").val());
 			var disk = parseInt($("#disk").val());
 			var num = parseInt($("#num").val());
@@ -129,18 +131,18 @@
 	</div>
 
 
-	<div class="am-g am-g-fixed">
-		<div class="am-u-sm-12 am-cf">
+	<div class="am-container">
 			<div class="am-input-group">
-				<span class="am-input-group-label" style="width:120px">设备类型</span>
-				<select id="camera" class='am-text-right' data-am-selected="{btnWidth: '270px', btnSize: 'lg'}">
-							<option value="30" selected>高清半球机</option>
-							<option value="45">高清云台机</option>
-							<option value="50">高清枪机</option>
-							<option value="200">高清球机</option>
-				</select>
+				<span class="am-input-group-label" style="min-width:120px">设备类型</span>
+				<span class="am-input-group-btn" style="width: 100%;">
+					<select id="camera" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
+						<option value="30" selected>高清半球机</option>
+						<option value="45">高清云台机</option>
+						<option value="50">高清枪机</option>
+						<option value="200">高清球机</option>
+					</select>
+				</span>
 			</div>
-		</div>
 	</div>
 
 	<div class="am-g am-g-fixed am-margin-top am-margin-bottom">
@@ -153,24 +155,24 @@
 		</div>
 	</div>
 
-	<div class="am-g am-g-fixed">
-		<div class="am-u-sm-12 am-cf">
-			<div class="am-input-group">
-				<span class="am-input-group-label" style="width:120px">存储模式</span>
-				<select id="disk" class='am-text-right' data-am-selected="{btnWidth: '270px', btnSize: 'lg'}">
- 				 <option value="10" selected>云存储 50G</option>
- 				 <option value="20">云存储 100G</option>
- 				 <option value="60">盘式存储 1T</option>
- 				 <option value="100">盘式存储 2T</option>
-   				 <option value="150">盘式存储 4T</option>
-			</select>
-			</div>
+	<div class="am-container">
+		<div class="am-input-group">
+			<span class="am-input-group-label" style="min-width:120px">存储模式</span>
+			<span class="am-input-group-btn" style="width: 100%;">
+					<select id="disk" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
+						<option value="10" selected>云存储 50G</option>
+						<option value="20">云存储 100G</option>
+						<option value="60">盘式存储 1T</option>
+						<option value="100">盘式存储 2T</option>
+						<option value="150">盘式存储 4T</option>
+					</select>
+				</span>
 		</div>
 	</div>
 
 	<div class="am-g am-g-fixed am-margin-top">
 		<div class="am-u-sm-8">
-			<div class="am-input-group">
+			<div class="am-input-group am-btn-group-justify">
 				<span class="am-input-group-label" style="width:120px">订购时长</span>
 				<input type="number" class="am-form-field am-text-right" id="len" min="1" value="1" step="1">
 			</div>
@@ -183,8 +185,8 @@
 		</div>
 	</div>
 	<div class='am-container'>
-		<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
-		<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+		<hr data-am-widget="divider" class="am-divider am-divider-default" />
+		<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered" id='table'>
 			<thead>
 				<tr>
 					<th class="am-text-middle">项目</th>
