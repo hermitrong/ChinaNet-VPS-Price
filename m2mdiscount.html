@@ -120,8 +120,7 @@
 
 				//折后收入的pdiscount1=discount1
 				if (pdiscount1 == discount1) {
-					discounts = Math.round(discounts * 100) / 100;
-					$("#discount").text("集团审批折扣" + discounts * 10 + "折");
+					$("#discount").text("集团审批折扣" + (discounts * 10).toFixed(1) + "折");
 				}
 				else {
 					while (pdiscount1 != discount1) {
@@ -143,8 +142,8 @@
 						else
 							var pdiscount1 = 0.45;
 					}
-					discounts = Math.round((discount1 - discount2 - discount3) * 100) / 100;
-					$("#discount").text("集团审批折扣" + discounts * 10 + "折");
+					discounts = discount1 - discount2 - discount3;
+					$("#discount").text("集团审批折扣" + (discounts * 10).toFixed(1)+ "折");
 				}
 
 			}
