@@ -7,7 +7,7 @@
 	<meta name="description" content="">
 	<meta name="keywords" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>云存储价格计算器</title>
+	<title>爱Wifi报价计算器</title>
 
 	<!-- Set render engine for 360 browser -->
 	<meta name="renderer" content="webkit">
@@ -53,12 +53,75 @@
 	<script>
 		function init() {
 			$("#update").click(function () { update() });
+			$('#table').hide();
 		}
 
 		function update() {
-			var price = (0.25 * (parseInt($("#disk").val())) + 0.55 * ((parseInt($("#band").val())))) *
-				parseInt($("#len").val()) * parseInt($("#moy").val());
-			$("#price").text(price.toFixed(1) + "元");
+			$('#table').show();
+			var tv = parseInt($("#tv").val());
+			var mobile = parseInt($("#mobile").val());
+			var num = parseInt($("#num").val());
+			var sail = parseInt($('[name="sail"]').filter('.am-active').children().val());
+			if (sail == "1") {
+				$("#num1").text(num);
+				$("#num2").text(mobile);
+				$("#price1").text(tv + "元");//设备费
+				$("#price11").text(tv * num + "元");
+				$("#price2").text(0 + "元/月");//服务费
+				$("#price21").text(0 * num + "元/月");
+				$("#price31").text(num * 398 + "元/月");//功能费
+				$("#price41").text(mobile * 50 + "元/月");//终端费
+			}
+
+			else if (sail == "2") {
+				$("#num1").text(num);
+				$("#num2").text(mobile);
+				$("#price1").text(0 + "元");//设备费
+				$("#price11").text(0 * num + "元");
+				if (tv == 24800) {
+					$("#price2").text(1034 + "元/月");//服务费
+					$("#price21").text(1034 * num + "元/月");
+				}
+				else if (tv == 48000) {
+					$("#price2").text(2000 + "元/月");//服务费
+					$("#price21").text(2000 * num + "元/月");
+				}
+				else if (tv == 39800) {
+					$("#price2").text(1659 + "元/月");//服务费
+					$("#price21").text(1659 * num + "元/月");
+				}
+				else {
+					$("#price2").text(2075 + "元/月");//服务费
+					$("#price21").text(2075 * num + "元/月");
+				}
+				$("#price31").text(num * 398 + "元/月");//功能费
+				$("#price41").text(mobile * 50 + "元/月");//终端费
+			}
+
+			else if (sail == "3") {
+				$("#num1").text(num);
+				$("#num2").text(mobile);
+				$("#price1").text(0 + "元");//设备费
+				$("#price11").text(0 * num + "元");
+				if (tv == 24800) {
+					$("#price2").text(758 + "元/月");//服务费
+					$("#price21").text(758 * num + "元/月");
+				}
+				else if (tv == 48000) {
+					$("#price2").text(1467 + "元/月");//服务费
+					$("#price21").text(1467 * num + "元/月");
+				}
+				else if (tv == 39800) {
+					$("#price2").text(1217 + "元/月");//服务费
+					$("#price21").text(1217 * num + "元/月");
+				}
+				else {
+					$("#price2").text(1522 + "元/月");//服务费
+					$("#price21").text(1522 * num + "元/月");
+				}
+				$("#price31").text(num * 398 + "元/月");//功能费
+				$("#price41").text(mobile * 50 + "元/月");//终端费
+			}
 		}
 
 		$(document).ready(function () { init() });
@@ -75,69 +138,138 @@
 	<div class='am-container'>
 		<ul class="am-nav am-nav-pills am-nav-pills am-nav-justify">
 
-			<li class="am-dropdown" data-am-dropdown>
-				<a class="am-dropdown-toggle am-btn-primary" data-am-dropdown-toggle href="javascript:;">
-            标准云产品 <span class="am-icon-caret-down"></span>
-        </a>
+		<li class="am-dropdown" data-am-dropdown>
+				<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">云产品
+					 <span class="am-icon-caret-down"> </span>
+       		 	</a>
 				<ul class="am-dropdown-content">
 					<li><a href="server1.html">云主机</a></li>
 					<li><a href="storage.html">云存储</a></li>
+					<li><a href="idc.html">IDC</a></li>
+				</ul>
+			</li>
+			<li class="am-dropdown" data-am-dropdown>
+				<a class="am-dropdown-toggle am-btn-primary" data-am-dropdown-toggle href="javascript:;">云应用
+					 <span class="am-icon-caret-down"> </span>
+       		 	</a>
+				<ul class="am-dropdown-content">
+					<li><a href="iwifi.html">爱Wifi</a></li>
+					<li><a href="view.html">云视频监控</a></li>
+					<li><a href="meeting.html">云视频会议</a></li>
 				</ul>
 			</li>
 			<li><a href="m2m.html">物联网</a></li>
-			<li><a href="idc.html">IDC</a></li>
 		</ul>
 	</div>
 
 
 	<div class="am-g am-g-fixed am-margin-top">
 		<div class="am-u-sm-12">
-			<h1>云存储价格计算器</h1>
+			<h1>爱Wifi报价计算器</h1>
 			<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
 		</div>
 	</div>
 
-	<div class="am-g am-g-fixed">
-		<div class="am-u-sm-12 am-cf">
-			<div class="am-input-group">
-				<span class="am-input-group-label" style="width:120px">存储容量</span>
-				<input type="number" class="am-form-field am-text-right" id="disk" min="1" step="1">
-				<span class="am-input-group-label">GB</span>
-			</div>
-		</div>
-	</div>
-	<div class="am-g am-g-fixed am-margin-top">
-		<div class="am-u-sm-8">
-			<div class="am-input-group">
-				<span class="am-input-group-label" style="width:120px">存储时长</span>
-				<input type="number" class="am-form-field am-text-right" id="len" min="1" value="1" step="1">
-			</div>
-		</div>
-		<div class="am-u-sm-4">
-			<select id="moy" data-am-selected="{btnWidth: '100%'}">
-					<option value="1">月</option>
-					<option value="12">年</option>
+
+	<div class="am-container">
+		<div class="am-input-group">
+			<span class="am-input-group-label" style="min-width:120px">设备类型</span>
+			<span class="am-input-group-btn" style="width: 100%;">
+				<select id="tv" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
+					<option value="24800" selected>一体式终端（适用于中小型会议）</option>
+					<option value="48000">单屏一体化设备（适用于中小型会议）</option>
+					<option value="39800">分体式终端（适用于大型会议）</option>
+					<option value="49800">双屏一体化设备（适用于大型会议）</option>
 				</select>
+			</span>
 		</div>
 	</div>
 
 	<div class="am-g am-g-fixed am-margin-top am-margin-bottom">
 		<div class="am-u-sm-12 am-cf">
 			<div class="am-input-group">
-				<span class="am-input-group-label" style="width:120px">下载流量</span>
-				<input type="number" class="am-form-field am-text-right" id="band" min="1" step="1">
-				<span class="am-input-group-label">GB</span>
+				<span class="am-input-group-label" style="width:120px">设备数</span>
+				<input type="number" class="am-form-field am-text-right" id="num" min="1" step="1">
+				<span class="am-input-group-label">个</span>
 			</div>
 		</div>
 	</div>
+	<div class="am-g am-g-fixed am-margin-top am-margin-bottom">
+		<div class="am-u-sm-12 am-cf">
+			<div class="am-input-group">
+				<span class="am-input-group-label" style="width:120px">移动端接入</span>
+				<input type="number" class="am-form-field am-text-right" id="mobile" min="1" step="1">
+				<span class="am-input-group-label">部</span>
+			</div>
+		</div>
 	</div>
 
-	<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
-		<div class="am-alert am-cf am-margin-0">
-			<span class='am-text-middle am-text-xl' id="price">0元</span>
-			<button type="button" class="am-btn am-btn-default am-fr" id='update'>计算</button>
+	<div class="am-g am-g-fixed am-margin-top">
+		<div class="am-u-sm-12 am-cf">
+			<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
+				<label class="am-btn am-btn-primary am-active" name="sail">
+								<input type="radio" value="1"> 一次性购买
+							</label>
+				<label class="am-btn am-btn-primary" name="sail">
+								<input type="radio" value="2"\> 二年协议
+							</label>
+				<label class="am-btn am-btn-primary" name="sail">
+								<input type="radio" value="3"\> 三年协议
+							</label>
+			</div>
+
 		</div>
-	</header>
+
+
+		<div class='am-container'>
+			<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+			<table id='table' class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+				<thead>
+					<tr>
+						<th class="am-text-middle">费用明细</th>
+						<th class="am-text-middle">单价</th>
+						<th class="am-text-middle">订购数</th>
+						<th class="am-text-middle">总计</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr>
+						<td class="am-text-middle">设备费</td>
+						<td class="am-text-middle" id="price1">0</td>
+						<td class="am-text-middle" rowspan="3" id="num1">0</td>
+						<td class="am-text-middle" id="price11">0</td>
+					</tr>
+
+					<tr>
+						<td class="am-text-middle">服务费</td>
+						<td class="am-text-middle" id="price2">0</td>
+						<td class="am-text-middle" id="price21">0</td>
+					</tr>
+					<tr>
+						<td class="am-text-middle">硬件费</td>
+						<td class="am-text-middle">398元/月</td>
+						<td class="am-text-middle" id="price31">0</td>
+					</tr>
+					<tr>
+						<td class="am-text-middle">软件费</td>
+						<td class="am-text-middle">50元/月</td>
+						<td class="am-text-middle" id="num2">0</td>
+						<td class="am-text-middle" id="price41">0</td>
+					</tr>
+					<tr>
+						<td colspan="4"><strong>注：以上报价为最低报价，请根据实际情况为用户报价；设备质保30个月，三年协议的服务费中包含10%的维保费用。</strong></td>
+					</tr>
+				</tbody>			
+			</table>
+		</div>
+
+
+		<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
+			<div class="am-alert am-cf am-margin-0">
+				<button type="button" class="am-btn am-btn-default am-fr" id='update'>计算</button>
+			</div>
+		</header>
 </body>
 
 </html>
