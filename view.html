@@ -61,7 +61,7 @@
 			var camera = parseInt($("#camera").val());
 			var disk = parseInt($("#disk").val());
 			var num = parseInt($("#num").val());
-			var month = parseInt($("#len").val()) * parseInt($("#moy").val());
+			var month = parseInt($("#year").val()) * 12;
 
 			var price = (camera + disk) * num * month;
 			if (camera == "30")
@@ -73,7 +73,9 @@
 			else
 				$("#camera1").text("高清球机");
 
-			if (disk == "10")
+			if (disk == "0")
+				$("#disk1").text("无存储");
+			else if (disk == "10")
 				$("#disk1").text("50G 云存储");
 			else if (disk == "20")
 				$("#disk1").text("100G 云存储");
@@ -84,14 +86,15 @@
 			else
 				$("#disk1").text("4T 盘式存储");
 
-			$("#price").text(price.toFixed(1) + "元");
+			$("#price").text(price.toFixed(2) + "元");
+			$("#month").text(month);
 
 			$("#num1").text(num);
 			$("#num2").text(num);
-			$("#price11").text(camera.toFixed(1));
-			$("#price12").text(num * camera.toFixed(1));
-			$("#price21").text(disk.toFixed(1));
-			$("#price22").text(num * disk.toFixed(1));
+			$("#price11").text(camera + "元/月");
+			$("#price12").text(num * camera.toFixed(1) + "元/月");
+			$("#price21").text(disk + "元/月");
+			$("#price22").text(num * disk.toFixed(1) + "元/月");
 		}
 
 		$(document).ready(function () { init() });
@@ -175,25 +178,23 @@
 						<option value="60">盘式存储 1T</option>
 						<option value="100">盘式存储 2T</option>
 						<option value="150">盘式存储 4T</option>
+						<option value="0">不购买存储</option>
 					</select>
 				</span>
 		</div>
 	</div>
-
-	<div class="am-g am-g-fixed am-margin-top">
-		<div class="am-u-sm-8">
-			<div class="am-input-group am-btn-group-justify">
-				<span class="am-input-group-label" style="width:120px">订购时长</span>
-				<input type="number" class="am-form-field am-text-right" id="len" min="1" value="1" step="1">
-			</div>
-		</div>
-		<div class="am-u-sm-4">
-			<select id="moy" data-am-selected="{btnWidth: '100%'}">
-					<option value="1">月</option>
-					<option value="12">年</option>
-				</select>
+	</br>
+	<div class="am-container">
+		<div class="am-input-group">
+			<span class="am-input-group-label" style="width:120px">订购时长</span>
+			<select id="year" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
+						<option value="2" selected>2</option>
+						<option value="3">3</option>
+			</select>
+			<span class="am-input-group-label">年</span>
 		</div>
 	</div>
+
 	<div class='am-container'>
 		<hr data-am-widget="divider" class="am-divider am-divider-default" />
 		<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered" id='table'>
@@ -210,15 +211,19 @@
 				<tr>
 					<td class="am-text-middle" id="camera1">监控设备</td>
 					<td class="am-text-middle" id="price11">0</td>
-					<td class="am-text-middle" id="num1">0</td>
+					<td class="am-text-middle" rowspan="2" id="num1">0</td>
 					<td class="am-text-middle" id="price12">0</td>
 				</tr>
 
 				<tr>
 					<td class="am-text-middle" id="disk1">存储服务</td>
 					<td class="am-text-middle" id="price21">0</td>
-					<td class="am-text-middle" id="num2">0</td>
 					<td class="am-text-middle" id="price22">0</td>
+				</tr>
+
+				<tr>
+					<td>订购月份</td>
+					<td colspan="3" id="month"></td>
 				</tr>
 				<tr>
 					<td>合计</td>

@@ -71,6 +71,7 @@
 				$("#price21").text(0 * num + "元/月");
 				$("#price31").text(num * 398 + "元/月");//功能费
 				$("#price41").text(mobile * 50 + "元/月");//终端费
+				$("#price").text("一次性费用" + tv * num + "元，月服务费" + (num * 398 + mobile * 50) + "元/月");//合计
 			}
 
 			else if (sail == "2") {
@@ -81,18 +82,22 @@
 				if (tv == 24800) {
 					$("#price2").text(1034 + "元/月");//服务费
 					$("#price21").text(1034 * num + "元/月");
+					$("#price").text("月服务费" + (num * (1034 + 398) + mobile * 50) + "元/月,2年合计" + (num * (1034 + 398) + mobile * 50) * 24 + "元");//合计
 				}
 				else if (tv == 48000) {
 					$("#price2").text(2000 + "元/月");//服务费
 					$("#price21").text(2000 * num + "元/月");
+					$("#price").text("月服务费" + (num * (2000 + 398) + mobile * 50) + "元/月,2年合计" + (num * (2000 + 398) + mobile * 50) * 24 + "元");//合计
 				}
 				else if (tv == 39800) {
 					$("#price2").text(1659 + "元/月");//服务费
 					$("#price21").text(1659 * num + "元/月");
+					$("#price").text("月服务费" + (num * (1659 + 398) + mobile * 50) + "元/月,2年合计" + (num * (1659 + 398) + mobile * 50) * 24 + "元");//合计
 				}
 				else {
 					$("#price2").text(2075 + "元/月");//服务费
 					$("#price21").text(2075 * num + "元/月");
+					$("#price").text("月服务费" + (num * (2075 + 398) + mobile * 50) + "元/月,2年合计" + (num * (2075 + 398) + mobile * 50) * 24 + "元");//合计
 				}
 				$("#price31").text(num * 398 + "元/月");//功能费
 				$("#price41").text(mobile * 50 + "元/月");//终端费
@@ -106,18 +111,22 @@
 				if (tv == 24800) {
 					$("#price2").text(758 + "元/月");//服务费
 					$("#price21").text(758 * num + "元/月");
+					$("#price").text("月服务费" + (num * (758 + 398) + mobile * 50) + "元/月,3年合计" + (num * (758 + 398) + mobile * 50) * 36 + "元");//合计
 				}
 				else if (tv == 48000) {
 					$("#price2").text(1467 + "元/月");//服务费
 					$("#price21").text(1467 * num + "元/月");
+					$("#price").text("月服务费" + (num * (1467 + 398) + mobile * 50) + "元/月,3年合计" + (num * (1467 + 398) + mobile * 50) * 36 + "元");//合计
 				}
 				else if (tv == 39800) {
 					$("#price2").text(1217 + "元/月");//服务费
 					$("#price21").text(1217 * num + "元/月");
+					$("#price").text("月服务费" + (num * (1217 + 398) + mobile * 50) + "元/月,3年合计" + (num * (1217 + 398) + mobile * 50) * 36 + "元");//合计
 				}
 				else {
 					$("#price2").text(1522 + "元/月");//服务费
 					$("#price21").text(1522 * num + "元/月");
+					$("#price").text("月服务费" + (num * (1522 + 398) + mobile * 50) + "元/月,3年合计" + (num * (1522 + 398) + mobile * 50) * 36 + "元");//合计
 				}
 				$("#price31").text(num * 398 + "元/月");//功能费
 				$("#price41").text(mobile * 50 + "元/月");//终端费
@@ -138,7 +147,7 @@
 	<div class='am-container'>
 		<ul class="am-nav am-nav-pills am-nav-pills am-nav-justify">
 
-		<li class="am-dropdown" data-am-dropdown>
+			<li class="am-dropdown" data-am-dropdown>
 				<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">云产品
 					 <span class="am-icon-caret-down"> </span>
        		 	</a>
@@ -177,8 +186,8 @@
 			<span class="am-input-group-btn" style="width: 100%;">
 				<select id="tv" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
 					<option value="24800" selected>一体式终端（适用于中小型会议）</option>
-					<option value="48000">单屏一体化设备（适用于中小型会议）</option>
-					<option value="39800">分体式终端（适用于大型会议）</option>
+					<option value="39800">单屏一体化设备（适用于中小型会议）</option>
+					<option value="48000">分体式终端（适用于大型会议）</option>
 					<option value="49800">双屏一体化设备（适用于大型会议）</option>
 				</select>
 			</span>
@@ -230,6 +239,7 @@
 						<th class="am-text-middle">单价</th>
 						<th class="am-text-middle">订购数</th>
 						<th class="am-text-middle">总计</th>
+						<th class="am-text-middle">支付方式</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -239,34 +249,39 @@
 						<td class="am-text-middle" id="price1">0</td>
 						<td class="am-text-middle" rowspan="3" id="num1">0</td>
 						<td class="am-text-middle" id="price11">0</td>
+						<td class="am-text-middle">一次性支付</td>
 					</tr>
 
 					<tr>
 						<td class="am-text-middle">服务费</td>
 						<td class="am-text-middle" id="price2">0</td>
 						<td class="am-text-middle" id="price21">0</td>
+						<td class="am-text-middle">按月支付</td>
 					</tr>
 					<tr>
 						<td class="am-text-middle">硬件费</td>
 						<td class="am-text-middle">398元/月</td>
 						<td class="am-text-middle" id="price31">0</td>
+						<td class="am-text-middle">按月支付</td>
 					</tr>
 					<tr>
 						<td class="am-text-middle">软件费</td>
 						<td class="am-text-middle">50元/月</td>
 						<td class="am-text-middle" id="num2">0</td>
 						<td class="am-text-middle" id="price41">0</td>
+						<td class="am-text-middle">按月支付</td>
 					</tr>
 					<tr>
-						<td colspan="4"><strong>注：以上报价为最低报价，请根据实际情况为用户报价；设备质保30个月，三年协议的服务费中包含10%的维保费用。</strong></td>
+						<td colspan="5" class="am-text-left"><strong>注：以上报价为最低报价，请根据实际情况为用户报价。</strong></td>
 					</tr>
-				</tbody>			
+				</tbody>
 			</table>
 		</div>
 
 
 		<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
 			<div class="am-alert am-cf am-margin-0">
+				<span class='am-text-middle am-text-xl' id="price"></span>
 				<button type="button" class="am-btn am-btn-default am-fr" id='update'>计算</button>
 			</div>
 		</header>
