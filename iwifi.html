@@ -52,77 +52,90 @@
 
 	<script>
 		function init() {
-			$("#update").click(function () { update() });
+			$('#table1').hide();
+			$('#table2').hide();
+			$("#count1").click(function () { count1() });
+			$("#count2").click(function () { count2() });
 		}
 
-		function update() {
-			$('#table').show();
-			var tv = parseInt($("#tv").val());
-			var mobile = parseInt($("#mobile").val());
-			var num = parseInt($("#num").val());
-			var sail = parseInt($('[name="sail"]').filter('.am-active').children().val());
-			if (sail == "1") {
-				$("#num1").text(num);
-				$("#num2").text(mobile);
-				$("#price1").text(tv + "元");//设备费
-				$("#price11").text(tv * num + "元");
-				$("#price2").text(0 + "元/月");//服务费
-				$("#price21").text(0 * num + "元/月");
-				$("#price31").text(num * 398 + "元/月");//功能费
-				$("#price41").text(mobile * 50 + "元/月");//终端费
-			}
+		function count1() { //室内
+			$('#table1').show();
+			var ap1 = parseInt($("#ap1").val());
+			var num1 = parseInt($("#num1").val());
+			var elec = parseInt($('[name="elec"]').filter('.am-active').children().val());
 
-			else if (sail == "2") {
-				$("#num1").text(num);
-				$("#num2").text(mobile);
-				$("#price1").text(0 + "元");//设备费
-				$("#price11").text(0 * num + "元");
-				if (tv == 24800) {
-					$("#price2").text(1034 + "元/月");//服务费
-					$("#price21").text(1034 * num + "元/月");
+			$("#price1").text(ap1 + "元");//设备费
+			$("#num11").text(num1);
+			$("#price11").text(ap1 * num1 + "元");
+
+			if (elec == "1") {
+				if (num1 <= 8) {
+					$("#num12").text(1);
+					$("#price2").text("2855元");//1个8口交换机
+					$("#price21").text("2855元");
+					$("#price31").text("0元");//供电模块
+					$("#price4").text((num1 * 200 + 200) + "元");//施工费
+					$("#pricesn").text((ap1 * num1 + 2855 + num1 * 200 + 200) + "元");//合计
 				}
-				else if (tv == 48000) {
-					$("#price2").text(2000 + "元/月");//服务费
-					$("#price21").text(2000 * num + "元/月");
-				}
-				else if (tv == 39800) {
-					$("#price2").text(1659 + "元/月");//服务费
-					$("#price21").text(1659 * num + "元/月");
+				else if (num1 > 8 && num1 <= 24) {
+					$("#num12").text(1);
+					$("#price2").text("5051元");//1个24口交换机
+					$("#price21").text("5051元");
+					$("#price31").text("0元");//供电模块
+					$("#price4").text((num1 * 200 + 200) + "元");//施工费
+					$("#pricesn").text((ap1 * num1 + 5051 + num1 * 200 + 200) + "元");//合计
 				}
 				else {
-					$("#price2").text(2075 + "元/月");//服务费
-					$("#price21").text(2075 * num + "元/月");
+					var num24 = parseInt(num1 / 24 + 1)
+					$("#num12").text(num24);
+					$("#price2").text("5051元");//1个24口交换机
+					$("#price21").text(num24 * 5051 + "元");
+					$("#price31").text("0元");//供电模块
+					$("#price4").text((num1 * 200 + 200 * num24) + "元");//施工费
+					$("#pricesn").text((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) + "元");//合计
 				}
-				$("#price31").text(num * 398 + "元/月");//功能费
-				$("#price41").text(mobile * 50 + "元/月");//终端费
 			}
 
-			else if (sail == "3") {
-				$("#num1").text(num);
-				$("#num2").text(mobile);
-				$("#price1").text(0 + "元");//设备费
-				$("#price11").text(0 * num + "元");
-				if (tv == 24800) {
-					$("#price2").text(758 + "元/月");//服务费
-					$("#price21").text(758 * num + "元/月");
-				}
-				else if (tv == 48000) {
-					$("#price2").text(1467 + "元/月");//服务费
-					$("#price21").text(1467 * num + "元/月");
-				}
-				else if (tv == 39800) {
-					$("#price2").text(1217 + "元/月");//服务费
-					$("#price21").text(1217 * num + "元/月");
-				}
-				else {
-					$("#price2").text(1522 + "元/月");//服务费
-					$("#price21").text(1522 * num + "元/月");
-				}
-				$("#price31").text(num * 398 + "元/月");//功能费
-				$("#price41").text(mobile * 50 + "元/月");//终端费
+			else if (elec == "2") {
+				$("#num12").text(0);
+				$("#num13").text(num1);
+				$("#price2").text("——");//1个24口交换机
+				$("#price21").text("0元");
+				$("#price31").text(119 * num1 + "元");//供电模块
+				$("#price4").text(num1 * 200 + "元");//施工费
+				$("#pricesn").text((ap1 * num1 + 119 * num1 + num1 * 200) + "元");//合计
 			}
+
 		}
 
+		function count2() { //室外
+			$('#table2').show();
+			var ap2 = parseInt($("#ap2").val());
+			var num2 = parseInt($("#num2").val());
+			var tx = parseInt($('[name="tx"]').filter('.am-active').children().val());
+
+			$("#price12").text(ap2 + "元");//设备费
+			$("#num122").text(num2);
+			$("#price112").text(ap2 * num2 + "元");
+
+			$("#num22").text(num2);//安装套件
+			$("#price212").text(num2 * 39 + "元");
+
+			$("#num32").text(num2);//配线
+			$("#price312").text(num2 * 390 + "元");
+
+			$("#num42").text(num2);//供电模块
+			$("#price412").text(num2 * 645 + "元");
+
+			$("#num52").text(num2);//施工费
+			$("#price512").text(num2 * 500 + "元");
+
+			$("#price62").text(tx + "元");//天线
+			$("#num62").text(num2);
+			$("#price612").text(num2 * tx + "元");
+
+			$("#pricesw").text((num2 * (ap2 + 39 + 390 + 645 + 500 + tx) + "元"));
+		}
 		$(document).ready(function () { init() });
 	</script>
 </head>
@@ -169,119 +182,192 @@
 		</div>
 	</div>
 
-	<div class="am-g am-g-fixed">
-		<div class="am-u-sm-12 am-cf">
-			<div class="am-panel am-panel-default">
-				<div class="am-panel-hd">基本信息</div>
-				<div class="am-panel-bd">
-					<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
-						<label class="am-btn am-btn-primary am-active" name="place">
-								<input type="radio" value="1"> 室内场所 
-							</label>
-						<label class="am-btn am-btn-primary" name="disk">
-								<input type="radio" value="2"> 室外场所
-							</label>
-					</div>
-					<div class="am-input-group  am-margin-top">
-						<span class="am-input-group-label" style="width:118px">覆盖范围</span>
-						<input type="number" class="am-form-field am-text-right" id="square" min="1">
-						<span class="am-input-group-label">㎡</span>
-					</div>
-					<div class="am-input-group  am-margin-top">
-						<span class="am-input-group-label" style="width:118px">在线人数</span>
-						<input type="number" class="am-form-field am-text-right" id="people" min="1" step="1">
-						<span class="am-input-group-label">人</span>
-					</div>
+	<div class='am-container'>
+		<div class="am-tabs" data-am-tabs>
+			<ul class="am-tabs-nav am-nav am-nav-tabs">
+				<li class="am-active"><a href="#tab1">室内</a></li>
+				<li><a href="#tab2">室外</a></li>
+			</ul>
 
-					<div class="am-alert am-cf ">
-						<button type="button" class="am-btn am-btn-default am-fr" id='recommend'>推荐配置</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<div class="am-g am-g-fixed">
-		<div class="am-u-sm-12 am-cf">
-			<div class="am-panel am-panel-default">
-				<div class="am-panel-hd">配置选取</div>
-				<div class="am-panel-bd">
-					<div class="am-input-group">
+			<div class="am-tabs-bd">
+				<div class="am-tab-panel am-fade am-in am-active" id="tab1">
+					<div class="am-input-group am-margin-top">
 						<span class="am-input-group-label" style="min-width:120px">设备类型</span>
 						<span class="am-input-group-btn" style="width: 100%;">
-							<select id="ap" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
+							<select id="ap1" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
 								<option value="282" selected>室内小型AP</option>
-								<option value="923">室内中小型AP（吸顶型）</option>
-								<option value="975">室内中小型AP（放装型）</option>
-								<option value="1890">室外大型AP</option>
-							</select></span>
-					</div>
-
-					<div class="am-input-group  am-margin-top">
-						<span class="am-input-group-label" style="width:118px">AP点位</span>
-						<input type="number" class="am-form-field am-text-right" id="apnum" min="1" max="2048" placeholder="1-2048" step="1">
-						<span class="am-input-group-label">㎡</span>
-					</div>
-
-					<div class="am-input-group am-margin-top">
-						<span class="am-input-group-label" style="min-width:120px">天线</span>
-						<span class="am-input-group-btn" style="width: 100%;">
-								<select id="line" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
-									<option value="903" selected>全向天线（圆形区域）</option>
-									<option value="1337">定向天线（扇形区域）</option>
-									<option value="0">无天线（室内）</option>
-								</select>
+								<option value="923">室内中小型AP</option>
+							</select>
 						</span>
 					</div>
-
-					<div class="am-alert am-cf ">
-						<button type="button" class="am-btn am-btn-default am-fr" id='submit'>确认配置</button>
+					<div class="am-g am-g-fixed am-margin-top am-margin-bottom">
+						<div class="am-input-group">
+							<span class="am-input-group-label" style="width:120px">设备数</span>
+							<input type="number" class="am-form-field am-text-right" id="num1" min="1" step="1">
+							<span class="am-input-group-label">个</span>
+						</div>
 					</div>
+
+					<div class="am-panel am-panel-default">
+						<div class="am-panel-hd">辅材选取</div>
+						<div class="am-panel-bd">
+							<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
+								<label class="am-btn am-btn-primary am-active" name="elec">
+								<input type="radio" value="1"> 交换机 
+							</label>
+								<label class="am-btn am-btn-primary" name="elec">
+								<input type="radio" value="2">供电模块
+							</label>
+							</div>
+
+						</div>
+					</div>
+					<div class="am-alert am-cf ">
+						<button type="button" class="am-btn am-btn-default am-fr" id='count1'>价格计算</button>
+					</div>
+
+					<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+					<table id='table1' class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+						<thead>
+							<tr>
+								<th class="am-text-middle">费用明细</th>
+								<th class="am-text-middle">单价</th>
+								<th class="am-text-middle">订购数</th>
+								<th class="am-text-middle">总计</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr>
+								<td class="am-text-middle">AP</td>
+								<td class="am-text-middle" id="price1">0</td>
+								<td class="am-text-middle" id="num11">0</td>
+								<td class="am-text-middle" id="price11">0</td>
+							</tr>
+
+							<tr>
+								<td class="am-text-middle">交换机</td>
+								<td class="am-text-middle" id="price2">0</td>
+								<td class="am-text-middle" id="num12">0</td>
+								<td class="am-text-middle" id="price21">0</td>
+							</tr>
+							<tr>
+								<td class="am-text-middle">供电模块</td>
+								<td class="am-text-middle">119元</td>
+								<td class="am-text-middle" id="num13">0</td>
+								<td class="am-text-middle" id="price31">0</td>
+							</tr>
+							<tr>
+								<td class="am-text-middle">施工费用</td>
+								<td class="am-text-middle" colspan="2">————</td>
+								<td class="am-text-middle" id="price4">0</td>
+							</tr>
+							<tr>
+								<td>合计</td>
+								<td colspan="3" id="pricesn"></td>
+							</tr>
+						</tbody>
+					</table>
+
+
+
+
+				</div>
+				<div class="am-tab-panel am-fade" id="tab2">
+					<div class="am-input-group am-margin-top">
+						<span class="am-input-group-label" style="min-width:120px">设备类型</span>
+						<span class="am-input-group-btn" style="width: 100%;">
+							<select id="ap2" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
+								<option value="1890" selected>室内大型AP</option>
+							</select>
+						</span>
+					</div>
+					<div class="am-g am-g-fixed am-margin-top am-margin-bottom">
+						<div class="am-input-group">
+							<span class="am-input-group-label" style="width:120px">设备数</span>
+							<input type="number" class="am-form-field am-text-right" id="num2" min="1" step="1">
+							<span class="am-input-group-label">个</span>
+						</div>
+					</div>
+
+					<div class="am-panel am-panel-default">
+						<div class="am-panel-hd">辅材选取</div>
+						<div class="am-panel-bd">
+							<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
+								<label class="am-btn am-btn-primary am-active" name="tx">
+								<input type="radio" value="903"> 全向天线 
+							</label>
+								<label class="am-btn am-btn-primary" name="tx">
+								<input type="radio" value="1337">定向天线
+							</label>
+							</div>
+
+						</div>
+					</div>
+					<div class="am-alert am-cf ">
+						<button type="button" class="am-btn am-btn-default am-fr" id='count2'>价格计算</button>
+					</div>
+					<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+					<table id='table2' class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+						<thead>
+							<tr>
+								<th class="am-text-middle">费用明细</th>
+								<th class="am-text-middle">单价</th>
+								<th class="am-text-middle">订购数</th>
+								<th class="am-text-middle">总计</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr>
+								<td class="am-text-middle">AP</td>
+								<td class="am-text-middle" id="price12">0</td>
+								<td class="am-text-middle" id="num122">0</td>
+								<td class="am-text-middle" id="price112">0</td>
+							</tr>
+
+							<tr>
+								<td class="am-text-middle">安装套件</td>
+								<td class="am-text-middle">39元</td>
+								<td class="am-text-middle" id="num22">0</td>
+								<td class="am-text-middle" id="price212">0</td>
+							</tr>
+							<tr>
+								<td class="am-text-middle">配线</td>
+								<td class="am-text-middle">390元</td>
+								<td class="am-text-middle" id="num32">0</td>
+								<td class="am-text-middle" id="price312">0</td>
+							</tr>
+							<tr>
+								<td class="am-text-middle">天线</td>
+								<td class="am-text-middle" id="price62">0元</td>
+								<td class="am-text-middle" id="num62">0</td>
+								<td class="am-text-middle" id="price612">0</td>
+							</tr>
+							<tr>
+								<td class="am-text-middle">供电模块</td>
+								<td class="am-text-middle">645元</td>
+								<td class="am-text-middle" id="num42">0</td>
+								<td class="am-text-middle" id="price412">0</td>
+							</tr>
+							<tr>
+								<td class="am-text-middle">施工费用</td>
+								<td class="am-text-middle">500元</td>
+								<td class="am-text-middle" id="num52">0</td>
+								<td class="am-text-middle" id="price512">0</td>
+							</tr>
+							<tr>
+								<td>合计</td>
+								<td colspan="3" id="pricesw"></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
 	</div>
 
-
-	<div class='am-container'>
-		<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
-		<table id='table' class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
-			<thead>
-				<tr>
-					<th class="am-text-middle">费用明细</th>
-					<th class="am-text-middle">单价</th>
-					<th class="am-text-middle">订购数</th>
-					<th class="am-text-middle">总计</th>
-				</tr>
-			</thead>
-			<tbody>
-
-				<tr>
-					<td class="am-text-middle">AP</td>
-					<td class="am-text-middle" id="price1">0</td>
-					<td class="am-text-middle" rowspan="3" id="num1">0</td>
-					<td class="am-text-middle" id="price11">0</td>
-				</tr>
-
-				<tr>
-					<td class="am-text-middle">交换机</td>
-					<td class="am-text-middle" id="price2">0</td>
-					<td class="am-text-middle" id="price21">0</td>
-				</tr>
-				<tr>
-					<td class="am-text-middle">供电模块</td>
-					<td class="am-text-middle">398元/月</td>
-					<td class="am-text-middle" id="price31">0</td>
-				</tr>
-				<tr>
-					<td class="am-text-middle">施工费用</td>
-					<td class="am-text-middle">50元/月</td>
-					<td class="am-text-middle" id="num2">0</td>
-					<td class="am-text-middle" id="price41">0</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
 
 </body>
 
