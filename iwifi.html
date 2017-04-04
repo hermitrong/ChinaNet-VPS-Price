@@ -66,9 +66,10 @@
 			var num2 = parseInt($("#num2").val());
 			var tx = parseInt($('[name="tx"]').filter('.am-active').children().val());
 
+
 			if (elec == "1") {
 				if (num1 == 0) {
-					$("#price").text(0 + "元");//合计
+					$("#price").text(num2 * (ap2 + 39 + 390 + 645 + 500 + tx)+ "元");//合计
 				}
 				else if (num1 > 0 && num1 <= 8) {
 					$("#price").text((ap1 * num1 + 2855 + num1 * 200 + 200 + num2 * (ap2 + 39 + 390 + 645 + 500 + tx)) + "元");//合计
@@ -76,18 +77,20 @@
 				else if (num1 > 8 && num1 <= 24) {
 					$("#price").text((ap1 * num1 + 5051 + num1 * 200 + 200 + num2 * (ap2 + 39 + 390 + 645 + 500 + tx)) + "元");//合计
 				}
-
 				else {
-					var num24 = parseInt(num1 / 24 + 1)
-					$("#price").text((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24 + num2 * (ap2 + 39 + 390 + 645 + 500 + tx)) + "元");//合计
+					if (num1 % 24 == 0) {
+						var num24 = parseInt(num1 / 24)
+						$("#price").text((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24 + num2 * (ap2 + 39 + 390 + 645 + 500 + tx)) + "元");//合计
+					}
+					else {
+						var num24 = parseInt(num1 / 24 + 1)
+						$("#price").text((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24 + num2 * (ap2 + 39 + 390 + 645 + 500 + tx)) + "元");//合计
+					}
 				}
 			}
-
 			else if (elec == "2") {
 				$("#price").text((ap1 * num1 + 119 * num1 + num1 * 200 + num2 * (ap2 + 39 + 390 + 645 + 500 + tx)) + "元");//合计
 			}
-
-
 		}
 
 		function count1() { //室内
@@ -127,13 +130,24 @@
 				}
 
 				else {
-					var num24 = parseInt(num1 / 24 + 1)
-					$("#num12").text(num24);
-					$("#price2").text("5051元");//1个24口交换机
-					$("#price21").text(num24 * 5051 + "元");
-					$("#price31").text("0元");//供电模块
-					$("#price4").text((num1 * 200 + 200 * num24) + "元");//施工费
-					$("#pricesn").text((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) + "元");//合计
+					if (num1 % 24 == 0) {
+						var num24 = parseInt(num1 / 24)
+						$("#num12").text(num24);
+						$("#price2").text("5051元");//1个24口交换机
+						$("#price21").text(num24 * 5051 + "元");
+						$("#price31").text("0元");//供电模块
+						$("#price4").text((num1 * 200 + 200 * num24) + "元");//施工费
+						$("#pricesn").text((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) + "元");//合计
+					}
+					else {
+						var num24 = parseInt(num1 / 24 + 1)
+						$("#num12").text(num24);
+						$("#price2").text("5051元");//1个24口交换机
+						$("#price21").text(num24 * 5051 + "元");
+						$("#price31").text("0元");//供电模块
+						$("#price4").text((num1 * 200 + 200 * num24) + "元");//施工费
+						$("#pricesn").text((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) + "元");//合计
+					}
 				}
 			}
 
