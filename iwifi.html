@@ -69,7 +69,7 @@
 
 			if (elec == "1") {
 				if (num1 == 0) {
-					$("#price").text(num2 * (ap2 + 39 + 390 + 645 + 500 + tx)+ "元");//合计
+					$("#price").text(num2 * (ap2 + 39 + 390 + 645 + 500 + tx) + "元");//合计
 				}
 				else if (num1 > 0 && num1 <= 8) {
 					$("#price").text((ap1 * num1 + 2855 + num1 * 200 + 200 + num2 * (ap2 + 39 + 390 + 645 + 500 + tx)) + "元");//合计
@@ -112,6 +112,9 @@
 					$("#price31").text("0元");//供电模块
 					$("#price4").text(0 + "元");//施工费
 					$("#pricesn").text(0 + "元");//合计
+					$("#pricesn1").text(0 + "元/月");//合计
+					$("#pricesn2").text(0 + "元/月");//合计
+					$("#pricesn3").text(0 + "元/月");//合计
 				}
 				else if (num1 > 0 && num1 <= 8) {
 					$("#num12").text(1);
@@ -121,6 +124,12 @@
 					$("#price31").text("0元");//供电模块
 					$("#price4").text((num1 * 200 + 200) + "元");//施工费
 					$("#pricesn").text((ap1 * num1 + 2855 + num1 * 200 + 200) + "元");//合计
+					var pricesn1 = ((ap1 * num1 + 2855 + num1 * 200 + 200) / 12).toFixed(2);
+					var pricesn2 = ((ap1 * num1 + 2855 + num1 * 200 + 200) / 24).toFixed(2);
+					var pricesn3 = ((ap1 * num1 + 2855 + num1 * 200 + 200) / 36).toFixed(2);
+					$("#pricesn1").text(pricesn1 + "元/月");//一年协议
+					$("#pricesn2").text(pricesn2 + "元/月");//二年协议
+					$("#pricesn3").text(pricesn3 + "元/月");//三年协议
 				}
 				else if (num1 > 8 && num1 <= 24) {
 					$("#num12").text(1);
@@ -130,6 +139,12 @@
 					$("#price31").text("0元");//供电模块
 					$("#price4").text((num1 * 200 + 200) + "元");//施工费
 					$("#pricesn").text((ap1 * num1 + 5051 + num1 * 200 + 200) + "元");//合计
+					var pricesn1 = ((ap1 * num1 + 5051 + num1 * 200 + 200) / 12).toFixed(2);
+					var pricesn2 = ((ap1 * num1 + 5051 + num1 * 200 + 200) / 24).toFixed(2);
+					var pricesn3 = ((ap1 * num1 + 5051 + num1 * 200 + 200) / 36).toFixed(2);
+					$("#pricesn1").text(pricesn1 + "元/月");//一年协议
+					$("#pricesn2").text(pricesn2 + "元/月");//二年协议
+					$("#pricesn3").text(pricesn3 + "元/月");//三年协议
 				}
 
 				else {
@@ -142,6 +157,12 @@
 						$("#price31").text("0元");//供电模块
 						$("#price4").text((num1 * 200 + 200 * num24) + "元");//施工费
 						$("#pricesn").text((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) + "元");//合计
+						var pricesn1 = ((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) / 12).toFixed(2);
+						var pricesn2 = ((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) / 24).toFixed(2);
+						var pricesn3 = ((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) / 36).toFixed(2);
+						$("#pricesn1").text(pricesn1 + "元/月");//一年协议
+						$("#pricesn2").text(pricesn2 + "元/月");//二年协议
+						$("#pricesn3").text(pricesn3 + "元/月");//三年协议
 					}
 					else {
 						var num24 = parseInt(num1 / 24 + 1)
@@ -152,6 +173,12 @@
 						$("#price31").text("0元");//供电模块
 						$("#price4").text((num1 * 200 + 200 * num24) + "元");//施工费
 						$("#pricesn").text((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) + "元");//合计
+						var pricesn1 = ((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) / 12).toFixed(2);
+						var pricesn2 = ((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) / 24).toFixed(2);
+						var pricesn3 = ((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) / 36).toFixed(2);
+						$("#pricesn1").text(pricesn1 + "元/月");//一年协议
+						$("#pricesn2").text(pricesn2 + "元/月");//二年协议
+						$("#pricesn3").text(pricesn3 + "元/月");//三年协议
 					}
 				}
 			}
@@ -164,6 +191,13 @@
 				$("#price31").text(119 * num1 + "元");//供电模块
 				$("#price4").text(num1 * 200 + "元");//施工费
 				$("#pricesn").text((ap1 * num1 + 119 * num1 + num1 * 200) + "元");//合计
+
+				var pricesn1 = ((ap1 * num1 + 119 * num1 + num1 * 200) / 12).toFixed(2);
+				var pricesn2 = ((ap1 * num1 + 119 * num1 + num1 * 200) / 24).toFixed(2);
+				var pricesn3 = ((ap1 * num1 + 119 * num1 + num1 * 200) / 36).toFixed(2);
+				$("#pricesn1").text(pricesn1 + "元/月");//一年协议
+				$("#pricesn2").text(pricesn2 + "元/月");//二年协议
+				$("#pricesn3").text(pricesn3 + "元/月");//三年协议
 			}
 
 		}
@@ -195,6 +229,14 @@
 			$("#price612").text(num2 * tx + "元");
 
 			$("#pricesw").text((num2 * (ap2 + 39 + 390 + 645 + 500 + tx) + "元"));
+
+				var pricesw1 = ((num2 * (ap2 + 39 + 390 + 645 + 500 + tx)) / 12).toFixed(2);
+				var pricesw2 = ((num2 * (ap2 + 39 + 390 + 645 + 500 + tx)) /24).toFixed(2);
+				var pricesw3 = ((num2 * (ap2 + 39 + 390 + 645 + 500 + tx)) / 36).toFixed(2);
+				$("#pricesw1").text(pricesw1 + "元/月");//一年协议
+				$("#pricesw2").text(pricesw2 + "元/月");//二年协议
+				$("#pricesw3").text(pricesw3 + "元/月");//三年协议
+
 		}
 		$(document).ready(function () { init() });
 	</script>
@@ -247,6 +289,7 @@
 			<ul class="am-tabs-nav am-nav am-nav-tabs">
 				<li class="am-active"><a href="#tab1">室内</a></li>
 				<li><a href="#tab2">室外</a></li>
+				<li><a href="#tab3">应用场景介绍</a></li>
 			</ul>
 
 
@@ -322,8 +365,20 @@
 								<td class="am-text-middle" id="price4">0</td>
 							</tr>
 							<tr>
-								<td>合计</td>
-								<td colspan="3" id="pricesn"></td>
+								<th>一次性购买</th>
+								<th colspan="3" id="pricesn"></th>
+							</tr>
+							<tr>
+								<th>一年协议</th>
+								<th colspan="3" id="pricesn1"></th>
+							</tr>
+							<tr>
+								<th>二年协议</th>
+								<th colspan="3" id="pricesn2"></th>
+							</tr>
+							<tr>
+								<th>三年协议</th>
+								<th colspan="3" id="pricesn3"></th>
 							</tr>
 						</tbody>
 					</table>
@@ -413,18 +468,68 @@
 								<td class="am-text-middle" id="num52">0</td>
 								<td class="am-text-middle" id="price512">0</td>
 							</tr>
+					<tr>
+								<th>一次性购买</th>
+								<th colspan="3" id="pricesw"></th>
+							</tr>
 							<tr>
-								<td>合计</td>
-								<td colspan="3" id="pricesw"></td>
+								<th>一年协议</th>
+								<th colspan="3" id="pricesw1"></th>
+							</tr>
+							<tr>
+								<th>二年协议</th>
+								<th colspan="3" id="pricesw2"></th>
+							</tr>
+							<tr>
+								<th>三年协议</th>
+								<th colspan="3" id="pricesw3"></th>
 							</tr>
 						</tbody>
 					</table>
 
 
 				</div>
+				<div class="am-tabs-bd">
+					<div class="am-tab-panel am-fade am-in am-active" id="tab3">
+						<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+							<thead>
+								<tr>
+									<th class="am-text-middle" rowspan="2">设备类型</th>
+									<th class="am-text-middle" colspan="3">适用场景</th>
+								</tr>
+								<tr>
+									<th class="am-text-middle">场所</th>
+									<th class="am-text-middle">覆盖范围</th>
+									<th class="am-text-middle">同时在线人数</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="am-text-middle">室内小型AP</td>
+									<td class="am-text-middle">室内小型场所</td>
+									<td class="am-text-middle">20-25㎡</td>
+									<td class="am-text-middle">20-30人</td>
+								</tr>
+								<tr>
+									<td class="am-text-middle">室内大中型AP</td>
+									<td class="am-text-middle">室内大中型场所</td>
+									<td class="am-text-middle">半径10m或间隔15m</td>
+									<td class="am-text-middle">30-40人</td>
+								</tr>
+								<tr>
+									<td class="am-text-middle">室外大型AP</td>
+									<td class="am-text-middle">室外场所</td>
+									<td class="am-text-middle">半径50m-200m</td>
+									<td class="am-text-middle">20-40人</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+
 	<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
 		<div class="am-alert am-cf am-margin-0">
 			<span class='am-text-middle am-text-xl' id="price">0元</span>
