@@ -143,7 +143,7 @@
 							var pdiscount1 = 0.45;
 					}
 					discounts = discount1 - discount2 - discount3;
-					$("#discount").text("集团审批折扣" + (discounts * 10).toFixed(1)+ "折");
+					$("#discount").text("集团审批折扣" + (discounts * 10).toFixed(1) + "折");
 				}
 
 			}
@@ -166,14 +166,26 @@
 	<div class='am-container'>
 		<ul class="am-nav am-nav-pills am-nav-pills am-nav-justify">
 			<li class="am-dropdown" data-am-dropdown>
-				<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;"> 标准云产品 <span class="am-icon-caret-down"></span></a>
+				<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">云产品
+					 <span class="am-icon-caret-down"> </span>
+       		 	</a>
 				<ul class="am-dropdown-content">
 					<li><a href="server1.html">云主机</a></li>
 					<li><a href="storage.html">云存储</a></li>
+					<li><a href="idc.html">IDC</a></li>
 				</ul>
 			</li>
-			<li class="am-active"><a href="m2m.html">物联网</a></li>
-			<li><a href="idc.html">IDC</a></li>
+			<li class="am-dropdown" data-am-dropdown>
+				<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">云应用
+					 <span class="am-icon-caret-down"> </span>
+       		 	</a>
+				<ul class="am-dropdown-content">
+					<li><a href="iwifi.html">爱Wifi</a></li>
+					<li><a href="view.html">云视频监控</a></li>
+					<li><a href="meeting.html">云视频会议</a></li>
+				</ul>
+			</li>
+			<li><a class="am-dropdown-toggle am-btn-primary" href="m2m.html">物联网</a></li>
 		</ul>
 	</div>
 
