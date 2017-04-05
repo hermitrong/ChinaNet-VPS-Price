@@ -106,6 +106,7 @@
 			if (elec == "1") {
 				if (num1 == 0) {
 					$("#num12").text(0);
+					$("#num13").text(0);
 					$("#price2").text("2855元");//1个8口交换机
 					$("#price21").text("0元");
 					$("#price31").text("0元");//供电模块
@@ -114,6 +115,7 @@
 				}
 				else if (num1 > 0 && num1 <= 8) {
 					$("#num12").text(1);
+					$("#num13").text(0);
 					$("#price2").text("2855元");//1个8口交换机
 					$("#price21").text("2855元");
 					$("#price31").text("0元");//供电模块
@@ -122,6 +124,7 @@
 				}
 				else if (num1 > 8 && num1 <= 24) {
 					$("#num12").text(1);
+					$("#num13").text(0);
 					$("#price2").text("5051元");//1个24口交换机
 					$("#price21").text("5051元");
 					$("#price31").text("0元");//供电模块
@@ -133,6 +136,7 @@
 					if (num1 % 24 == 0) {
 						var num24 = parseInt(num1 / 24)
 						$("#num12").text(num24);
+						$("#num13").text(0);
 						$("#price2").text("5051元");//1个24口交换机
 						$("#price21").text(num24 * 5051 + "元");
 						$("#price31").text("0元");//供电模块
@@ -142,6 +146,7 @@
 					else {
 						var num24 = parseInt(num1 / 24 + 1)
 						$("#num12").text(num24);
+						$("#num13").text(0);
 						$("#price2").text("5051元");//1个24口交换机
 						$("#price21").text(num24 * 5051 + "元");
 						$("#price31").text("0元");//供电模块
@@ -232,7 +237,7 @@
 
 	<div class="am-g am-g-fixed am-margin-top">
 		<div class="am-u-sm-12">
-			<h1>爱Wifi报价计算器</h1>
+			<h1>爱Wifi（项目型）报价计算器</h1>
 			<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
 		</div>
 	</div>
@@ -252,7 +257,7 @@
 						<span class="am-input-group-btn" style="width: 100%;">
 							<select id="ap1" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
 								<option value="282" selected>室内小型AP</option>
-								<option value="923">室内中小型AP</option>
+								<option value="923">室内大中型AP</option>
 							</select>
 						</span>
 					</div>
@@ -423,7 +428,7 @@
 	<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
 		<div class="am-alert am-cf am-margin-0">
 			<span class='am-text-middle am-text-xl' id="price">0元</span>
-			<button type="button" class="am-btn am-btn-default am-fr" id='update'>费用计算</button>
+			<button type="button" class="am-btn am-btn-default am-fr" id='update'>费用计算（室内+室外）</button>
 		</div>
 	</header>
 
