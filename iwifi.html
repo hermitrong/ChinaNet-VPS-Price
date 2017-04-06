@@ -288,39 +288,52 @@
 	</div>
 
 	<div class='am-container'>
-		<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
-			<thead>
-				<tr>
-					<th class="am-text-middle" rowspan="2">设备类型</th>
-					<th class="am-text-middle" colspan="3">适用场景</th>
-				</tr>
-				<tr>
-					<th class="am-text-middle">场所</th>
-					<th class="am-text-middle">覆盖范围</th>
-					<th class="am-text-middle">同时在线人数</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="am-text-middle">室内小型AP</td>
-					<td class="am-text-middle">室内小型场所</td>
-					<td class="am-text-middle">20-25㎡</td>
-					<td class="am-text-middle">20-30人</td>
-				</tr>
-				<tr>
-					<td class="am-text-middle">室内大中型AP</td>
-					<td class="am-text-middle">室内大中型场所</td>
-					<td class="am-text-middle">半径10m或间隔15m</td>
-					<td class="am-text-middle">30-40人</td>
-				</tr>
-				<tr>
-					<td class="am-text-middle">室外大型AP</td>
-					<td class="am-text-middle">室外场所</td>
-					<td class="am-text-middle">半径50m-200m</td>
-					<td class="am-text-middle">20-40人</td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="am-panel-group" id="accordion">
+			<div class="am-panel am-panel-default">
+				<div class="am-panel-hd">
+					<h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#scene'}">
+						适用场景说明
+					</h4>
+				</div>
+				<div id="scene" class="am-panel-collapse am-collapse">
+					<div class="am-panel-bd">
+						<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+							<thead>
+								<tr>
+									<th class="am-text-middle" rowspan="2">设备类型</th>
+									<th class="am-text-middle" colspan="3">适用场景</th>
+								</tr>
+								<tr>
+									<th class="am-text-middle">场所</th>
+									<th class="am-text-middle">覆盖范围</th>
+									<th class="am-text-middle">同时在线人数</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="am-text-middle">室内小型AP</td>
+									<td class="am-text-middle">室内小型场所</td>
+									<td class="am-text-middle">20-25㎡</td>
+									<td class="am-text-middle">20-30人</td>
+								</tr>
+								<tr>
+									<td class="am-text-middle">室内大中型AP</td>
+									<td class="am-text-middle">室内大中型场所</td>
+									<td class="am-text-middle">半径10m或间隔15m</td>
+									<td class="am-text-middle">30-40人</td>
+								</tr>
+								<tr>
+									<td class="am-text-middle">室外大型AP</td>
+									<td class="am-text-middle">室外场所</td>
+									<td class="am-text-middle">半径50m-200m</td>
+									<td class="am-text-middle">20-40人</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div class="am-tabs" data-am-tabs>
 			<ul class="am-tabs-nav am-nav am-nav-tabs">
