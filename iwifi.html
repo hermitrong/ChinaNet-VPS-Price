@@ -65,9 +65,8 @@
 			var ap2 = parseInt($("#ap2").val());
 			var num2 = parseInt($("#num2").val());
 			var tx = parseInt($('[name="tx"]').filter('.am-active').children().val());
-
 			if (ap1 == "282") {
-				$("#price").text(ap1 * num1 + "元");
+				$("#price").text(ap1 * num1 + num2 * (ap2 + 39 + 390 + 645 + 500 + tx) + "元");
 			}
 			else {
 				if (elec == "1") {
@@ -95,15 +94,12 @@
 					$("#price").text((ap1 * num1 + 119 * num1 + num1 * 200 + num2 * (ap2 + 39 + 390 + 645 + 500 + tx)) + "元");//合计
 				}
 			}
-
 		}
-
 		function count1() { //室内
 			$('#table1').show();
 			var ap1 = parseInt($("#ap1").val());
 			var num1 = parseInt($("#num1").val());
 			var elec = parseInt($('[name="elec"]').filter('.am-active').children().val());
-
 			$("#price1").text(ap1 + "元");//设备费
 			$("#num11").text(num1);
 			$("#price11").text(ap1 * num1 + "元");
@@ -114,7 +110,6 @@
 				$("#price21").text("0元");
 				$("#price31").text("0元");//供电模块
 				$("#price4").text(0 + "元");//施工费
-
 				var pricesn1 = ((ap1 * num1) / 12).toFixed(2);
 				var pricesn2 = ((ap1 * num1) / 24).toFixed(2);
 				var pricesn3 = ((ap1 * num1) / 36).toFixed(2);
@@ -167,7 +162,6 @@
 						$("#pricesn2").text(pricesn2 + "元/月");//二年协议
 						$("#pricesn3").text(pricesn3 + "元/月");//三年协议
 					}
-
 					else {
 						if (num1 % 24 == 0) {
 							var num24 = parseInt(num1 / 24)
@@ -203,7 +197,6 @@
 						}
 					}
 				}
-
 				else if (elec == "2") {
 					$("#num12").text(0);
 					$("#num13").text(num1);
@@ -212,7 +205,6 @@
 					$("#price31").text(119 * num1 + "元");//供电模块
 					$("#price4").text(num1 * 200 + "元");//施工费
 					$("#pricesn").text((ap1 * num1 + 119 * num1 + num1 * 200) + "元");//合计
-
 					var pricesn1 = ((ap1 * num1 + 119 * num1 + num1 * 200) / 12).toFixed(2);
 					var pricesn2 = ((ap1 * num1 + 119 * num1 + num1 * 200) / 24).toFixed(2);
 					var pricesn3 = ((ap1 * num1 + 119 * num1 + num1 * 200) / 36).toFixed(2);
@@ -221,45 +213,33 @@
 					$("#pricesn3").text(pricesn3 + "元/月");//三年协议
 				}
 			}
-
-
 		}
-
 		function count2() { //室外
 			$('#table2').show();
 			var ap2 = parseInt($("#ap2").val());
 			var num2 = parseInt($("#num2").val());
 			var tx = parseInt($('[name="tx"]').filter('.am-active').children().val());
-
 			$("#price12").text(ap2 + "元");//设备费
 			$("#num122").text(num2);
 			$("#price112").text(ap2 * num2 + "元");
-
 			$("#num22").text(num2);//安装套件
 			$("#price212").text(num2 * 39 + "元");
-
 			$("#num32").text(num2);//配线
 			$("#price312").text(num2 * 390 + "元");
-
 			$("#num42").text(num2);//供电模块
 			$("#price412").text(num2 * 645 + "元");
-
 			$("#num52").text(num2);//施工费
 			$("#price512").text(num2 * 500 + "元");
-
 			$("#price62").text(tx + "元");//天线
 			$("#num62").text(num2);
 			$("#price612").text(num2 * tx + "元");
-
 			$("#pricesw").text((num2 * (ap2 + 39 + 390 + 645 + 500 + tx) + "元"));
-
 			var pricesw1 = ((num2 * (ap2 + 39 + 390 + 645 + 500 + tx)) / 12).toFixed(2);
 			var pricesw2 = ((num2 * (ap2 + 39 + 390 + 645 + 500 + tx)) / 24).toFixed(2);
 			var pricesw3 = ((num2 * (ap2 + 39 + 390 + 645 + 500 + tx)) / 36).toFixed(2);
 			$("#pricesw1").text(pricesw1 + "元/月");//一年协议
 			$("#pricesw2").text(pricesw2 + "元/月");//二年协议
 			$("#pricesw3").text(pricesw3 + "元/月");//三年协议
-
 		}
 		$(document).ready(function () { init() });
 	</script>
@@ -302,7 +282,7 @@
 
 	<div class="am-g am-g-fixed am-margin-top">
 		<div class="am-u-sm-12">
-			<h1>爱Wifi（项目型）报价计算器</h1>
+			<h1>爱Wifi（项目型）预报价计算器</h1>
 			<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
 		</div>
 	</div>
@@ -439,6 +419,9 @@
 								<th>三年协议</th>
 								<th colspan="3" id="pricesn3"></th>
 							</tr>
+							<tr>
+								<td colspan="4" class="am-text-left">注：此报价为预估指导价，不含带宽接入费用。实际费用以工程勘测报价为准。</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -540,6 +523,9 @@
 								<tr>
 									<th>三年协议</th>
 									<th colspan="3" id="pricesw3"></th>
+								</tr>
+								<tr>
+									<td colspan="4" class="am-text-left">注：此报价为预估指导价，不含带宽接入费用。实际费用以工程勘测报价为准。</td>
 								</tr>
 							</tbody>
 						</table>
