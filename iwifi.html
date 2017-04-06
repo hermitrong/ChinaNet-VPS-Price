@@ -288,51 +288,49 @@
 	</div>
 
 	<div class='am-container'>
+		<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+			<thead>
+				<tr>
+					<th class="am-text-middle" rowspan="2">设备类型</th>
+					<th class="am-text-middle" colspan="3">适用场景</th>
+				</tr>
+				<tr>
+					<th class="am-text-middle">场所</th>
+					<th class="am-text-middle">覆盖范围</th>
+					<th class="am-text-middle">同时在线人数</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="am-text-middle">室内小型AP</td>
+					<td class="am-text-middle">室内小型场所</td>
+					<td class="am-text-middle">20-25㎡</td>
+					<td class="am-text-middle">20-30人</td>
+				</tr>
+				<tr>
+					<td class="am-text-middle">室内大中型AP</td>
+					<td class="am-text-middle">室内大中型场所</td>
+					<td class="am-text-middle">半径10m或间隔15m</td>
+					<td class="am-text-middle">30-40人</td>
+				</tr>
+				<tr>
+					<td class="am-text-middle">室外大型AP</td>
+					<td class="am-text-middle">室外场所</td>
+					<td class="am-text-middle">半径50m-200m</td>
+					<td class="am-text-middle">20-40人</td>
+				</tr>
+			</tbody>
+		</table>
+
 		<div class="am-tabs" data-am-tabs>
 			<ul class="am-tabs-nav am-nav am-nav-tabs">
-				<li class="am-active"><a href="#tab1">应用场景介绍</a></li>
-				<li><a href="#tab2">室内</a></li>
-				<li><a href="#tab3">室外</a></li>
+				<li class="am-active"><a href="#tab1">室内</a></li>
+				<li><a href="#tab2">室外</a></li>
+
 			</ul>
 
 			<div class="am-tabs-bd">
 				<div class="am-tab-panel am-fade am-in am-active" id="tab1">
-					<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
-						<thead>
-							<tr>
-								<th class="am-text-middle" rowspan="2">设备类型</th>
-								<th class="am-text-middle" colspan="3">适用场景</th>
-							</tr>
-							<tr>
-								<th class="am-text-middle">场所</th>
-								<th class="am-text-middle">覆盖范围</th>
-								<th class="am-text-middle">同时在线人数</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="am-text-middle">室内小型AP</td>
-								<td class="am-text-middle">室内小型场所</td>
-								<td class="am-text-middle">20-25㎡</td>
-								<td class="am-text-middle">20-30人</td>
-							</tr>
-							<tr>
-								<td class="am-text-middle">室内大中型AP</td>
-								<td class="am-text-middle">室内大中型场所</td>
-								<td class="am-text-middle">半径10m或间隔15m</td>
-								<td class="am-text-middle">30-40人</td>
-							</tr>
-							<tr>
-								<td class="am-text-middle">室外大型AP</td>
-								<td class="am-text-middle">室外场所</td>
-								<td class="am-text-middle">半径50m-200m</td>
-								<td class="am-text-middle">20-40人</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-
-				<div class="am-tab-panel am-fade" id="tab2">
 					<div class="am-input-group am-margin-top">
 						<span class="am-input-group-label" style="min-width:120px">设备类型</span>
 						<span class="am-input-group-btn" style="width: 100%;">
@@ -426,110 +424,109 @@
 					</table>
 				</div>
 
-				<div class="am-tabs-bd">
-					<div class="am-tab-panel am-fade am-in am-active" id="tab3">
-						<div class="am-input-group am-margin-top">
-							<span class="am-input-group-label" style="min-width:120px">设备类型</span>
-							<span class="am-input-group-btn" style="width: 100%;">
+
+				<div class="am-tab-panel am-fade" id="tab2">
+					<div class="am-input-group am-margin-top">
+						<span class="am-input-group-label" style="min-width:120px">设备类型</span>
+						<span class="am-input-group-btn" style="width: 100%;">
 							<select id="ap2" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
 								<option value="1890" selected>室外大型AP</option>
 							</select>
 						</span>
+					</div>
+					<div class="am-g am-g-fixed am-margin-top am-margin-bottom">
+						<div class="am-input-group">
+							<span class="am-input-group-label" style="width:120px">设备数</span>
+							<input type="number" class="am-form-field am-text-right" id="num2" min="1" step="1" value="0">
+							<span class="am-input-group-label">个</span>
 						</div>
-						<div class="am-g am-g-fixed am-margin-top am-margin-bottom">
-							<div class="am-input-group">
-								<span class="am-input-group-label" style="width:120px">设备数</span>
-								<input type="number" class="am-form-field am-text-right" id="num2" min="1" step="1" value="0">
-								<span class="am-input-group-label">个</span>
-							</div>
-						</div>
+					</div>
 
-						<div class="am-panel am-panel-default">
-							<div class="am-panel-hd">辅材选取</div>
-							<div class="am-panel-bd">
-								<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
-									<label class="am-btn am-btn-primary am-active" name="tx">
+					<div class="am-panel am-panel-default">
+						<div class="am-panel-hd">辅材选取</div>
+						<div class="am-panel-bd">
+							<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
+								<label class="am-btn am-btn-primary am-active" name="tx">
 								<input type="radio" value="903"> 全向天线 
 							</label>
-									<label class="am-btn am-btn-primary" name="tx">
+								<label class="am-btn am-btn-primary" name="tx">
 								<input type="radio" value="1337">定向天线
 							</label>
-								</div>
-
 							</div>
+
 						</div>
-						<button type="button" class="am-btn am-btn-primary am-btn-block am-btn-lg" id='count2'><i class="am-icon-shopping-cart"></i>&nbsp;报价清单</button>
-						<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
-						<table id='table2' class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
-							<thead>
-								<tr>
-									<th class="am-text-middle">费用明细</th>
-									<th class="am-text-middle">单价</th>
-									<th class="am-text-middle">订购数</th>
-									<th class="am-text-middle">总计</th>
-								</tr>
-							</thead>
-							<tbody>
-
-								<tr>
-									<td class="am-text-middle">AP</td>
-									<td class="am-text-middle" id="price12">0</td>
-									<td class="am-text-middle" id="num122">0</td>
-									<td class="am-text-middle" id="price112">0</td>
-								</tr>
-
-								<tr>
-									<td class="am-text-middle">安装套件</td>
-									<td class="am-text-middle">39元</td>
-									<td class="am-text-middle" id="num22">0</td>
-									<td class="am-text-middle" id="price212">0</td>
-								</tr>
-								<tr>
-									<td class="am-text-middle">配线</td>
-									<td class="am-text-middle">390元</td>
-									<td class="am-text-middle" id="num32">0</td>
-									<td class="am-text-middle" id="price312">0</td>
-								</tr>
-								<tr>
-									<td class="am-text-middle">天线</td>
-									<td class="am-text-middle" id="price62">0元</td>
-									<td class="am-text-middle" id="num62">0</td>
-									<td class="am-text-middle" id="price612">0</td>
-								</tr>
-								<tr>
-									<td class="am-text-middle">供电模块</td>
-									<td class="am-text-middle">645元</td>
-									<td class="am-text-middle" id="num42">0</td>
-									<td class="am-text-middle" id="price412">0</td>
-								</tr>
-								<tr>
-									<td class="am-text-middle">施工费用</td>
-									<td class="am-text-middle">500元</td>
-									<td class="am-text-middle" id="num52">0</td>
-									<td class="am-text-middle" id="price512">0</td>
-								</tr>
-								<tr>
-									<th>一次性购买</th>
-									<th colspan="3" id="pricesw"></th>
-								</tr>
-								<tr>
-									<th>一年协议</th>
-									<th colspan="3" id="pricesw1"></th>
-								</tr>
-								<tr>
-									<th>二年协议</th>
-									<th colspan="3" id="pricesw2"></th>
-								</tr>
-								<tr>
-									<th>三年协议</th>
-									<th colspan="3" id="pricesw3"></th>
-								</tr>
-								<tr>
-									<td colspan="4" class="am-text-left">注：此报价为预估指导价，不含带宽接入费用。实际费用以工程勘测报价为准。</td>
-								</tr>
-							</tbody>
-						</table>
 					</div>
+					<button type="button" class="am-btn am-btn-primary am-btn-block am-btn-lg" id='count2'><i class="am-icon-shopping-cart"></i>&nbsp;报价清单</button>
+					<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
+					<table id='table2' class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered">
+						<thead>
+							<tr>
+								<th class="am-text-middle">费用明细</th>
+								<th class="am-text-middle">单价</th>
+								<th class="am-text-middle">订购数</th>
+								<th class="am-text-middle">总计</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr>
+								<td class="am-text-middle">AP</td>
+								<td class="am-text-middle" id="price12">0</td>
+								<td class="am-text-middle" id="num122">0</td>
+								<td class="am-text-middle" id="price112">0</td>
+							</tr>
+
+							<tr>
+								<td class="am-text-middle">安装套件</td>
+								<td class="am-text-middle">39元</td>
+								<td class="am-text-middle" id="num22">0</td>
+								<td class="am-text-middle" id="price212">0</td>
+							</tr>
+							<tr>
+								<td class="am-text-middle">配线</td>
+								<td class="am-text-middle">390元</td>
+								<td class="am-text-middle" id="num32">0</td>
+								<td class="am-text-middle" id="price312">0</td>
+							</tr>
+							<tr>
+								<td class="am-text-middle">天线</td>
+								<td class="am-text-middle" id="price62">0元</td>
+								<td class="am-text-middle" id="num62">0</td>
+								<td class="am-text-middle" id="price612">0</td>
+							</tr>
+							<tr>
+								<td class="am-text-middle">供电模块</td>
+								<td class="am-text-middle">645元</td>
+								<td class="am-text-middle" id="num42">0</td>
+								<td class="am-text-middle" id="price412">0</td>
+							</tr>
+							<tr>
+								<td class="am-text-middle">施工费用</td>
+								<td class="am-text-middle">500元</td>
+								<td class="am-text-middle" id="num52">0</td>
+								<td class="am-text-middle" id="price512">0</td>
+							</tr>
+							<tr>
+								<th>一次性购买</th>
+								<th colspan="3" id="pricesw"></th>
+							</tr>
+							<tr>
+								<th>一年协议</th>
+								<th colspan="3" id="pricesw1"></th>
+							</tr>
+							<tr>
+								<th>二年协议</th>
+								<th colspan="3" id="pricesw2"></th>
+							</tr>
+							<tr>
+								<th>三年协议</th>
+								<th colspan="3" id="pricesw3"></th>
+							</tr>
+							<tr>
+								<td colspan="4" class="am-text-left">注：此报价为预估指导价，不含带宽接入费用。实际费用以工程勘测报价为准。</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
