@@ -69,6 +69,8 @@
 				$("#price11").text(tv * num + "元");
 				$("#price2").text(0 + "元/月");//服务费
 				$("#price21").text(0 * num + "元/月");
+				$("#price5").text(0 + "元/月");//维保费
+				$("#price51").text(0 * num + "元/月");
 				$("#price31").text(num * 398 + "元/月");//功能费
 				$("#price41").text(mobile * 50 + "元/月");//终端费
 				$("#price").text("一次性费用" + tv * num + "元，月服务费" + (num * 398 + mobile * 50) + "元/月");//合计
@@ -82,22 +84,34 @@
 				if (tv == 24800) {
 					$("#price2").text(1034 + "元/月");//服务费
 					$("#price21").text(1034 * num + "元/月");
-					$("#price").text("月服务费" + (num * (1034 + 398) + mobile * 50) + "元/月,协议期24个月");//合计
+					var wb = (24800 * 0.1 / 24).toFixed(2);
+					$("#price5").text(wb + "元/月");//维保费
+					$("#price51").text(wb * num + "元/月");
+					$("#price").text("月服务费" + (num * (1034 + 398) + wb * num + mobile * 50) + "元/月,协议期24个月");//合计
 				}
 				else if (tv == 48000) {
 					$("#price2").text(2000 + "元/月");//服务费
 					$("#price21").text(2000 * num + "元/月");
-					$("#price").text("月服务费" + (num * (2000 + 398) + mobile * 50) + "元/月,协议期24个月");//合计
+					var wb = (48000 * 0.1 / 24).toFixed(2);
+					$("#price5").text(wb + "元/月");//维保费
+					$("#price51").text(wb * num + "元/月");
+					$("#price").text("月服务费" + (num * (2000 + 398) + wb * num + mobile * 50) + "元/月,协议期24个月");//合计
 				}
 				else if (tv == 39800) {
 					$("#price2").text(1659 + "元/月");//服务费
 					$("#price21").text(1659 * num + "元/月");
-					$("#price").text("月服务费" + (num * (1659 + 398) + mobile * 50) + "元/月,协议期24个月");//合计
+					var wb = (39800 * 0.1 / 24).toFixed(2);
+					$("#price5").text(wb + "元/月");//维保费
+					$("#price51").text(wb * num + "元/月");
+					$("#price").text("月服务费" + (num * (1659 + 398) + wb * num + mobile * 50) + "元/月,协议期24个月");//合计
 				}
 				else {
 					$("#price2").text(2075 + "元/月");//服务费
 					$("#price21").text(2075 * num + "元/月");
-					$("#price").text("月服务费" + (num * (2075 + 398) + mobile * 50) + "元/月,协议期24个月");//合计
+					var wb = (49800 * 0.1 / 24).toFixed(2);
+					$("#price5").text(wb + "元/月");//维保费
+					$("#price51").text(wb * num + "元/月");
+					$("#price").text("月服务费" + (num * (2075 + 398) + wb * num + mobile * 50) + "元/月,协议期24个月");//合计
 				}
 				$("#price31").text(num * 398 + "元/月");//功能费
 				$("#price41").text(mobile * 50 + "元/月");//终端费
@@ -111,22 +125,34 @@
 				if (tv == 24800) {
 					$("#price2").text(758 + "元/月");//服务费
 					$("#price21").text(758 * num + "元/月");
-					$("#price").text("月服务费" + (num * (758 + 398) + mobile * 50) + "元/月,协议期36个月");//合计
+					var wb = (24800 * 0.2 / 36).toFixed(2);
+					$("#price5").text(wb + "元/月");//维保费
+					$("#price51").text(wb * num + "元/月");
+					$("#price").text("月服务费" + (num * (758 + 398) + wb * num + mobile * 50) + "元/月,协议期36个月");//合计
 				}
 				else if (tv == 48000) {
 					$("#price2").text(1467 + "元/月");//服务费
 					$("#price21").text(1467 * num + "元/月");
-					$("#price").text("月服务费" + (num * (1467 + 398) + mobile * 50) + "元/月,协议期36个月");//合计
+					var wb = (48000 * 0.2 / 36).toFixed(2);
+					$("#price5").text(wb + "元/月");//维保费
+					$("#price51").text(wb * num + "元/月");
+					$("#price").text("月服务费" + (num * (1467 + 398) + wb * num + mobile * 50) + "元/月,协议期36个月");//合计
 				}
 				else if (tv == 39800) {
 					$("#price2").text(1217 + "元/月");//服务费
 					$("#price21").text(1217 * num + "元/月");
-					$("#price").text("月服务费" + (num * (1217 + 398) + mobile * 50) + "元/月,协议期36个月");//合计
+					var wb = (39800 * 0.2 / 36).toFixed(2);
+					$("#price5").text(wb + "元/月");//维保费
+					$("#price51").text(wb * num + "元/月");
+					$("#price").text("月服务费" + (num * (1217 + 398) + wb * num + mobile * 50) + "元/月,协议期36个月");//合计
 				}
 				else {
 					$("#price2").text(1522 + "元/月");//服务费
 					$("#price21").text(1522 * num + "元/月");
-					$("#price").text("月服务费" + (num * (1522 + 398) + mobile * 50) + "元/月,协议期36个月");//合计
+					var wb = (49800 * 0.2 / 36).toFixed(2);
+					$("#price5").text(wb + "元/月");//维保费
+					$("#price51").text(wb * num + "元/月");
+					$("#price").text("月服务费" + (num * (1522 + 398) + wb * num + mobile * 50) + "元/月,协议期36个月");//合计
 				}
 				$("#price31").text(num * 398 + "元/月");//功能费
 				$("#price41").text(mobile * 50 + "元/月");//终端费
@@ -246,7 +272,7 @@
 					<tr>
 						<td class="am-text-middle">设备费</td>
 						<td class="am-text-middle" id="price1">0</td>
-						<td class="am-text-middle" rowspan="3" id="num1">0</td>
+						<td class="am-text-middle" rowspan="4" id="num1">0</td>
 						<td class="am-text-middle" id="price11">0</td>
 						<td class="am-text-middle">一次性支付</td>
 					</tr>
@@ -261,6 +287,12 @@
 						<td class="am-text-middle">硬件费</td>
 						<td class="am-text-middle">398元/月</td>
 						<td class="am-text-middle" id="price31">0</td>
+						<td class="am-text-middle">按月支付</td>
+					</tr>
+					<tr>
+						<td class="am-text-middle">维保费</td>
+						<td class="am-text-middle" id="price5">0</td>
+						<td class="am-text-middle" id="price51">0</td>
 						<td class="am-text-middle">按月支付</td>
 					</tr>
 					<tr>
