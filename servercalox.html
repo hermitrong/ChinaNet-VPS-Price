@@ -74,13 +74,13 @@
 				var base = 58 * core + 30 * ram;
 			}
 			if (band <= 5) {
-				var bp = 20;
+				var bp = 20 * band;
 			} else {
-				var bp = 60;
+				var bp = 20 * 5 + (band - 5) * 60;
 			}
-			var price = (base + disk * data + band * bp) * time;
-
-			$("#price").text(price + "元");
+			var price = (base + disk * data + bp) * time;
+			var price8 = (price * 0.8).toFixed(2);
+			$("#price").text(price + "元，8折价格" + price8 + "元");
 		}
 
 		function confirm() {
@@ -96,12 +96,12 @@
 				var base = 58 * core + 30 * ram;
 			}
 			if (band <= 5) {
-				var bp = 20;
+				var bp = 20 * band;
 			} else {
-				var bp = 60;
+				var bp = 20 * 5 + (band - 5) * 60;
 			}
-			var pricemonth = base + disk * data + band * bp
-			var pricemonth8 = (pricemonth * 0.8).toFixed(2)
+			var pricemonth = base + disk * data + bp;
+			var pricemonth8 = (pricemonth * 0.8).toFixed(2);
 
 			$("#con1").text("您选择了" + core + "核VCPU，" + ram +
 				"G内存，" + data + "G数据盘，" + band + "M带宽的云主机，月使用费" + pricemonth + "元，8折优惠后月使用费" + pricemonth8 + "元。");
@@ -213,7 +213,7 @@
 					</div>
 					<div class="am-input-group  am-margin-top">
 						<span class="am-input-group-label" style="width:118px">数据盘容量</span>
-						<input type="number" class="am-form-field am-text-right" id="data" min="1" max="2048" placeholder="1-2048" step="1">
+						<input type="number" class="am-form-field am-text-right" id="data" min="1" step="1">
 						<span class="am-input-group-label">GB</span>
 					</div>
 				</div>
@@ -224,7 +224,7 @@
 	<div class='am-container am-margin-bottom'>
 		<div class="am-input-group">
 			<span class="am-input-group-label">带宽</span>
-			<input type="number" class="am-form-field am-text-right" id="band" min="1" value="1" step="1">
+			<input type="number" class="am-form-field am-text-right" id="band" min="0" value="0" step="1">
 			<span class="am-input-group-label">Mbps</span>
 		</div>
 	</div>
@@ -244,12 +244,11 @@
 
 	<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
 		<div class="am-alert am-cf am-margin-0">
-			<span class='am-text-middle am-text-xl' id="price">0元</span>
+			<span class='am-text-middle' id="price"></span>
 			<button type="button" class="am-btn am-btn-default am-fr" id='update'>计算				
 			</button>
-			<button type="button" class="am-btn am-btn-default am-fr" id='confirm' data-am-modal="{target: '#my-alert'}">配置预览				
+			<button type="button" class="am-btn am-btn-default am-fr" id='confirm' data-am-modal="{target: '#my-alert'}">配置				
 			</button>
-
 		</div>
 	</header>
 	<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
