@@ -76,7 +76,8 @@
 					var bp = 20 * 5 + (band - 5) * 60;
 				}
 				var price = (base + disk * data + bp) * time;
-				$("#price").text(price + "元，不可享受8折优惠");
+				var price8 = ((base + (disk * data + bp) * 0.8) * time).toFixed(2);
+				$("#price").text(price + "元，8折价格" + price8 + "元");
 			}
 
 
@@ -109,8 +110,9 @@
 					var bp = 20 * 5 + (band - 5) * 60;
 				}
 				var pricemonth = base + disk * data + bp;
+				var pricemonth8 = (base + (disk * data + bp) * 0.8 ).toFixed(2);
 				$("#con1").text("您选择了" + core + "核VCPU，" + ram +
-					"G内存，" + data + "G数据盘，" + band + "M带宽的云主机，月使用费" + pricemonth + "元，不可再享8折优惠");
+					"G内存，" + data + "G数据盘，" + band + "M带宽的云主机，月使用费" + pricemonth + "元，8折优惠后月使用费" + pricemonth8 + "元。");
 
 			}
 
