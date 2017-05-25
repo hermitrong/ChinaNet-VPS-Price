@@ -103,7 +103,7 @@
 			$("#price1").text(ap1 + "元");//设备费
 			$("#num11").text(num1);
 			$("#price11").text(ap1 * num1 + "元");
-			if (ap1 == "282") {
+			if (ap1 == "282") { //室内小型AP
 				$("#num12").text(0);
 				$("#num13").text(0);
 				$("#price2").text("2855元");//1个8口交换机
@@ -119,7 +119,7 @@
 				$("#pricesn").text(ap1 * num1 + "元");//合计
 			}
 			else {
-				if (elec == "1") {
+				if (elec == "1") {//辅材：交换机
 					if (num1 == 0) {
 						$("#num12").text(0);
 						$("#num13").text(0);
@@ -132,65 +132,35 @@
 						$("#pricesn2").text(0 + "元/月");//合计
 						$("#pricesn3").text(0 + "元/月");//合计
 					}
-					else if (num1 > 0 && num1 <= 8) {
-						$("#num12").text(1);
-						$("#num13").text(0);
-						$("#price2").text("2855元");//1个8口交换机
-						$("#price21").text("2855元");
-						$("#price31").text("0元");//供电模块
-						$("#price4").text((num1 * 200 + 200) + "元");//施工费
-						$("#pricesn").text((ap1 * num1 + 2855 + num1 * 200 + 200) + "元");//合计
-						var pricesn1 = ((ap1 * num1 + 2855 + num1 * 200 + 200) / 12).toFixed(2);
-						var pricesn2 = ((ap1 * num1 + 2855 + num1 * 200 + 200) * 1.1 / 24).toFixed(2);
-						var pricesn3 = ((ap1 * num1 + 2855 + num1 * 200 + 200) * 1.2 / 36).toFixed(2);
-						$("#pricesn1").text(pricesn1 + "元/月");//一年协议
-						$("#pricesn2").text(pricesn2 + "元/月");//二年协议
-						$("#pricesn3").text(pricesn3 + "元/月");//三年协议
-					}
-					else if (num1 > 8 && num1 <= 24) {
-						$("#num12").text(1);
-						$("#num13").text(0);
-						$("#price2").text("5051元");//1个24口交换机
-						$("#price21").text("5051元");
-						$("#price31").text("0元");//供电模块
-						$("#price4").text((num1 * 200 + 200) + "元");//施工费
-						$("#pricesn").text((ap1 * num1 + 5051 + num1 * 200 + 200) + "元");//合计
-						var pricesn1 = ((ap1 * num1 + 5051 + num1 * 200 + 200) / 12).toFixed(2);
-						var pricesn2 = ((ap1 * num1 + 5051 + num1 * 200 + 200) * 1.1 / 24).toFixed(2);
-						var pricesn3 = ((ap1 * num1 + 5051 + num1 * 200 + 200) * 1.2 / 36).toFixed(2);
-						$("#pricesn1").text(pricesn1 + "元/月");//一年协议
-						$("#pricesn2").text(pricesn2 + "元/月");//二年协议
-						$("#pricesn3").text(pricesn3 + "元/月");//三年协议
-					}
 					else {
-						if (num1 % 24 == 0) {
-							var num24 = parseInt(num1 / 24)
+						if (num1 % 8 == 0) {
+							var num24 = parseInt(num1 / 8)
 							$("#num12").text(num24);
 							$("#num13").text(0);
-							$("#price2").text("5051元");//1个24口交换机
-							$("#price21").text(num24 * 5051 + "元");
+							$("#price2").text("2855元");//1个8口交换机
+							$("#price21").text(num24 * 2855 + "元");
 							$("#price31").text("0元");//供电模块
-							$("#price4").text((num1 * 200 + 200 * num24) + "元");//施工费
-							$("#pricesn").text((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) + "元");//合计
-							var pricesn1 = ((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) / 12).toFixed(2);
-							var pricesn2 = ((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) * 1.1 / 24).toFixed(2);
-							var pricesn3 = ((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) * 1.2 / 36).toFixed(2);
+							$("#price4").text((num1 * 300 + 300 * num24) + "元");//施工费
+							$("#pricesn").text((ap1 * num1 + 2855 * num24 + num1 * 300 + 300 * num24) + "元");//合计
+							var pricesn1 = ((ap1 * num1 + 2855 * num24 + num1 * 300 + 300 * num24) / 12).toFixed(2);
+							var pricesn2 = ((ap1 * num1 + 2855 * num24 + num1 * 300 + 300 * num24) * 1.1 / 24).toFixed(2);
+							var pricesn3 = ((ap1 * num1 + 2855 * num24 + num1 * 300 + 300 * num24) * 1.2 / 36).toFixed(2);
 							$("#pricesn1").text(pricesn1 + "元/月");//一年协议
 							$("#pricesn2").text(pricesn2 + "元/月");//二年协议
 							$("#pricesn3").text(pricesn3 + "元/月");//三年协议
 						}
 						else {
-							var num24 = parseInt(num1 / 24 + 1)
+							var num24 = parseInt(num1 / 8 + 1)
 							$("#num12").text(num24);
 							$("#num13").text(0);
-							$("#price2").text("5051元");//1个24口交换机
-							$("#price21").text(num24 * 5051 + "元");
+							$("#price2").text("2855元");//1个8口交换机
+							$("#price21").text(num24 * 2855 + "元");
 							$("#price31").text("0元");//供电模块
-							$("#price4").text((num1 * 200 + 200 * num24) + "元");//施工费
-							$("#pricesn").text((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) + "元");//合计
-							var pricesn1 = ((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) / 12).toFixed(2);
-							var pricesn2 = ((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) * 1.1 / 24).toFixed(2);
-							var pricesn3 = ((ap1 * num1 + 5051 * num24 + num1 * 200 + 200 * num24) * 1.2 / 36).toFixed(2);
+							$("#price4").text((num1 * 300 + 300 * num24) + "元");//施工费
+							$("#pricesn").text((ap1 * num1 + 2855 * num24 + num1 * 300 + 300 * num24) + "元");//合计
+							var pricesn1 = ((ap1 * num1 + 2855 * num24 + num1 * 300 + 300 * num24) / 12).toFixed(2);
+							var pricesn2 = ((ap1 * num1 + 2855 * num24 + num1 * 300 + 300 * num24) * 1.1 / 24).toFixed(2);
+							var pricesn3 = ((ap1 * num1 + 2855 * num24 + num1 * 300 + 300 * num24) * 1.2 / 36).toFixed(2);
 							$("#pricesn1").text(pricesn1 + "元/月");//一年协议
 							$("#pricesn2").text(pricesn2 + "元/月");//二年协议
 							$("#pricesn3").text(pricesn3 + "元/月");//三年协议
@@ -200,14 +170,14 @@
 				else if (elec == "2") {
 					$("#num12").text(0);
 					$("#num13").text(num1);
-					$("#price2").text("——");//1个24口交换机
+					$("#price2").text("——");
 					$("#price21").text("0元");
 					$("#price31").text(119 * num1 + "元");//供电模块
-					$("#price4").text(num1 * 200 + "元");//施工费
-					$("#pricesn").text((ap1 * num1 + 119 * num1 + num1 * 200) + "元");//合计
-					var pricesn1 = ((ap1 * num1 + 119 * num1 + num1 * 200) / 12).toFixed(2);
-					var pricesn2 = ((ap1 * num1 + 119 * num1 + num1 * 200) * 1.1 / 24).toFixed(2);
-					var pricesn3 = ((ap1 * num1 + 119 * num1 + num1 * 200) * 1.2 / 36).toFixed(2);
+					$("#price4").text(num1 * 300 + "元");//施工费
+					$("#pricesn").text((ap1 * num1 + 119 * num1 + num1 * 300) + "元");//合计
+					var pricesn1 = ((ap1 * num1 + 119 * num1 + num1 * 300) / 12).toFixed(2);
+					var pricesn2 = ((ap1 * num1 + 119 * num1 + num1 * 300) * 1.1 / 24).toFixed(2);
+					var pricesn3 = ((ap1 * num1 + 119 * num1 + num1 * 300) * 1.2 / 36).toFixed(2);
 					$("#pricesn1").text(pricesn1 + "元/月");//一年协议
 					$("#pricesn2").text(pricesn2 + "元/月");//二年协议
 					$("#pricesn3").text(pricesn3 + "元/月");//三年协议
@@ -431,7 +401,7 @@
 								<th colspan="3" id="pricesn3"></th>
 							</tr>
 							<tr>
-								<td colspan="4" class="am-text-left">注：此报价为预估指导价，不含带宽接入费用。实际费用以工程勘测报价为准。</td>
+								<td colspan="4" class="am-text-left">注：此报价为预估指导价，包含综合布线，不含光网设备、带宽接入费用。实际费用以工程勘测报价为准。</td>
 							</tr>
 						</tbody>
 					</table>
@@ -536,7 +506,7 @@
 								<th colspan="3" id="pricesw3"></th>
 							</tr>
 							<tr>
-								<td colspan="4" class="am-text-left">注：此报价为预估指导价，不含带宽接入费用。实际费用以工程勘测报价为准。</td>
+								<td colspan="4" class="am-text-left">注：此报价为预估指导价，包含综合布线，不含光网设备、带宽接入费用。实际费用以工程勘测报价为准。</td>
 							</tr>
 						</tbody>
 					</table>
