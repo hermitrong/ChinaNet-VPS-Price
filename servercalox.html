@@ -110,7 +110,7 @@
 					var bp = 20 * 5 + (band - 5) * 60;
 				}
 				var pricemonth = base + disk * data + bp;
-				var pricemonth8 = (base + (disk * data + bp) * 0.8 ).toFixed(2);
+				var pricemonth8 = (base + (disk * data + bp) * 0.8).toFixed(2);
 				$("#con1").text("您选择了" + core + "核VCPU，" + ram +
 					"G内存，" + data + "G数据盘，" + band + "M带宽的云主机，月使用费" + pricemonth + "元，8折优惠后月使用费" + pricemonth8 + "元。");
 
@@ -266,7 +266,9 @@
 				</span>
 		</div>
 	</div>
-
+	<p>
+		<img src="3.png" height="40" align="right" alt="Denker" />
+	</p>
 	<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
 		<div class="am-alert am-cf am-margin-0">
 			<span class='am-text-middle' id="price"></span>
