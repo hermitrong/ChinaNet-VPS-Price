@@ -62,13 +62,16 @@
 
 		function update() {
 			var core = parseInt($("#core").val());
-			var ram = parseInt($("#ram").val());
 			var disk = parseFloat($('[name="disk"]').filter('.am-active').children().val());
 			var data = parseInt($("#data").val());
 			var band = parseInt($("#band").val());
 			var time = parseInt($("#len").val()) * parseInt($("#moy").val());
 
-			var base = 232 * core + 5 * ram;
+			if (core == 1)
+				var base = 232 * 16 + 5 * 128;
+			else if (core == 2)
+				var base = 232 * 32 + 5 * 256;
+
 			if (band <= 5) {
 				var bp = 20 * band;
 			} else {
@@ -171,37 +174,16 @@
 
 	<div class="am-container am-margin-top">
 		<div class="am-input-group">
-			<span class="am-input-group-label" style="min-width:120px">VCPU</span>
+			<span class="am-input-group-label" style="min-width:120px">基础配置</span>
 			<span class="am-input-group-btn" style="width: 100%;">
 					<select id="core" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
-						<option value="1" selected>1核</option>
-						<option value="2">2核</option>
-						<option value="4">4核</option>
-						<option value="8">8核</option>
-						<option value="16">16核</option>
-						<option value="32">32核</option>						
+						<option value="1">16核/128G</option>
+						<option value="2">32核/256G</option>						
 					</select>
 				</span>
 		</div>
 	</div>
 
-
-
-	<div class="am-container am-margin-top">
-		<div class="am-input-group">
-			<span class="am-input-group-label" style="min-width:120px">内存</span>
-			<span class="am-input-group-btn" style="width: 100%;">
-					<select id="ram" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
-						<option value="1" selected>1G</option>
-						<option value="2">2G</option>
-						<option value="4">4G</option>
-						<option value="8">8G</option>
-						<option value="16">16G</option>
-						<option value="32">32G</option>						
-					</select>
-				</span>
-		</div>
-	</div>
 
 
 	<div class="am-g am-g-fixed am-margin-top">
