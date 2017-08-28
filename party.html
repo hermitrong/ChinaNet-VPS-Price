@@ -60,31 +60,32 @@
 			$('#table').show();
 			var dp = parseInt($("#dp").val());
 			var num = parseInt($("#year").val());
-			$("#num").text(num);
+			$("#dpnum").text(dp);
+			$("#yearnum").text(num);
 
 			if (dp <= "50") {
 				$("#price").text("799");
-				$("#priceall").text(799 * num);
+				$("#priceall").text(799 * num * dp);
 			}
 
 			else if (dp > 50 && dp <= 100) {
 				$("#price").text("699");
-				$("#priceall").text(699 * num);
+				$("#priceall").text(699 * num * dp);
 			}
 
 			else if (dp > 100 && dp <= 200) {
 				$("#price").text("599");
-				$("#priceall").text(599 * num);
+				$("#priceall").text(599 * num * dp);
 			}
 
 			else if (dp > 200 && dp <= 400) {
 				$("#price").text("499");
-				$("#priceall").text(499 * num);
+				$("#priceall").text(499 * num * dp);
 			}
 
 			else if (dp > 40) {
 				$("#price").text("399");
-				$("#priceall").text(399 * num);
+				$("#priceall").text(399 * num * dp);
 			}
 		}
 		$(document).ready(function () { init() });
@@ -130,9 +131,9 @@
 		<div class="am-u-sm-12">
 			<h1>智慧党建报价计算器</h1>
 			<p>
-				<img src="3.png" height="40" align="right" alt="Denker" />
+				<img src="6.png" height="40" align="right" alt="Denker" />
 			</p>
-			<hr data-am-widget="divider" style="" class="am-divider am-divider-danger" />
+			<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
 		</div>
 	</div>
 
@@ -169,26 +170,25 @@
 			</div>
 		</div>
 
+		<div class="am-input-group">
+			<span class="am-input-group-label" style="width:120px">服务时长</span>
+			<select id="year" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
+						<option value="1" selected>1</option>
 
-		<div class="am-g am-g-fixed am-margin-top am-margin-bottom">
-			<div class="am-u-sm-12 am-cf">
-				<div class="am-input-group">
-					<span class="am-input-group-label" style="width:120px">服务时长</span>
-					<input type="num" class="am-form-field am-text-right" id="year" min="1" step="1">
-					<span class="am-input-group-label">年</span>
-				</div>
-			</div>
+			</select>
+			<span class="am-input-group-label">年</span>
 		</div>
 
-
 		<button type="button" class="am-btn am-margin-top am-btn-danger" style="width:100%" id='update'>计算</button>
+		<p>注：合同请登录新兴业务支撑管理系统进行下载，合同签约周期暂为一年。
+		</p>
 
-
-		<hr data-am-widget="divider" class="am-divider am-divider-danger" />
+		<hr data-am-widget="divider" style="" class="am-divider am-divider-default" />
 		<table class="am-table am-table-bordered am-table-striped am-table-compact am-table-centered" id='table'>
 			<thead>
 				<tr>
 					<th class="am-text-middle">年使用费/元</th>
+					<th class="am-text-middle">支部数/个</th>
 					<th class="am-text-middle">期限/年</th>
 					<th class="am-text-middle">总计/元 </th>
 				</tr>
@@ -197,7 +197,8 @@
 
 				<tr>
 					<td class="am-text-middle" id="price">0</td>
-					<td class="am-text-middle" id="num">0</td>
+					<td class="am-text-middle" id="dpnum">0</td>
+					<td class="am-text-middle" id="yearnum">0</td>
 					<td class="am-text-middle" id="priceall">0</td>
 				</tr>
 			</tbody>
