@@ -67,31 +67,36 @@
 			var data = parseInt($("#data").val());
 			var band = parseInt($("#band").val());
 			var time = parseInt($("#len").val()) * parseInt($("#moy").val());
-
-			if (core == 1 && ram == 1) {
-				var base = 53;
-				if (band <= 5) {
-					var bp = 20 * band;
-				} else {
-					var bp = 20 * 5 + (band - 5) * 60;
-				}
-				var price = (base + disk * data + bp) * time;
-				var price8 = ((base + (disk * data + bp) * 0.8) * time).toFixed(2);
-				$("#price").text(price + "元，8折价格" + price8 + "元");
+			if (core > ram) {
+				$("#price").text("抱歉，请选择正确的配置！")
 			}
-
-
 			else {
-				var base = 58 * core + 30 * ram;
-				if (band <= 5) {
-					var bp = 20 * band;
-				} else {
-					var bp = 20 * 5 + (band - 5) * 60;
+				if (core == 1 && ram == 1) {
+					var base = 53;
+					if (band <= 5) {
+						var bp = 20 * band;
+					} else {
+						var bp = 20 * 5 + (band - 5) * 60;
+					}
+					var price = (base + disk * data + bp) * time;
+					var price8 = ((base + (disk * data + bp) * 0.8) * time).toFixed(2);
+					$("#price").text(price + "元，8折价格" + price8 + "元");
 				}
-				var price = (base + disk * data + bp) * time;
-				var price8 = (price * 0.8).toFixed(2);
-				$("#price").text(price + "元，8折价格" + price8 + "元");
+
+
+				else {
+					var base = 58 * core + 30 * ram;
+					if (band <= 5) {
+						var bp = 20 * band;
+					} else {
+						var bp = 20 * 5 + (band - 5) * 60;
+					}
+					var price = (base + disk * data + bp) * time;
+					var price8 = (price * 0.8).toFixed(2);
+					$("#price").text(price + "元，8折价格" + price8 + "元");
+				}
 			}
+
 
 		}
 
@@ -102,33 +107,39 @@
 			var data = parseInt($("#data").val());
 			var band = parseInt($("#band").val());
 			var time = parseInt($("#len").val()) * parseInt($("#moy").val());
-			if (core == 1 && ram == 1) {
-				var base = 53;
-				if (band <= 5) {
-					var bp = 20 * band;
-				} else {
-					var bp = 20 * 5 + (band - 5) * 60;
-				}
-				var pricemonth = base + disk * data + bp;
-				var pricemonth8 = (base + (disk * data + bp) * 0.8).toFixed(2);
-				$("#con1").text("您选择了" + core + "核VCPU，" + ram +
-					"G内存，" + data + "G数据盘，" + band + "M带宽的云主机，月使用费" + pricemonth + "元，8折优惠后月使用费" + pricemonth8 + "元。");
-
+			if (core > ram) {
+				$("#con1").text("抱歉，请选择正确的配置！核数与内存比例为1:1、1:2、1:4、1:8。")
 			}
-
 			else {
-				var base = 58 * core + 30 * ram;
-				if (band <= 5) {
-					var bp = 20 * band;
-				} else {
-					var bp = 20 * 5 + (band - 5) * 60;
-				}
-				var pricemonth = base + disk * data + bp;
-				var pricemonth8 = (pricemonth * 0.8).toFixed(2);
+				if (core == 1 && ram == 1) {
+					var base = 53;
+					if (band <= 5) {
+						var bp = 20 * band;
+					} else {
+						var bp = 20 * 5 + (band - 5) * 60;
+					}
+					var pricemonth = base + disk * data + bp;
+					var pricemonth8 = (base + (disk * data + bp) * 0.8).toFixed(2);
+					$("#con1").text("您选择了" + core + "核VCPU，" + ram +
+						"G内存，" + data + "G数据盘，" + band + "M带宽的云主机，月使用费" + pricemonth + "元，8折优惠后月使用费" + pricemonth8 + "元。");
 
-				$("#con1").text("您选择了" + core + "核VCPU，" + ram +
-					"G内存，" + data + "G数据盘，" + band + "M带宽的云主机，月使用费" + pricemonth + "元，8折优惠后月使用费" + pricemonth8 + "元。");
+				}
+
+				else {
+					var base = 58 * core + 30 * ram;
+					if (band <= 5) {
+						var bp = 20 * band;
+					} else {
+						var bp = 20 * 5 + (band - 5) * 60;
+					}
+					var pricemonth = base + disk * data + bp;
+					var pricemonth8 = (pricemonth * 0.8).toFixed(2);
+
+					$("#con1").text("您选择了" + core + "核VCPU，" + ram +
+						"G内存，" + data + "G数据盘，" + band + "M带宽的云主机，月使用费" + pricemonth + "元，8折优惠后月使用费" + pricemonth8 + "元。");
+				}
 			}
+
 
 		}
 
@@ -151,25 +162,39 @@
 		<ul class="am-nav am-nav-pills am-nav-pills am-nav-justify">
 			<li class="am-dropdown" data-am-dropdown>
 				<a class="am-dropdown-toggle am-btn-primary" data-am-dropdown-toggle href="javascript:;">云产品
-					 <span class="am-icon-caret-down"> </span>
-       		 	</a>
+					<span class="am-icon-caret-down"> </span>
+				</a>
 				<ul class="am-dropdown-content">
-					<li><a href="server1.html">云主机</a></li>
-					<li><a href="storage.html">云存储</a></li>
-					<li><a href="idc.html">IDC</a></li>
+					<li>
+						<a href="server1.html">云主机</a>
+					</li>
+					<li>
+						<a href="storage.html">云存储</a>
+					</li>
+					<li>
+						<a href="idc.html">IDC</a>
+					</li>
 				</ul>
 			</li>
 			<li class="am-dropdown" data-am-dropdown>
 				<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">云应用
-					 <span class="am-icon-caret-down"> </span>
-       		 	</a>
+					<span class="am-icon-caret-down"> </span>
+				</a>
 				<ul class="am-dropdown-content">
-					<li><a href="iwifi.html">爱Wifi</a></li>
-					<li><a href="view.html">云视频监控</a></li>
-					<li><a href="meeting.html">云视频会议</a></li>
+					<li>
+						<a href="iwifi.html">爱Wifi</a>
+					</li>
+					<li>
+						<a href="view.html">云视频监控</a>
+					</li>
+					<li>
+						<a href="meeting.html">云视频会议</a>
+					</li>
 				</ul>
 			</li>
-			<li><a href="m2m.html">物联网</a></li>
+			<li>
+				<a href="m2m.html">物联网</a>
+			</li>
 		</ul>
 	</div>
 
@@ -189,16 +214,16 @@
 		<div class="am-input-group">
 			<span class="am-input-group-label" style="min-width:120px">VCPU</span>
 			<span class="am-input-group-btn" style="width: 100%;">
-					<select id="core" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
-						<option value="1" selected>1核</option>
-						<option value="2">2核</option>
-						<option value="4">4核</option>
-						<option value="8">8核</option>
-						<option value="16">16核</option>
-						<option value="32">32核</option>	
-						<option value="64">64核</option>	
-					</select>
-				</span>
+				<select id="core" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
+					<option value="1" selected>1核</option>
+					<option value="2">2核</option>
+					<option value="4">4核</option>
+					<option value="8">8核</option>
+					<option value="16">16核</option>
+					<option value="32">32核</option>
+					<option value="64">64核</option>
+				</select>
+			</span>
 		</div>
 	</div>
 
@@ -208,17 +233,17 @@
 		<div class="am-input-group">
 			<span class="am-input-group-label" style="min-width:120px">内存</span>
 			<span class="am-input-group-btn" style="width: 100%;">
-					<select id="ram" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
-						<option value="1" selected>1G</option>
-						<option value="2">2G</option>
-						<option value="4">4G</option>
-						<option value="8">8G</option>
-						<option value="16">16G</option>
-						<option value="32">32G</option>
-						<option value="64">64G</option>
-						<option value="128">128G</option>							
-					</select>
-				</span>
+				<select id="ram" class='am-text-right' data-am-selected="{btnWidth: '100%'}">
+					<option value="1" selected>1G</option>
+					<option value="2">2G</option>
+					<option value="4">4G</option>
+					<option value="8">8G</option>
+					<option value="16">16G</option>
+					<option value="32">32G</option>
+					<option value="64">64G</option>
+					<option value="128">128G</option>
+				</select>
+			</span>
 		</div>
 	</div>
 
@@ -230,14 +255,14 @@
 				<div class="am-panel-bd">
 					<div class="am-btn-group am-btn-group-justify doc-js-btn-1" data-am-button>
 						<label class="am-btn am-btn-primary am-active" name="disk">
-								<input type="radio" value="0.3"> SATA 
-							</label>
+							<input type="radio" value="0.3"> SATA
+						</label>
 						<label class="am-btn am-btn-primary" name="disk">
-								<input type="radio" value="0.6"> SAS
-							</label>
+							<input type="radio" value="0.6"> SAS
+						</label>
 						<label class="am-btn am-btn-primary" name="disk">
-								<input type="radio" value="1.2"> SSD
-							</label>
+							<input type="radio" value="1.2"> SSD
+						</label>
 					</div>
 					<div class="am-input-group  am-margin-top">
 						<span class="am-input-group-label" style="width:118px">数据盘容量</span>
@@ -252,7 +277,7 @@
 	<div class='am-container am-margin-bottom'>
 		<div class="am-input-group">
 			<span class="am-input-group-label">带宽</span>
-			<input type="number" class="am-form-field am-text-right" id="band" min="0"step="1">
+			<input type="number" class="am-form-field am-text-right" id="band" min="0" step="1">
 			<span class="am-input-group-label">Mbps</span>
 		</div>
 	</div>
@@ -262,11 +287,11 @@
 			<span class="am-input-group-label">订购时长</span>
 			<input type="number" class="am-form-field am-text-right" id="len" min="1" value="1" step="1">
 			<span class="am-input-group-btn">
-					<select id="moy" data-am-selected="{btnWidth: '100px',dropUp: 1}">
-						<option value="1">月</option>
-						<option value="12">年</option>
-					</select>
-				</span>
+				<select id="moy" data-am-selected="{btnWidth: '100px',dropUp: 1}">
+					<option value="1">月</option>
+					<option value="12">年</option>
+				</select>
+			</span>
 		</div>
 	</div>
 	<p>
@@ -275,9 +300,9 @@
 	<header class="am-topbar am-topbar-inverse am-topbar-fixed-bottom">
 		<div class="am-alert am-cf am-margin-0">
 			<span class='am-text-middle' id="price"></span>
-			<button type="button" class="am-btn am-btn-default am-fr" id='update'>计算				
+			<button type="button" class="am-btn am-btn-default am-fr" id='update'>计算
 			</button>
-			<button type="button" class="am-btn am-btn-default am-fr" id='confirm' data-am-modal="{target: '#my-alert'}">配置				
+			<button type="button" class="am-btn am-btn-default am-fr" id='confirm' data-am-modal="{target: '#my-alert'}">配置
 			</button>
 		</div>
 	</header>
@@ -286,7 +311,11 @@
 			<div class="am-modal-hd">提示</div>
 			<div class="am-modal-bd">
 				<span class='am-text-middle' id="con1"></span>
-				<span class='am-text-middle'><strong></br></br> 中国电信天翼云主机快速部署、弹性扩展、降低成本、安全可靠，给您打造一个高效、可靠的计算环境，确保服务持久稳定运行。</strong></span>
+				<span class='am-text-middle'>
+					<strong>
+						</br>
+						</br> 中国电信天翼云主机快速部署、弹性扩展、降低成本、安全可靠，给您打造一个高效、可靠的计算环境，确保服务持久稳定运行。</strong>
+				</span>
 			</div>
 			<div class="am-modal-footer">
 				<span class="am-modal-btn">确定</span>
