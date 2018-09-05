@@ -77,7 +77,7 @@
 					if (band <= 5) {
 						var bp = 20 * band;
 					} else {
-						var bp = 20 * 5 + (band - 5) * 60;
+						var bp = 20 * 5 + (band - 5) * 36;
 					}
 					var price = (base + disk * data + bp) * time;
 					var price8 = ((base + (disk * data + bp) * 0.8) * time).toFixed(2);
