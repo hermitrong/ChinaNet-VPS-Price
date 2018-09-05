@@ -117,7 +117,7 @@
 					if (band <= 5) {
 						var bp = 20 * band;
 					} else {
-						var bp = 20 * 5 + (band - 5) * 60;
+						var bp = 20 * 5 + (band - 5) * 36;
 					}
 					var pricemonth = base + disk * data + bp;
 					var pricemonth8 = (base + (disk * data + bp) * 0.8).toFixed(2);
@@ -131,7 +131,7 @@
 					if (band <= 5) {
 						var bp = 20 * band;
 					} else {
-						var bp = 20 * 5 + (band - 5) * 60;
+						var bp = 20 * 5 + (band - 5) * 36;
 					}
 					var pricemonth = base + disk * data + bp;
 					var pricemonth8 = (pricemonth * 0.8).toFixed(2);
