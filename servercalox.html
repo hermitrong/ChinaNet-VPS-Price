@@ -68,7 +68,7 @@
 			var data = parseInt($("#data").val());
 			var band = parseInt($("#band").val());
 			var time = parseInt($("#len").val()) * parseInt($("#moy").val());
-			if (core > ram || (core == 32 && ram == 32)) {
+			if (core > ram) {
 				$("#price").text("抱歉，请选择正确的配置！")
 			}
 			else {
